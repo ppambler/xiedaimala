@@ -710,6 +710,38 @@ Promise一般是用于处理异步的！让异步换一种写法，然后解决�
 
 如果写异步的话，那就加callback或者promise吧！
 
+callback：
+
+```js
+function useTime(time,callback) {
+  setTimeout(()=>{
+    callback()
+  },time*1000)
+}
+console.log(1)
+useTime(3,()=>{
+  console.log(2)
+})
+```
+
+promise：
+
+```js
+function useTime(time,value) {
+  return new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve(value)
+    },time*1000)
+  })
+}
+console.log(1)
+useTime(3,2).then((value)=>{
+   console.log(value)
+})
+```
+
+在这里我强制给了一个值……之前的异步请求，通过xhr对象会自动得到一个值……
+
 ---
 
 ## ★总结
