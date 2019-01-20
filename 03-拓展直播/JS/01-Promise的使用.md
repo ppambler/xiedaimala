@@ -329,6 +329,12 @@ getIp().then(function(ip){
 
 接下来将会对一些特殊情况进行讲解——主要看看如何去用
 
+#### 补充
+
+Promise实例的原型上还有个finally方法，那么它是什么呢？——就是不管成功还是失败，只要状态从pending变为resolved或者rejected，它都会去执行这个finally方法里面的预案，不过一般情况下我们用不到，用到的时候你知道它是怎么执行的就行了……
+
+注意：这个是最后执行的，而不是执行了一个then就会执行了一个finally，而是多个then结束了，最后才会执行它！
+
 ### ◇特殊场景使用
 
 #### Promise.all
@@ -347,19 +353,290 @@ getIp().then(function(ip){
 
 为此Promise.all这个API的用武之地就出来了！
 
-它是什么呢？——如果你了解过JavaScript基于原型的面向对象的话，显然你是很容易理解它是什么的。它就是Promise这个构造函数原型上的一个方法，之前的then也是，这就是为什么Promise实例能访问到then，其实你也可以把看它作是静态方法……
+它是什么呢？——如果你了解过JavaScript基于原型的面向对象的话，显然你是很容易理解它是什么的。它就是Promise这个构造函数原型上的一个方法，之前的then也是，这就是为什么Promise实例能访问到then……
 
-> 额我觉得这说法有误额……all是个静态方法额，只能被Promise这个构造函数调用，其实例是不行的，你看一下下面这个测试你就知道了：
+> all是个静态方法额，只能被Promise这个构造函数调用，其实例是不行的，你看一下下面这个测试你就知道了：
 >
 > [②](#er)
 
+它的用法：
 
+```js
+//Promise.all, 当所有的 Promise 对象都完成后再执行
+Promise.all([p1, p2, p3]).then(data=>{
+  console.log(data)
+})
+```
 
+需要传递一个参数，这个参数是一个可遍历的对象，目前来说你可以认为它是一个数组，这个数组里的每一个元素都是一个Promise对象！
 
+那么它会干嘛呢？——它会等到所有的Promise对象全都resolve之后，然后把resolve的东西组装成一个数据，而这个数据就是data啦！
 
+> all即是全部，当全部的Promise对象都resolve之后，然后把resolve之后的东西都给拼起来、打包起来，最后的大包裹就是我们想要的data啦！
 
+测试代码：
 
+```js
+function getCityFromIp(ip) {
+  var promise = new Promise(function(resolve, reject){
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', 'https://easy-mock.com/mock/5ac2f80c3d211137b3f2843a/promise/getCityFromIp?ip='+ip, true)
+    xhr.onload = function(){
+      var retJson = JSON.parse(xhr.responseText)  // {"city": "hangzhou","ip": "23.45.12.34"}
+      resolve(retJson)
+    }
+    xhr.onerror = function(){
+      reject('获取city失败')
+    }
+    xhr.send()
+  })
+  return promise
+}
 
+var p1 = getCityFromIp('10.10.10.1')
+var p2 = getCityFromIp('10.10.10.2')
+var p3 = getCityFromIp('10.10.10.3')
+
+//Promise.all, 当所有的 Promise 对象都完成后再执行
+Promise.all([p1, p2, p3]).then(data=>{
+  console.log(data)
+})
+```
+
+我们声明了3个变量，它的值是Promise对象，意味着已经发了3个请求了，只不过Promise对象此刻的状态还没有发生改变！
+
+而这个代码：
+
+```js
+Promise.all([p1, p2, p3])
+```
+
+表示，三个Promise对象都从pending态变为 fulfilled状态或者说是resolved状态以后，就执行接下来的成功预案
+
+> all的操作有点轮询的味道……
+
+关于接下来的data，其实它是一个数组哈！
+
+![1547952761365](img/01/1547952761365.png)
+
+看一下网络资源的加载情况：
+
+![1547953442050](img/01/1547953442050.png)
+
+**➹：**[测量资源加载时间  -  Tools for Web Developers  -  Google Developers](https://developers.google.com/web/tools/chrome-devtools/network-performance/resource-loading?hl=zh-cn)
+
+小结：
+
+如果以后有这样的需求，就记得用`Promise.all()`吧！
+
+再举个例子加深一下印象：
+
+一个班有三位同学和老师，老师说「如果你们三今天考试都及格，那么明天就放假，如果存在一个同学不及格，那明天就补课啦」
+
+```js
+Promise.all（[小明，小李，小孙]）.all((data)=>{
+	console.log(data) //[{name:'小明'，say:'老师我及格啦！'}……]
+    console.log('明天放假！')
+}).catch((data)=>{
+    console.log('明天补课！！！')
+})
+```
+
+#### Promise.race
+
+用法跟all差不多，race顾名思义即竞赛，谁先得第一，奖牌就是谁的！
+
+```js
+function getCityFromIp(ip) {
+  var promise = new Promise(function(resolve, reject){
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', 'https://easy-mock.com/mock/5ac2f80c3d211137b3f2843a/promise/getCityFromIp?ip='+ip, true)
+    xhr.onload = function(){
+      var retJson = JSON.parse(xhr.responseText)  // {"city": "hangzhou","ip": "23.45.12.34"}
+      resolve(retJson)
+    }
+    xhr.onerror = function(){
+      reject('获取city失败')
+    }
+    setTimeout(()=>{
+      xhr.send()
+    }, Math.random()*1000)
+
+  })
+  return promise
+}
+
+var p1 = getCityFromIp('10.10.10.1')
+var p2 = getCityFromIp('10.10.10.2')
+var p3 = getCityFromIp('10.10.10.3')
+
+//Promise.all, 当所有的 Promise 对象都完成后再执行
+Promise.race([p1, p2, p3]).then(data=>{
+  console.log(data)
+})
+```
+
+我们发了3个请求，哪个请求先resolved，那么就先执行成功预案了……同时这也意味着我们并不需要其它数据了
+
+![1547961180021](img/01/1547961180021.png)
+
+模拟一个错误的：
+
+```js
+function getIp() {
+  var promise = new Promise(function(resolve, reject){
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', 'https://easy-mock.com/mock/5ac2f80c3d211137b3f2843a/promise/getIp', true)
+    xhr.onload = function(){
+      var retJson = JSON.parse(xhr.responseText)  // {"ip":"58.100.211.137"}
+      resolve(retJson.ip)
+    }
+    xhr.onerror = function(){
+      reject('获取IP失败')
+    }
+    xhr.send()
+  })
+  return promise
+}
+function getCityFromIp(ip) {
+  var promise = new Promise(function(resolve, reject){
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', 'https://easy-moc.com/mock/5ac2f80c3d211137b3f2843a/promise/getCityFromIp?p='+ip, true)
+    xhr.onload = function(){
+      var retJson = JSON.parse(xhr.responseText)  // {"city": "hangzhou","ip": "23.45.12.34"}
+      resolve(retJson)
+    }
+    xhr.onerror = function(){
+      reject('获取city失败')
+    }
+    xhr.send()
+  })
+  return promise
+}
+
+var p1 = getIp()
+var p2 = getIp()
+var p3 = getCityFromIp('10.10.10.3')
+
+//Promise.all, 当所有的 Promise 对象都完成后再执行
+Promise.race([p1, p2, p3]).then(data=>{
+  console.log(data)
+}).catch((data)=>{
+  console.log(data)
+}).finally(()=>{
+  console.log('我执行了')
+})
+```
+
+结果：
+
+![1547961371310](img/01/1547961371310.png)
+
+那如果先错误呢（存在一个错误）？即我先发错误请求，让`getCityFromIp('10.10.10.3')`先执行，结果同上！话说，这是在容错吗？只要一个家伙ok，就有结果了！就像是3个人在跑1500米，只要有一个人跑到终点，那么这场比赛就结束了……
+
+那如果全错呢？——把它们的请求url的域名改一下就好了，结果：
+
+![1547961858950](img/01/1547961858950.png)
+
+这就像是，3个都无法冲刺，如跑着跑着……跑道就莫名其妙的塌陷了，导致比赛无法顺利进行了。所以就执行了失败预案……比如「明天换个跑道继续跑」
+
+### ◇改进回调地狱
+
+> 写久了你就知道怎么写了，而且也不用去问什么了！虽然这像是架着一个空壳子，但胜在能用！
+
+直接封装成Promise就好了
+
+```js
+function fn1() {
+  return new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+      console.log('fn1...')
+      resolve()
+    }, 1000)    
+  })
+}
+
+function fn2() {
+  return new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+      console.log('fn2...')
+      resolve()
+    }, 1000)    
+  })
+}
+
+function fn3() {
+  return new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+      console.log('fn3...')
+      resolve()
+    }, 1000)    
+  })
+}
+
+function onerror() {
+  console.log('error')
+}
+
+fn1().then(fn2).then(fn3).catch(onerror)
+```
+
+或许你会疑问，为啥是传一个fn2，其实这跟前面是一样的……只是之前的那个需要用到前面数据的，需要才包了一层，而这个就不需要了！
+
+之前那个：
+
+![1547964018157](img/01/1547964018157.png)
+
+> 突然感到很奇怪，因为之前我了解到return的值是下一个then的某个预案的参数值，我们可以直接写一个字符串，既然可以写字符串，那么为啥可以继续then呢？
+
+![1547964591921](img/01/1547964591921.png)
+
+那我就打印一下这个then的返回值就好了：
+
+![1547964712379](img/01/1547964712379.png)
+
+我在想难道是做了某种语法糖的包装？
+
+![1547964829107](img/01/1547964829107.png)
+
+额……我想了想，then是可以接收两个预案的吧！那么它身为参数，那就好办了，我们可以return一个Promise对象那么就很合理了……
+
+最终的猜测：
+
+![1547965130886](img/01/1547965130886.png)
+
+当我们继续then的时候，显然根据状态以及值，可以判断执行哪个预案，并传什么参数给它了！
+
+那么如何做才能拿到一个rejected态呢？
+
+![1547965674969](img/01/1547965674969.png)
+
+小结：
+
+1. then的返回值为Promise实例
+
+2. then其中一个预案的返回值可以是直接的字符串结果，或者是常见的把JSON数据转化为普通对象的对象！
+
+   如果是Promise对象的话，那么就在再好不过了，毕竟不用去包装了……
+
+3. 每次在then之前，先看看Promised的状态，以及其Value，然后再去then……
+
+4. 封装一层的那种做法比较好，因为可以改写数据给下一个then……如果自顶向不涉及到对数据的依赖，那就不用封装了，直接写就好了……
+
+### ◇扩展
+
+去MDN看看我们的讲解是否有遗漏！同时也要去看看其它的教程做个对照，这样的话你才能对Promise有个真正了解！然后下次你在写代码的时候尝试着去使用它就好了！
+
+一幅图：
+
+![img](img/01/promises.png)
+
+还有两个立即更改状态的静态方法：
+
+- [`Promise.reject(reason)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject)
+- [`Promise.resolve(value)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
+
+**➹：**[Promise - MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 
 
@@ -378,6 +655,8 @@ getIp().then(function(ip){
 - 如果我继续按照这样的效率看视频的话，显然是不行的！我得对视频中所讲的每一个小点都得按自己的理解一遍后，才记笔记，如果不理解就多看几遍，总之下笔需理解，而不是说一句话就写一句话……还有就是关于信噪比的问题，你得明确哪些是噪音，即无用信息……
 
   对了，还有一个就是，反复的内容尽可能少记，不会的内容就多记！
+
+- 就只写一个catch就好了，不用在写成功预案的同时，把失败预案也给写上！
 
 ## ★Q&A
 
@@ -401,4 +680,8 @@ var p = fn()
 测试结果：
 
 ![1547916301315](img/01/1547916301315.png)
+
+### ③老师的书签栏
+
+![1547967015664](img/01/1547967015664.png)
 
