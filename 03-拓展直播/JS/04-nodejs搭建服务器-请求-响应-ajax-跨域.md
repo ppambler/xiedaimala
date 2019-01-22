@@ -4,6 +4,12 @@ typora-copy-images-to: img\04
 
 # node.js 搭建服务器、请求、响应、ajax、跨域
 
+## ★目录
+
+[TOC]
+
+---
+
 ## ★课程简介
 
 若愚老师讲解难点
@@ -140,7 +146,7 @@ ajax是一种技术方案，但并不是一种新技术。它依赖的是现有�
 
 写一个 ajax
 
-```
+```javascript
 var xhr = new XMLHttpRequest()
 xhr.open('GET', 'http://api.jirengu.com/weather.php', true)
 xhr.onreadystatechange = function(){
@@ -161,7 +167,7 @@ xhr.send()
 
 换种写法
 
-```
+```js
 var xhr = new XMLHttpRequest()
 xhr.open('GET', 'http://api.jirengu.com/weather.php', true)
 xhr.onload = function(){
@@ -180,7 +186,7 @@ xhr.send()
 
 post 的使用
 
-```
+```javascript
   var xhr = new XMLHttpRequest()
   xhr.timeout = 3000        //可选，设置xhr请求的超时时间
   xhr.open('POST', '/register', true)
