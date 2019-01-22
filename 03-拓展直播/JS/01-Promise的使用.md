@@ -758,7 +758,7 @@ useTime(3,2).then((value)=>{
 
 **➹：**[通过设置chrome浏览器解决跨域问题，在本地进行开发工作 - 哭个六 - 博客园](https://www.cnblogs.com/kugeliu/p/6566462.html)
 
-### <a id="er">②测试结果<a>
+### <a id="er">②测试结果</a>
 
 简单的一个Promise实例：
 
