@@ -745,7 +745,24 @@ console.log('visit http://localhost:8080' )
 
 而我们这个静态服务器只不过是一个比较简单的演示而已！
 
+**➹：**[常见的web服务器软件分类 - 锋齐叶落 - 博客园](http://www.cnblogs.com/qianzf/p/6803863.html)
+
+> 似乎可以搞一个静态的json数据出来……
+>
+> 1. 找一个[API](https://easy-mock.com/mock/5c42d010fa4bae6ac3633398/example/mock)，根据其中的请求和响应信息来搞事情就好了
+> 2. 复制这个静态服务器，添加 `res.setHeader('Content-Type','application/json; charset=utf-8')` 
+>
+> 总之这个可以是你本地专门mock数据的静态服务器，名字叫mockserver.js
+>
+> 请求：http://127.0.0.1:8080/test.json
+>
+> 效果：
+>
+> ![1548344180621](img/04/1548344180621.png)
+
 ---
+
+## ★使用 Node.js写一个动态服务器
 
 
 
@@ -817,7 +834,7 @@ console.log('visit http://localhost:8080' )
 
   作用是你用了就知道了！
 
-- 修改了服务器的代码就要重启，当然那些静态资源就不需要啦！
+- 修改了服务器的代码就要重启，也就是不支持热部署……当然，CRUD了那些静态资源就不需要重启server……
 
   
 
@@ -890,3 +907,12 @@ console.log('visit http://localhost:8080' )
 
 **➹：**[Nodejs基础：路径处理模块path总结 - 程序猿小卡 - 博客园](https://www.cnblogs.com/chyingp/p/node-learning-guide-path.html)
 
+### ④发现一个简单好用的web server？
+
+caddy用起来特简单，而且它的特性中有一点很关键：
+
+- Markdown 自动把md转成 HTML
+
+这个点跟通过github pages展示md文件为html文件一样牛逼！而且还有一点就是`Every Site on HTTPS`。总之可以入门一下这个……
+
+**➹：**[新兴的web服务器caddy - 知乎](https://zhuanlan.zhihu.com/p/25815245)
