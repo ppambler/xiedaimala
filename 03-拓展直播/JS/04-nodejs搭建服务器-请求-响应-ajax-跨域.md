@@ -430,11 +430,263 @@ ajax({
 
 **➹：**[Apache和Apache Tomcat的区别是什么？ - 知乎](https://www.zhihu.com/question/37155807)
 
+## ★使用 Node.js 写一个静态服务器
+
+### ◇写一个简单的服务器
+
+使用node.js实现……
+
+#### 实现逻辑
+
+之前说到这个服务器就是Web服务器，即一个小软件
+
+写好之后，就开启它，然后它就会监听某个端口……
+
+接着就是测试：
+
+在浏览器中输入一个ip地址或者是域名，当然我并咩有域名，所以只能用ip地址测试啦！然后还要写对应的端口才行！就像这样：
+
+![1548308015048](img/04/1548308015048.png)
+
+敲下回车，这个请求就会到达我们所写的这个软件，然后由我们这个软件去决定发送什么数据，发完之后，浏览器就会看到了！
+
+#### 看看代码如何实现
+
+从一个最简单的范例开始：
+
+```js
+var http = require('http')
+
+var server = http.createServer(function(req, res){
+    console.log('jiengu')
+    res.setHeader("Content-Type","text/html; charset=utf-8")
+    res.write('<h1> 饥人谷</h1>')
+    res.end()
+})
+server.listen(9000)
+```
+
+分析：
+
+1. 使用nodejs的一个内置模块http
+2. 然后调用http的createServer方法，并传入一个参数，这个参数的作用是当server启动之后要做的事情，即我们需要的一些配置
+3. 这个server创建之后就去监听9000这个端口，这个9000随便给，如8080、3000等，总之只要端口没被其它程序监听就好了！还有一些端口是不能使用的……
+
+只要程序运行，监听这个端口，那么这个server就已经启动了，换句话说就是通过`http.createServer`启动了一个服务器。
+
+> 其实这个的赶脚就像事件监听处理一样，有请求过来就调用回调函数啦！
+
+请求到来之后，就会执行那个函数，其中req就是请求相关的信息，这个信息包括很多东西，如用户的浏览器类型、用户请求的一个url以及一些与url相关的信息、请求带的参数都在req这个对象里面
+
+这个函数既然得到了用户的请求的信息，那么我们就得给用户一个响应才行哈！
+
+如何才能给响应呢？——用这个函数的第二个参数res，直接调用res的一些方法即可！反正有内置模块http帮我们封装了许多API
+
+关于res对象，有哪些API呢？
+
+1. setHeader()：设置响应头
+2. write()：设置响应体
+3. end()：结束
+
+4. ……
+
+在本地启动这个server，看看效果：
+
+使用node去执行这个server1.js，换句话说就是去启动我们这个服务器：
+
+![1548309973732](img/04/1548309973732.png)
+
+浏览器显示效果：
+
+![1548310083038](img/04/1548310083038.png)
+
+这个server1.js就是一个Web服务器啦！
+
+> 我想起之前关于Java web的就感到头疼，需要做很多功夫，才能看到一个结果，在我看来，这对于初学者来说并不友好。因为很多时候，我只是看到一个跑通的结果而已，即一个请求，然后浏览器响应了一个结果。而不是费很多功夫才能看这个结果！
+>
+> 总之，对于初学者理清整个请求和响应的过程，比去关注实现这个过程的代码要重要得多！
+
+虽然很简单，但「麻雀虽小五脏俱全」哈！
+
+分析一下下面这个代码：
+
+```js
+res.setHeader("Content-Type","text/html; charset=utf-8")
+res.write('<h1> 饥人谷</h1>')
+```
+
+浏览器和服务器的沟通就是通过http协议进行的，而http协议就是响应头和响应体！
+
+响应头 `Content-Type`告诉我后面的响应体的类型为`html`，编码为`utf-8`
+
+此刻浏览器就会知道 `<h1> 饥人谷</h1>`这个东西是html，然后它就会把这个东西当作是html渲染
+
+![1548320054944](img/04/1548320054944.png)
+
+如果我们不加`Content-Type`，你猜会咋样：
+
+![1548320247807](img/04/1548320247807.png)
+
+浏览器不知道响应体是什么东西，但可以去猜，有时可以猜对！此刻虽然认为是HTML内容，但出现了乱码哈！
+
+总之你还得设置编码方式才行！当然一般我们写html的时候都会在meta标签里写上编码信息……
+
+查看network：
+
+![1548320649665](img/04/1548320649665.png)
+
+以上就是一个最简单的server了，但是这个server有啥用呢？——貌似没啥用……
+
+当然，还是有点用处的，比如此刻你的server1.js正运行在云服务器上，通过公网ip，加上相应的端口，就能让其它人访问了，接着你要向某个女孩表白，然后就在响应体写上一大段表白内容，然后就把这个url发送给那女孩，然后那女孩就能看到这个表白页面了……
+
+不管怎样，这终究是一个功能有限的服务器！所以我们需要进一步扩展
+
+不过在扩展之前，还是先完善一下这个例子先：
+
+```js
+var http = require('http')
+
+// var server = http.createServer(function(req, res){
+//     console.log('jiengu')
+//     res.setHeader("Content-Type","text/html; charset=utf-8")
+//     res.write('<h1> 饥人谷</h1>')
+//     res.end()
+// })
+// server.listen(9000)
+
+
+var server = http.createServer(function(request, response){
+  //加了个延时，模拟了一下网络延时，让它在2000ms之后再发送响应
+  setTimeout(function(){
+    response.setHeader('Content-Type','text/html; charset=utf-8')
+    response.writeHead(404, 'Not Found')
+    response.write('<html><head><meta charset="gbk" /></head>')
+    response.write('<body>')
+    response.write('<h1>你好</h1>')
+    response.write('</body>')
+    response.write('</html>')
+
+    response.end()
+  },2000);
+})
+//这些log会在终端显示
+console.log('open http://localhost:8080')
+server.listen(8080)
+```
+
+解释一波：
+
+出现了一个新的API——`writeHead()`，它的作用是设置一个状态码，以及出现这个状态的一些原因（reason）！
+
+测试：
+
+![1548322433439](img/04/1548322433439.png)
+
+结果：
+
+![1548322589701](img/04/1548322589701.png)
+
+meta标签里设置的charset属性没有响应头设置的优先级高！
+
+> 其实url写成这样也没事儿：http://127.0.0.1:8080/index.html，默认就是拼接成index.html内容，即便我们并没有在本地写这个index.html文件
+
+我们查看页面的network情况：
+
+先看一下Timing：
+
+![1548323661207](img/04/1548323661207.png)
+
+**➹：**[Network Analysis Reference  -  Tools for Web Developers  -  Google Developers](https://developers.google.com/web/tools/chrome-devtools/network-performance/reference?hl=zh-cn)
+
+我在看preview的时候：
+
+![1548324441070](img/04/1548324441070.png)
+
+最后看下http请求和响应情况：
+
+![1548324005843](img/04/1548324005843.png)
+
+
+
+明明响应ok，但这状态码是404，这是为什么呢？因为你在服务器里写了404啊！那么这个状态就是404，浏览器收到这个状态就会根据这个状态去提示，比如这样：
+
+![1548325044112](img/04/1548325044112.png)
+
+提示中的 `Not Found`也是我们在服务器中写的！
+
+从这可以看出，当我们自己去实现这个web server的时候，你可以按照约定来。那么约定是什么呢？就是正常情况下响应成功约定状态是200的，万一文件不存在才是404
+
+当然，你也可以不按，不按的话就会出现一些奇怪的结果，毕竟在没有Web开发之前你已经有了一些潜在的认识了，为此感觉不按约定的话会显得很奇怪！这就像是把约定当作是正常现象，不遵守这个约定的就是异类！
+
+> 很多时候，我们在不知不觉中就被同化了，而且还装作若无其事般接受……最后习以为常……即便有些东西并不是那么合理
+
+总之，用户看到的东西，我们都可以在服务器这边做控制，如搞坏状态码
+
+关于编码选择的优先级：[②](#er)
+
+这个例子虽然多了点代码，但还是并无卵用……所以我们接下来就搭建一个静态服务器！
+
+#### 关于API的学习
+
+如何学习nodejs提供的这些API，如`setHeader()`之类的……
+
+直接去nodejs的官网api里找就好了！
+
+我们在学nodejs的时候，可不是从头到尾，从打开其官网API的文档开始之后的第一行学到其最后一行的，而是通过一些小例子，让你越来越了解更多的API，然后自然而然地就学会了！
+
+总之千万不要直接去看API，而是用到什么就去看什么，不理解什么，就去理解什么，而不是毫无目的为了学习API而去学习API……毕竟这API真TM多！
+
+**➹：**[http  - Node.js API 文档](http://nodejs.cn/api/http.html#http_response_write_chunk_encoding_callback)
+
+### ◇写一个静态服务器
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 
 ## ★总结
 
@@ -454,7 +706,30 @@ ajax({
 
   目前我所了解到的：可执行程序跟Web服务器打交道，也跟数据库服务器打交道
 
-  
+
+
+
+
+
+
+---
 
 ## ★Q&A
 
+### ①chrome浏览器的编码设置不见了？
+
+安装下面这个扩展就好了：
+
+[Charset - Chrome 网上应用店](https://chrome.google.com/webstore/detail/charset/oenllhgkiiljibhfagbfogdbchhdchml/related)
+
+**➹：**[javascript - 新版chrome如何设置编码格式 - SegmentFault 思否](https://segmentfault.com/q/1010000008940788)
+
+###  <a id="er">②编码的优先级？</a>
+
+meta里设置的编码和响应头所设置的编码，其中哪个优先级更高？
+
+Content-Type 的优先级更高，浏览器先采纳了它，忽略了文档内的声明，毕竟浏览器省略了嗅探的步骤，提高了效率。
+
+**➹：**[网页中的编码与乱码（3） – 肖国栋的i自留地](https://xiaogd.net/%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E7%BC%96%E7%A0%81%E4%B8%8E%E4%B9%B1%E7%A0%81%EF%BC%883%EF%BC%89/)
+
+**➹：**[html5 -` <meta charset="utf-8">` vs `<meta http-equiv="Content-Type">` - Stack Overflow](https://stackoverflow.com/questions/4696499/meta-charset-utf-8-vs-meta-http-equiv-content-type)
