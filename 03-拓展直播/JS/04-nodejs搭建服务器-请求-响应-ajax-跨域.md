@@ -764,9 +764,106 @@ console.log('visit http://localhost:8080' )
 
 ## ★使用 Node.js写一个动态服务器
 
+### ◇代码
 
+> 使用nodejs实现一个支持静态文件动态路由的服务器
 
+```js
+var http = require('http')
+var fs = require('fs')
+var url = require('url')
 
+http.createServer(function(req, res){
+  var pathObj = url.parse(req.url, true)
+  console.log(pathObj)
+
+  switch (pathObj.pathname) {
+    case '/getWeather':
+      var ret
+      if(pathObj.query.city == 'beijing'){
+        ret = { city: 'beijing', weather: '晴天' }
+      }else{
+        ret = { city: pathObj.query.city, weather: '不知道' }
+      }
+      res.end(JSON.stringify(ret))
+      break;
+    default:
+        try{
+            var fileContent = fs.readFileSync(__dirname + '/static' + pathObj.pathnamel)
+            res.write(fileContent)
+        }catch(e){
+            res.writeHead(404, 'not found')
+        }
+        res.end( )
+  }
+}).listen(8080)
+```
+
+### ◇解释
+
+解释一波：
+
+1. 引入一个url模块，用于解析url
+2. 启动一个这个server，监听8080端口，只要有请求到了8080端口，就会执行那回调函数。
+
+关于那回调函数的逻辑：
+
+1. `var pathObj = url.parse(req.url, true)`，在这里我们为啥要`passe`一下`req.url`，然后得到一个新的path对象呢？那是因为很多时候请求的url是带有参数的，就像这样：
+
+   ![1548384038632](img/04/1548384038632.png)
+
+   按照我们之前静态服务器的逻辑，这个url就是在找一个文件叫 `index.html`然后还有后缀 `?a=1&b=2`，那我能否创建这样的文件呢？于是我做了下面这个尝试：
+
+   ![1548384279348](img/04/1548384279348.png)
+
+   显然GG了
+
+   总之，按照我们的这个逻辑，这个文件 `index.html?a=1&b=2`  是不存在的，所以我们需要对`req.url`进行处理，让后面这些所谓的参数 `?a=1&b=2`通过url的parse（解析）得到一个真实的path以及其后面的参数！
+
+   关于请求URL的一些细节：[⑤](#wu)
+
+2. 使用`switch……case……default`语句，如果服务器里面后端有个叫 `/getWeather`的接口，然后就查看查询参数里是否有个叫beijing的字段，如果是则返回`晴天`这个数据，如果不是，那天气状况就`不知道` 啦！
+
+   假设根据`pathname`判断你不是找天气 的，而是其它的，那么我们就默认你是去找静态文件的，然后我们就去读本地文件，读到之后就把文件发给你！
+
+   如果本地文件找不到或者文件受损了，那么我只能发个404以及reason了呀！至于其它内容那就算了，我可没有精力去写一个好看的404.html给你！
+
+   总之下面这段代码所描述的功能就是静态服务器：
+
+   ```js
+   try {
+       var fileContent = fs.readFileSync(__dirname + '/static' + pathObj.pathnamel)
+       res.write(fileContent)
+   } catch(e) {
+   	res.writeHead(404, 'not found')
+   }
+   ```
+
+   而下面这块则是路由功能：
+
+   ```js
+   case '/getWeather':
+         var ret
+         if(pathObj.query.city == 'beijing'){
+           ret = { city: 'beijing', weather: '晴天' }
+         }else{
+           ret = { city: pathObj.query.city, weather: '不知道' }
+         }
+         res.end(JSON.stringify(ret))
+         break;
+   ```
+
+   当用户输入一个URL的时候，服务端做的事情不是去找 `getWeater`这个文件，而是要给前端一些数据，不管这是啥数据，还是打哪儿来的，如这中间可能是你直接模拟的假数据、如果是真实场景的话，这些数据是从服务器或者是数据库中获取的！
+
+   换句话说，这个过程就有一个动态的特性，即数据是变的而不是死死的某个文件
+
+### ◇小结
+
+1. 当我们去学习AJAX的时候，通过这个动态服务器，我们就可以用它去模拟数据了，去mock数据！
+
+2. 之后会讲解ajax以及与它相关的一概念
+
+   
 
 
 
@@ -916,3 +1013,8 @@ caddy用起来特简单，而且它的特性中有一点很关键：
 这个点跟通过github pages展示md文件为html文件一样牛逼！而且还有一点就是`Every Site on HTTPS`。总之可以入门一下这个……
 
 **➹：**[新兴的web服务器caddy - 知乎](https://zhuanlan.zhihu.com/p/25815245)
+
+### <a id="wu">⑤URL的常见组成？</a>
+
+![1548384857248](img/04/1548384857248.png)
+
