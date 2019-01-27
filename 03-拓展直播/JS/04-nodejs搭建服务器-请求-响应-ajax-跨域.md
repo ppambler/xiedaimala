@@ -1008,63 +1008,311 @@ http.createServer(function(req, res){
 
 ---
 
+## ★跨域
+
+> 讲解同源策略以及跨域相关的内容
+
+### ◇为什么不让浏览器取消同源？
+
+我们打开一个页面，里面有JavaScript，而JavaScript里面有个ajax去发请求，如果请求的url和我们当前这个html的url非同源，即存在协议、域名、端口中有一个不同就是非同源了！
+
+既然是非同源的，那么此刻的ajax请求就是跨域请求的！
+
+那么跨域请求有什么特点呢？——请求可以到服务器，服务器也会响应数据，但浏览器不放行。换句话说，我们写了一个ajax请求，然后等着onload，然后这个数据就是不来，不来的话我们就无法处理这个数据了，毕竟数据被浏览器给卡住了！
+
+或许你会问「把浏览器的同源什么鬼的安全设置给关掉不就好了吗？」
+
+这是可以的，但是你既然做一个网站，肯定是让所有人都能访问的呀，难道你要他们都得把自己的浏览器给设置一番？比如说，用户访问你这个网站就能获取到当前用户所在区域的天气情况，而这个获取天气的接口是跨域的，难道你要提示用户说「请设置一下浏览器，才能看到天气预报？」——显然用户不会这么干！
+
+所以把自己的浏览器设置成取消同源显然是没有什么意义的！
+
+那么如何解决跨域的问题呢？——有两种方案，围绕对方的服务器愿不愿意给数据，如果不愿意给那就没办法了！
+
+第一种方案：愿意给，既然愿意给那么服务器就会有两种方式可以给你数据，第一种是它支持JSONP的形式，第二种则是它设置了CORS，即相当于告诉浏览器，你放行它吧，它可以拿到我的这个数据，然后浏览器就放行了
+
+这是它愿意提供数据、提供支持的方案！
+
+假设它不愿意提供的话，比如说，某个提供天气服务的网站，你需要使用它的天气接口获取数据，然而它并没有给我们提供JSONP的数据方式，也不支持CORS。那么这该怎么办？——那就使用我们的终极武器，就是服务器中转，换句话说就是让ajax请求发送到我们自己的服务器上，然而我们自己的服务并咩有数据，但是可以让服务器向那个天气服务器要数据啊！一要它就会给了，然后再把这个数据给我们这用户！
+
+所以这样一来，就不存在跨域了！也不存在不同源了，即使不同源，由于是自己的服务器，那么也可以设置成这个个天气接口允许所有人去用！
+
+总之这两种方案大体来说，就是别人支持（JSONP、CORS）或者是别人不支持（服务器中转）！
+
+### ◇别人支持
+
+#### JSONP
+
+> 资料：
+>
+> **➹：**[跨域 · 饥人谷课件](http://book.jirengu.com/fe/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/Javascript/%E8%B7%A8%E5%9F%9F.html)
+>
+> **➹：**[JSONP - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/JSONP)
+
+HTML 中 script 标签可以加载其他域下的js，比如我们经常引入一个其他域下线上cdn的jQuery。那如何利用这个特性实现从其他域下获取数据呢？
+
+可以先这样试试：
+
+```html
+<script src="http://api.jirengu.com/weather.php"></script>
+```
+
+这时候会向天气接口发送请求获取数据，获取数据后做为 js 来执行。 但这里有个问题， 数据是 JSON 格式的数据，直接作为 JS 运行的话我如何去得到这个数据来操作呢？
+
+这样试试：
+
+```html
+<script src="http://api.jirengu.com/weather.php?callback=showData"></script>
+```
+
+这个请求到达后端后，后端会去解析callback这个参数获取到字符串showData，在发送数据做如下处理：
+
+之前后端返回数据：` {"city": "hangzhou", "weather": "晴天"}` 
+
+现在后端返回数据：` showData({"city": "hangzhou", "weather": "晴天"}) `
+
+前端script标签在加载数据后会把 「`showData({“city”: “hangzhou”, “weather”: “晴天”})`」做为 js 来执行，这实际上就是调用showData这个函数，同时参数是 `{“city”: “hangzhou”, “weather”: “晴天”}`。 用户只需要在加载提前在页面定义好showData这个全局函数，在函数内部处理参数即可。
+
+```html
+<script>
+    function showData(ret){
+        //可以做更多的操作！
+    	console.log(ret);
+    }
+</script>
+<script src="http://api.jirengu.com/weather.php?callback=showData"></script>
+```
+
+这就是 JSONP(JSON with padding)，总结一下：
+
+> padding：填充，让数据填充到回调函数里去，即作为回调函数的参数
+
+JSONP是通过 script 标签加载数据的方式去获取数据当做 JS 代码来执行 提前在页面上声明一个函数，函数名通过接口传参的方式传给后台，后台解析到函数名后在原始数据上「包裹」这个函数名，发送给前端。
+
+换句话说，JSONP 需要对应接口的后端的配合才能实现。
+
+##### demo
+
+server.js
+
+```javascript
+var http = require('http')
+var fs = require('fs')
+var path = require('path')
+var url = require('url')
+
+http.createServer(function(req, res){
+  var pathObj = url.parse(req.url, true)
+
+  switch (pathObj.pathname) {
+    case '/getNews':
+      var news = [
+        "第11日前瞻：中国冲击4金 博尔特再战200米羽球",
+        "正直播柴飚/洪炜出战 男双力争会师决赛",
+        "女排将死磕巴西！郎平安排男陪练模仿对方核心"
+        ]
+      res.setHeader('Content-Type','text/json; charset=utf-8')
+      if(pathObj.query.callback){
+        res.end(pathObj.query.callback + '(' + JSON.stringify(news) + ')')
+      }else{
+        res.end(JSON.stringify(news))
+      }
+
+      break;
+
+    default:
+      fs.readFile(path.join(__dirname, pathObj.pathname), function(e, data){
+        if(e){
+          res.writeHead(404, 'not found')
+          res.end('<h1>404 Not Found</h1>')
+        }else{
+          res.end(data)
+        }
+      }) 
+  }
+}).listen(8080)
+```
+
+index.html
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <ul class="news">
+    </ul>
+    <button class="show">show news</button>
+  </div>
+
+<script>
+
+  $('.show').addEventListener('click', function(){
+    var script = document.createElement('script');
+    script.src = 'http://127.0.0.1:8080/getNews?callback=appendHtml';
+    document.head.appendChild(script);
+    document.head.removeChild(script);
+  })
+
+  function appendHtml(news){
+    var html = '';
+    for( var i=0; i<news.length; i++){
+      html += '<li>' + news[i] + '</li>';
+    }
+    console.log(html);
+    $('.news').innerHTML = html;
+  }
+
+  function $(id){
+    return document.querySelector(id);
+  }
+</script>
+
+</html>
+```
+
+打开终端，输入 node server.js ，浏览器打开 <http://localhost:8080/index.html>
+
+##### 小结
+
+1. JSONP被称作是一种“让用户利用script元素注入的方式绕开同源策略”的方法。
+2. 粗略的JSONP部署很容易受到[跨站请求伪造](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0)（CSRF/XSRF）的攻击
+
+关于CSRF攻击：
+
+利用web中用户身份验证的一个漏洞：**简单的身份验证只能保证请求发自某个用户的浏览器，却不能保证请求本身是用户自愿发出的**。
+
+防御措施：
+
+1. 检查Referer字段
+2. 添加校验token（选择这个）
 
 
 
+#### CORS
+
+CORS 全称是跨域资源共享（Cross-Origin Resource Sharing），是一种 ajax 跨域请求资源的方式，支持现代浏览器，IE支持10以上。
+
+ 实现方式很简单，当你使用 `XMLHttpRequest` 发送请求时，浏览器发现该请求不符合同源策略，会给该请求加一个请求头：Origin，后台进行一系列处理，如果确定接受请求则在返回结果中加入一个响应头：`Access-Control-Allow-Origin`; 浏览器判断该相应头中是否包含 Origin 的值，如果有则浏览器会处理响应，我们就可以拿到响应数据，如果不包含浏览器直接驳回，这时我们无法拿到响应数据。就像这样：
+
+![1548564267491](img/04/1548564267491.png)
+
+> 如果用户发请求的那个页面不是这个的话，如 是`127.0.0.1:8080`的话，就像这样：
+>
+> ![1548565240427](img/04/1548565240427.png)
+>
+> 所以浏览器要确保响应头 `Access-Control-Allow-Origin`的值是否与发ajax请求的那个页面的url是否一致，如果一致则放行，不一致则GG
+>
+> 虽然没有放行，但还是可以在network中查看到数据：
+>
+> ![1548565406322](img/04/1548565406322.png)
+>
+> 还有一点就是浏览器很傻，认为`localhost`和`127.0.0.1`不是等价的！
+
+所以 CORS 的表象是让你觉得它与同源的 ajax 请求没啥区别，代码完全一样。
+
+server.js
+
+```javascript
+var http = require('http')
+var fs = require('fs')
+var path = require('path')
+var url = require('url')
+
+http.createServer(function(req, res){
+  var pathObj = url.parse(req.url, true)
+
+  switch (pathObj.pathname) {
+    case '/getNews':
+      var news = [
+        "第11日前瞻：中国冲击4金 博尔特再战200米羽球",
+        "正直播柴飚/洪炜出战 男双力争会师决赛",
+        "女排将死磕巴西！郎平安排男陪练模仿对方核心"
+        ]
+      //主要要有这个字段，不然浏览器接收到的数据就是乱码的
+	  res.setHeader('Content-Type','text/json; charset=utf-8')
+      //如果发请求的那个页面是127.0.0.1:8080的话，显然还是无法跨域的，毕竟这里是localhost值
+      //浏览器可是直接那这个值与当前源equal的
+      res.setHeader('Access-Control-Allow-Origin','http://localhost:8080')
+      //res.setHeader('Access-Control-Allow-Origin','*')
+      res.end(JSON.stringify(news))
+      break;
+    default:
+      fs.readFile(path.join(__dirname, pathObj.pathname), function(e, data){
+        if(e){
+          res.writeHead(404, 'not found')
+          res.end('<h1>404 Not Found</h1>')
+        }else{
+          res.end(data)
+        }
+      }) 
+  }
+}).listen(8080)
+```
+
+index.html
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <ul class="news">
+
+    </ul>
+    <button class="show">show news</button>
+  </div>
+
+<script>
+
+  $('.show').addEventListener('click', function(){
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', 'http://127.0.0.1:3000/getNews', true)
+    xhr.send()
+    xhr.onload = function(){
+      appendHtml(JSON.parse(xhr.responseText))
+    }
+  })
+
+  function appendHtml(news){
+    var html = ''
+    for( var i=0; i<news.length; i++){
+      html += '<li>' + news[i] + '</li>'
+    }
+    $('.news').innerHTML = html
+  }
+
+  function $(selector){
+    return document.querySelector(selector)
+  }
+</script>
 
 
 
+</html>
+```
 
+启动终端，执行 node server.js ，浏览器打开 <http://localhost:8080/index.html> ,查看效果和网络请求
 
+我的测试：
 
+![1548565667884](img/04/1548565667884.png)
 
+关于 `*`——后端愿意给所有人数据，包括同源的自己
 
+![1548566149665](img/04/1548566149665.png)
 
+总之服务端 可以使用nodejs做响应头的配置，如果是使用Nginx、Apache这些你也可以在它们的配置文件做个配置……
 
+> 突然觉得所谓的跨域不安全简直是无稽之谈啊！毕竟这应该是JSONP的问题吧！
 
+### ◇小结
 
+1. 以上就是JSONP和CORS的原理了，当然还有个服务器中转的做法！
+2. 还有其它方式——降域和postMessage
 
+**➹：**[javascript跨域的几种情况 - 知乎](https://zhuanlan.zhihu.com/p/25657704)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**➹：**[【跨域】JSONP/CORS/降域/postMessage - 简书](https://www.jianshu.com/p/6d35c01f8a22)
 
 ---
 
