@@ -1231,7 +1231,7 @@ http.createServer(function(req, res){
       //主要要有这个字段，不然浏览器接收到的数据就是乱码的
 	  res.setHeader('Content-Type','text/json; charset=utf-8')
       //如果发请求的那个页面是127.0.0.1:8080的话，显然还是无法跨域的，毕竟这里是localhost值
-      //浏览器可是直接那这个值与当前源equal的
+      //浏览器可是直接拿这个值与当前源equal的
       res.setHeader('Access-Control-Allow-Origin','http://localhost:8080')
       //res.setHeader('Access-Control-Allow-Origin','*')
       res.end(JSON.stringify(news))
