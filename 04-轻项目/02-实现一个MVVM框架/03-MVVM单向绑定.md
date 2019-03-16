@@ -276,13 +276,192 @@ Model即模型，View即视图，然后ViewModel就ViewModel吧！
 根据之前所学的知识，我们可以得出：
 
 1. data.name就是主题
-2. {{name}}就是观察者
+2. \{\{name}}就是观察者
 3. 解析模板时，即需要展示数据的时候就去订阅，订阅好之后，data.name的数据就展示出去啦！
 4. 用户再次去修改 data.name中的数据的时候，就会通知观察者们去更新数据啦！当然，更新完之后，又会展示新的数据啦！
 
 大概就是这样的思路了，那么如何实现呢？请往下看
 
 #### 实现
+
+**①需求：**
+
+model中的数据一更改，那么在view中用大胡子语法所标记的模板就得得到相应的更新了！
+
+![1552620609414](img/03/1552620609414.png)
+
+然后用户可以这样调用：
+
+![1552620799147](img/03/1552620799147.png)
+
+他人修改数据data中的数据时：
+
+```js
+setInterval(function(){
+  vm.$data.age++
+}, 1000)
+```
+
+那么用户所看到的视图中的相应的模板就会是实时已经自动更新好的数据了，这样一来我们就无须自己去手动操纵它们更新数据了！毕竟可以自动更新数据！
+
+**②实现：**
+
+1. mvvm是个构造函数，所以我们可以用es6中所引入的class语法，当然你如果不熟悉的话，还是可以用es5姿势！
+
+2. 我们要把用户new一个mvvm实例的时候所传的参数给保存起来，因为后面要用，所以我们得在mvvm这个class里边的constructor里边做一些初始化的操作，如隐式的为mvvm实例添加一些属性，为了与所传选项对象的属性区分开来，我们可以加个 `$`符、下划线  `_`等之类的都可以
+
+   ```js
+   class mvvm {
+     constructor(opts) {
+       this.init(opts)
+       observe(this.$data)
+       this.compile()
+     }
+     init(opts){
+       //做得更精细点，可以做个判断，如果opts.el直接是dom元素的话，那就直接做个赋值吧！如果不是，那就
+       //使用原生API去获取DOM元素呗
+       this.$el = document.querySelector(opts.el)
+       //把这个data专门抽出来，直接绑定到其实例vm上
+       this.$data = opts.data
+       //可以先不写，毕竟就目前而言，我们并不知道它是什么
+       this.observers = []
+     }
+     //…………
+   }
+   ```
+
+   看看vue实例：
+
+   ![1552624444389](img/03/1552624444389.png)
+
+   实例旗下同样有个 `$el`
+
+3. 做好了初始化，把数据暂存起来之后，那么我们接下来就需要去监控这个数据了，即实例里边所传的data选项一旦发生了变化，那么我们就得去做一些事情哈！
+
+   为此就有了在constructor里边就有了这行代码，用于监控数据的变化：
+
+   ```
+   observe(this.$data)
+   ```
+
+4. 如何写这个observe？跟之前的基本一样，只是多了一点操作，如每遍历一个属性，就创建一个主题，然后其它人就去订阅这个主题，当你的这个主题变了，然后就去通知观察者们，好让它们去修正！
+
+   ```js
+   function observe(data) {
+     if(!data || typeof data !== 'object') return
+     for(var key in data) {
+       let val = data[key]
+       //遍历一次就创建一个主题
+       let subject = new Subject()
+       Object.defineProperty(data, key, {
+         enumerable: true,
+         configurable: true,
+         get: function() {
+           console.log(`get ${key}: ${val}`)
+            //这个可以先不用去管，我们直接按原来那样返回一个值就好了！
+           if(currentObserver){
+             console.log('has currentObserver')
+             currentObserver.subscribeTo(subject)
+           }
+           return val
+         },
+         set: function(newVal) {
+           val = newVal
+           console.log('start notify...')
+           //当用户修改了这个属性，那就通知观察者们去更新数据呗
+           subject.notify()
+         }
+       })
+       if(typeof val === 'object'){
+         observe(val)
+       }
+     }
+   }
+   ```
+
+   有一个关键的核心点「在什么时候，谁去订阅这个主题，如果没有订阅者的话，显然当主题通知的时候，那就没有人会更新了！」，而这个核心点就是get里边那个判断哈！
+
+5. 监控完数据之后，我们要对模板进行一个解析，而我们的模板就是这个：
+
+   ```html
+   //标签里边的内容就是一个字符串
+   <h1>{{name}} 's age is {{age}}</h1>
+   ```
+
+   我们需要把里边的内容拿出来，知道 \{\{name}}和{\{age}}这俩兄弟是个变量，所以我们就写了个方法叫做：
+
+   ```
+   this.compile()
+   ```
+
+   这个方法用于解析这个字符串
+
+   ```
+     compile(){
+       this.traverse(this.$el)
+     }
+   ```
+
+   而compile的逻辑则是去遍历（traverse）当前这个元素，或许你会疑问「就一行代码，还要封装成一个函数吗？直接在constructor里边写个 `this.traverse(this.$el)`不就好了吗？ 」![img](img/03/41F80E0E.png)
+
+   因为 `this.compile()`让人感觉更好一点，毕竟我们一开始就是需要去编译模板的，而不是说去遍历这个目标元素的
+
+   总之我们就是遍历那个dom元素，然后再遍历的过程中，我们需要去做一些判断，由于我们这个模板写得比较简单，只写了一层，那么假如模板之间还可以去做嵌套呢？嵌套之后还可以再嵌套呢？所以的话，我们需要用个递归去做遍历
+
+   ![1552631485009](img/03/1552631485009.png)
+
+6. 递归遍历：
+
+   ```js
+    traverse(node){
+       if(node.nodeType === 1){
+         node.childNodes.forEach(childNode=>{
+           this.traverse(childNode)
+         })
+       }else if(node.nodeType === 3){ //文本
+         this.renderText(node)
+       }
+     }
+   ```
+
+   如果dom元素的nodeType为1的话，那么就表示这个dom元素是有孩子的，即它是一个父节点啦！既然有孩子，那就对它的孩子再做一个遍历，就这样如此反复，当然，这肯定是有尽头的……
+
+   到头之后，就只剩下些没有嵌套元素的内容了，或者说这肯定会遍历到内容肯定不是作为一个父亲的角色而存在的
+
+   > 只读属性 `**Node.nodeType**` 表示的是该节点的类型。
+   >
+   > 关于input元素等这样的单标签元素……显然它们是没有子节点的。所以这一点是需要考量的，所以上面的代码还是有点不严谨的
+   >
+   > **➹：**[Node.nodeType - Web API 接口参考 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType#%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B%E5%B8%B8%E9%87%8F)
+
+   不管怎样，当当前节点的nodeType为3的话，那就停止遍历了，然后就可以去渲染我们的东西了，即我们需要把这个模板替换成真实的数据
+
+7. 渲染模板：
+
+   ```js
+     renderText(node){
+       let reg = /{{(.+?)}}/g
+       let match
+       while(match = reg.exec(node.nodeValue)){
+         let raw = match[0]
+         let key = match[1].trim()
+         node.nodeValue = node.nodeValue.replace(raw, this.$data[key])
+         new Observer(this, key, function(val, oldVal){
+           node.nodeValue = node.nodeValue.replace(oldVal, val)
+         })
+       }    
+     }
+   ```
+
+   对当前这个节点里边，进行一个匹配，即拿出大胡子里边的内容
+
+   >  `**Node.nodeValue** `属性返回或设置当前节点的值。
+   >
+   > **➹：**[Node.nodeValue - Web API 接口参考 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeValue)
+
+   接着我们通过`node.nodeValue`拿到我们那个文本内容，
+
+
 
 
 
@@ -302,7 +481,7 @@ Model即模型，View即视图，然后ViewModel就ViewModel吧！
 
 ## ★总结
 
-
+- 我开始明白为啥要去看看那些框架（如vue）的源码，因为这会让你的技术水平升级啊！或者说相较之前，能对框架有个更深的了解，为此能够更好地去使用框架！
 
 ## ★Q&A
 
@@ -325,6 +504,8 @@ MVVM：
 **➹：**[MVC，MVP 和 MVVM 的图示 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)
 
 **➹：**[Scaling Isomorphic Javascript Code - Nodejitsu Inc.](https://blog.nodejitsu.com/scaling-isomorphic-javascript-code/)
+
+### ②我卡在正则了呀？
 
 
 
