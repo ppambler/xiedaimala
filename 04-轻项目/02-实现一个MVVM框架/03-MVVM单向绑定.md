@@ -148,7 +148,7 @@ class Observer{
     }
   }
   getValue(){
-    currentObserver = this
+    currentObserver = this	
     let value = this.vm.$data[this.key]
     currentObserver = null
     return value
@@ -534,4 +534,47 @@ MVVM：
 
 
 ### ⑥我们传的data选项到底是不是model？
+
+### ⑦关于数组的indexOf()和splice()
+
+`**indexOf()**`方法返回在数组中可以找到一个给定元素的**第一个**索引，如果不存在，则返回-1。
+
+语法：
+
+```
+arr.indexOf(searchElement)
+arr.indexOf(searchElement[, fromIndex = 0])
+```
+
+类似于字符串的indexOf方法！
+
+---
+
+**`splice()`** 方法通过删除或替换现有元素来修改数组,并以数组形式返回被修改的内容。此方法**会改变原数组**。
+
+语法：
+
+```
+array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+```
+
+arg1：定位到数组的某个下标
+
+arg2:：表示以arg1为起点（包括arg1的下标）开始删除数组元素
+
+arg3：按顺序占领被删除的位置！
+
+```js
+var months = ['Jan', 'March', 'April', 'June'];
+months.splice(1, 0, 'Feb');
+// inserts at 1st index position
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'June']
+
+months.splice(4, 1, 'May');
+// replaces 1 element at 4th index
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'May']
+
+```
 
