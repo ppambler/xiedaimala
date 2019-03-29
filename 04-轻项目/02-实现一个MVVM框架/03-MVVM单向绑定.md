@@ -66,7 +66,7 @@ ViewModel 充当数据转换器，讲 Model 信息转换为 View 的信息，讲
 </head>
 <body>
 
-<div id="app" >
+<div id="app">
   <h1>{{name}} 's age is {{age}}</h1>
 </div>
 
@@ -483,6 +483,14 @@ setInterval(function(){
 
 - 我开始明白为啥要去看看那些框架（如vue）的源码，因为这会让你的技术水平升级啊！或者说相较之前，能对框架有个更深的了解，为此能够更好地去使用框架！
 
+- 关于单向绑定结合观察者模式的使用不是很好理解！
+
+  我自己结合所学的知识弄了一个简陋多bug版的单向绑定！
+
+  **➹：**[传送门](https://ppambler.github.io/fe-blog-demo/01-JS/02-traverseNode.html)
+
+  直接在控制里边输入`data.xxx`什么的就能更改视图里边的数据，但其实潜在很多bug！
+
 - 扩展阅读：
 
   **➹：**[被误解的MVC和被神化的MVVM](https://infoq.cn/article/rethinking-mvc-mvvm)
@@ -523,15 +531,23 @@ MVVM：
 
 ### ③关于遍历节点？
 
+我想得重新看一遍关于DOM的内容了！
+
+
+
 
 
 ### ④理解单向绑定的代码很吃力啊！
 
 我想得用思维导图组织一下代码才行了！
 
+
+
 ### ⑤关于\{\{xxx}}是模板，还是整个view是模板？
 
+整个View就是模板，而 \{\{xxx}}是动态块！
 
+**➹：**[fe-learn-2018/05-只有20行的JS模板引擎.md at master · ppambler/fe-learn-2018](https://github.com/ppambler/fe-learn-2018/blob/master/JavaScript/05-%E5%8F%AA%E6%9C%8920%E8%A1%8C%E7%9A%84JS%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E.md)
 
 ### ⑥我们传的data选项到底是不是model？
 
