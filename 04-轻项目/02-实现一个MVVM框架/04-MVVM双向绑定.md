@@ -472,7 +472,7 @@ let clock = setInterval(function(){
 
 毕竟对这两种指令的处理是不一样的！
 
-还有需要注意的是： ` vm.age++`这个代码为啥可行？难道不应该是 `vm.$data.age`？
+还有需要注意的是： `vm.age++` 这个代码为啥可行？难道不应该是 `vm.$data.age`？
 
 总结：
 
