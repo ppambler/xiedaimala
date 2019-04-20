@@ -4,6 +4,12 @@
 
 我发觉我对VUE真得很不熟悉！至此，我想通过这个简易版轮子，好好重新认识一下VUE！
 
+对了，VUE文档我没看多少，就看到：
+
+[Class 与 Style 绑定 — Vue.js](https://cn.vuejs.org/v2/guide/class-and-style.html)
+
+这儿！
+
 ## ★概述
 
 视频时长：约28.4H ★★★★★（一星到五星，星级越高代表难度越高）
