@@ -1,4 +1,4 @@
-# [xiedaimala](https://github.com/ppambler/xiedaimala)
+# [xiedaimala](https://github.com/ppambler/xdmala)
 
 这是我在[写代码啦！](https://xiedaimala.com/)学习的一些笔记
 
