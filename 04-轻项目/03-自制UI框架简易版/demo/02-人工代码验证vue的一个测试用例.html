@@ -54,13 +54,13 @@
 					// 查看msg属性是否存在v1.a这个对象上
 					console.log('msg' in v1.a) //原型链也算,false
 					console.log('toString' in v1.a) //true
-					// w稳妥点的姿势:
+					// w稳妥点的姿势，原型链上的不算:
 					console.log(v1.a.hasOwnProperty('msg')) //false
 					console.log(v1.a.hasOwnProperty('toString')) //false
 					console.log('删除msg这个属性成功，而不是我以为只是删除msg的值')
 				}
 			})
 		</script>
-		结论：不知为啥vue的测试用例能通过，因为你测试的时候并咩有用到vm.$nextTick()呀！
+		结论：不知为啥vue的测试用例能通过，因为你测试的时候并咩有用到vm.$nextTick()呀！或许是waitForUpdate()这个函数干了$nextTick()的活儿
 	</body>
 </html>
