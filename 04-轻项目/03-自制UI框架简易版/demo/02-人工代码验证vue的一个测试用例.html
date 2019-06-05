@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{ a.msg }}
+		</div>
+		<script type="text/javascript">
+			let vm = new Vue({
+				el: '#app',
+				data: {
+					a: {}
+				}
+			})
+			console.log(vm)
+			vm.$set(vm.a, 'msg', 'hello')
+			// vm.$delete(vm.a, 'msg')
+			console.log(vm.$el.innerText) //添加了Hello这个文本节点之后,还是读不了值
+			// 我真不知道vue是如何通过这个测试用例的!
+			console.log(vm.$el.innerHTML == '')
+			// 于是我这样做了,还是不行
+			Vue.set(vm.a, 'msg', 2)
+			console.log(vm.$el.innerText)
+
+			const v1 = new Vue({
+				template: '<div>{{ a.msg }}</div>',
+				data: {
+					a: {}
+				}
+			}).$mount()
+			console.log(v1.$el.innerHTML == '')
+			console.log(v1.$set(v1.a, 'msg', 'hello')) //'hello'
+			console.log(v1.$el) //<div>hello</div>
+			console.log(v1.$el.innerHTML) //为啥还是空字符串？搜索关键字「vue data 更新 innerHTML」
+			// 因为dom结构更新是一个异步事件
+			
+			// 使用$nextTick即可在dom结构更新完成后再去获取更新后的innerHTML值
+			// 不要混淆nodejs 的process.nextTick()
+			v1.$nextTick(function(){
+				console.log(v1.$el.innerHTML) //hello
+				if(v1.$el.innerHTML == 'hello') {
+					console.log('为data的a写入数据成功')
+				}
+			})
+			
+			v1.$delete(v1.a, 'msg')
+			v1.$nextTick(function(){
+				console.log(v1.$el.innerHTML) //''
+				if(v1.$el.innerHTML == '') {
+					// 查看msg属性是否存在v1.a这个对象上
+					console.log('msg' in v1.a) //原型链也算,false
+					console.log('toString' in v1.a) //true
+					// w稳妥点的姿势:
+					console.log(v1.a.hasOwnProperty('msg')) //false
+					console.log(v1.a.hasOwnProperty('toString')) //false
+					console.log('删除msg这个属性成功，而不是我以为只是删除msg的值')
+				}
+			})
+		</script>
+		结论：不知为啥vue的测试用例能通过，因为你测试的时候并咩有用到vm.$nextTick()呀！
+	</body>
+</html>
