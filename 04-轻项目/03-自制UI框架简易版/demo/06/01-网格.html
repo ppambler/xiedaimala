@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .col {
+      height: 100px;
+      background-color: gray;
+      width: 50%;
+      outline: 1px solid red;
+    }
+    .row {
+      display: flex;
+    }
+    .col[data-span="2"] {
+      width: 8.333333%;
+    }
+    .col[data-span="22"] {
+      width: 91.666667%;
+    }
+     .col[data-span="1"] {
+      width: 4.166666%;
+    }
+     .col[data-span="3"] {
+      width: 12.5%;
+    }
+  </style>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col" data-span="2"></div>
+    <div class="col" data-span="22"></div>
+  </div>
+</body>
+</html>
