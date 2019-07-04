@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <my-son></my-son>
+    <my-son offset="1"></my-son>
+    <test-one></test-one>
+    <test-one offset="2"></test-one>
+  </div>
+  <div id="components-demo">
+    <button-counter></button-counter>
+  </div>
+  <script>
+    // 全局注册组件：
+    Vue.component('my-son',{
+      template: '<div :class="[offset && `xx`]"></div>',
+      props: {
+        offset: {
+          type: [String, Number]
+        }
+      },
+    });
+    // 局部注册组件，注意吧，这可不是 var TestOne = new Vue({template:''})
+    var TestOne = {
+      template: '<div :class="[offset && `offset-${offset}`]"></div>',
+       props: {
+        offset: {
+          type: [String, Number]
+        }
+      }
+    }
+    new Vue({
+      el: '#app',
+      components: {
+        'test-one': TestOne
+      }
+
+    })
+    // 定义一个名为 button-counter 的新组件
+      Vue.component('button-counter', {
+        data: function () {
+          return {
+            count: 0
+          }
+        },
+        template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+      })
+      new Vue({ el: '#components-demo' })
+  </script>
+</body>
+
+</html>
