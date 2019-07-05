@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    div {
+      box-sizing: border-box;
+    }
+    .container {
+      border: 1px solid black;
+    }
+    .row {
+      display: flex;
+    }
+    .col {
+      height: 100px;
+      width: 50%;
+      border: 1px solid red;
+      padding: 0 10px;
+    }
+  </style>
+  <div class="container" id="container1">
+      <div class="row" id="row1">
+          <div class="col">
+            <div style="border:1px solid green">
+              col1
+            </div>
+          </div>
+          <div class="col">
+            <div style="border: 1px solid green">
+              col2
+            </div>
+          </div>
+      </div>
+  </div>
+  <style>
+    .btn {
+      margin: 0 auto;
+      width: 200px;
+      margin-top: 20px;
+    }
+  </style>
+  <div class="btn">
+   <button onclick="xxx()">点我col对齐页面主体宽度</button>
+   <br>
+   <button onclick="yyy()" style="margin-top: 20px;">去掉row的溢出，换言之去掉水平滚动条</button>
+  </div>
+  <script>
+    let flag = true
+    function xxx() {
+      if(flag) {
+        row1.style = "margin: 0 -10px;display:flex;"
+        flag = false
+      } else {
+        row1.style = "display:flex;"
+        flag = true
+      }
+    }
+    let flag1 = true
+    function yyy() {
+      if(flag1) {
+        container1.style.overflow = 'hidden';
+        flag1 = false;
+      } else {
+        container1.style.overflow = 'visible';
+        flag1 = true;
+      }
+
+    }
+
+  </script>
+</body>
+</html>
