@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+</head>
+
+<body>
+  <div id="yy"></div>
+  结论：
+  1. 组件使用$mount(el)这个api挂载页面上，是替换这个el元素的 <br>
+  2. 如果组件的模板只有一个p元素，而el是div的话，那么你div.remove是咩有意义的。因为div早已被替换为了p元素 <br>
+  3. div.remove在单元测试里边不写似乎也没事呀！难道你还能把在内存中所创建的div元素给移除了？
+  <script>
+
+    let xx = {
+      template: '<p>我挂载到页面上div#yy上，而且我的template吃掉了它，即取而代之了</p>'
+    }
+    // 全局注册的组件表示：在 div#app这个DOM里边，可以写你的自定义组件，而自定义组件如g-p，编译过后 就会被替换为该组件的template
+    Vue.component('g-p', xx)
+    // 以下是单个组件，告知我该如何挂载到页面上
+    const pp = Vue.extend(xx)
+    const zz = new pp()
+    zz.$mount(yy)
+
+    // 那么问题来了 div.remove() 这代码是否有意义
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    const ii = new pp()
+    ii.$mount(div)
+    div.remove()
+    // 没有用呀！因为我们的div被p标签给替换掉了。
+    // 除非你这样
+    console.log(document.getElementsByTagName('p'))
+    document.getElementsByTagName('p')[1].remove()
+    div.remove() // 没效呀！内存里边还是存在这个div对象的，所以这个只能由JavaScript的垃圾回收机制自己回收了
+    console.log(div) // <div></div>
+   
+  </script>
+</body>
+
+</html>
