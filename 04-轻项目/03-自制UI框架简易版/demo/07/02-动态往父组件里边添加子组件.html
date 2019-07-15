@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+  <div id="#app">
+    <g-fa>
+      <g-son>我是子元素</g-son>
+    </g-fa>
+  </div>
+  <script>
+    // 创建两个组件：
+    let fa = {
+      'template': '<div id="fa"><slot></slot></div>'
+    }
+    let son = {
+      // 'template': '<div id="son">我是儿子呀！</div>' //这样写无法显示内容呀！
+      template: '<div id="son"><slot></slot></div>'
+    }
+    // 全局注册两个组件（可选）：
+    Vue.component('g-fa',fa)
+    Vue.component('g-son',son)
+    new Vue({
+      el: '#app'
+    })
+
+    // 组件实例构造器
+    const Fa = Vue.extend(fa)
+    const Son = Vue.extend(son)
+
+    let vmF = new Fa()
+    let vmS = new Son()
+
+    // 动态创建一个div,作为一个挂载点：
+    let div = document.createElement('div')
+    div.id = 'xx'
+    document.body.append(div)
+
+    // 初级版姿势：
+
+    vmF.$children[0] = vmS //不行，这只是简单的复制，并咩有让子组件形成挂载。
+    console.log(vmF)
+    // vmS.$mount(vmF) //不行，报错，毕竟vmF并不是一个在页面已存在的dom元素
+    vmF.$mount(div) //？会看见儿子吗？——没有看见，子组件确实在父组件身上，但是咩有构建成dom
+    
+    // 另外一种姿势做法：
+    console.log(vmF.$el.outerHTML) //字符串
+    let regex = /id=("[^"]*")/
+
+    // 拿到vmF的root元素
+    let rootF = vmF.$el.outerHTML
+    // 拿到vmF的root元素的id值
+    let idF = rootF.match(regex)[1]
+    console.log(idF)
+    console.log('fa')
+    // 在页面找到id为idF的dom的元素
+    // idF = '"fa"',去掉里边的引号
+    let re = /["](\w{0,})["]/
+    console.log(idF.match(re))
+    let xx = document.getElementById(idF.match(re)[1]) 
+    console.log(xx) //对象
+    console.dir(xx)
+    
+    // xx.appendChild(vmS.$el) //不行，vmS.$el由于没有挂载到页面上，所有拿不到dom元素
+
+    // 我查找了一下，得先mount到内存里边才可以appendChild
+
+    vmS.$mount()
+    console.log(vmS.$el)
+    xx.appendChild(vmS.$el)
+
+
+    // 进化版姿势（GG掉了）：
+    //  vmS.$mount()
+    //  console.log(vmS.$el)
+    //  console.log(vmF.$el) //挂载 了之后才能访问dom元素，不然就是undefined
+    //  vmF.$mount()
+    //  console.log(vmF.$el) //dom对象呀
+    //  console.log(1)
+    // //  let cDom = vmF.$el.appendChild(vmS.$el) // 为啥无法作为一个子元素存在？——难道是slot的缘故？——测试了并不是
+    //  vmS.$mount(vmF.$el)
+    // //  console.log(cDom)
+    // //  我为动态创建的div添加了个id属性
+    // //  vmF.$el.appendChild(vmS.$el)
+    // console.log(vmF.$el.children)
+    // //  document.getElementById(div.id).appendChild(vmF.$el.appendChild(vmS.$el)) //这TM难道是个bug？
+
+    // let p = document.createElement('p')
+    // let p1 = document.createElement('p')
+    // console.log(p,p1)
+    // p.appendChild(p1)
+    // document.body.appendChild(p)
+
+    // 再次进化（GG）：
+
+    // vmS.$mount()
+    // vmF.$mount()
+
+    // vmS.$nextTick().then(() => {
+    //   return vmF.$nextTick()
+    // }).then(()=>{
+    //   // document.getElementById(div.id).appendChild(vmF.$el.appendChild(vmS.$el))
+    // })
+    // console.log(vmS.$el.outerHTML)
+
+
+  </script>
+</body>
+</html>
