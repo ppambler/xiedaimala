@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+</head>
+
+<body>
+
+  <script>
+    let a = {
+      template: '<div id="a"><slot></slot></div>',
+      mounted() {
+        console.log('我是A的mounted')
+      },
+      created() {
+        console.log('我是A的created', this)
+      },
+      beforeCreate() {
+        console.log('我是A的beforeCreate', this)
+      },
+      beforeMount() {
+        console.log('我是A的beforeMount', this)
+      },
+    }
+    let b = {
+      template: '<div>{{this.msg}}</div>',
+      mounted() {
+        console.log('我是B的mounted')
+      },
+      data() {
+        return {
+          msg: '我是B组件，作为A的子组件而存在'
+        }
+      },
+      created() {
+        console.log('我是B的created', this)
+      },
+      beforeCreate() {
+        console.log('我是B的beforeCreate', this)
+      },
+      beforeMount() {
+        console.log('我是B的beforeMount', this)
+      },
+
+
+    }
+    console.log('构造前')
+    let A = Vue.extend(a)
+    let B = Vue.extend(b)
+    console.log('构造后')
+
+    console.log('实例前')
+    let avm = new A()
+    let bvm = new B()
+    console.log('实例后')
+
+    avm.$mount()
+    console.log('如果你先看到我，那么$mounted就是异步执行的，否则就是同步的')
+    bvm.$mount()
+
+    let div = document.createElement('div')
+
+    document.body.appendChild(div)
+
+    // 作为div的子元素而存在
+    // div.appendChild(avm.$el)
+    // div.appendChild(bvm.$el)
+
+    // 我想 b append 到 a 之后，然后 a 再 append 到 div 上
+    avm.$el.appendChild(bvm.$el)   //<div>我是B组件，作为A的子组件而存在</div>
+    // 难道avm被bvm给替换了？
+    // appendChild 方法会把要插入的这个节点引用作为返回值返回. 嗦嘎！
+    console.log(avm.$el)
+
+    div.appendChild(avm.$el) // 终于拿到我想要的结果了。
+  </script>
+</body>
+
+</html>
