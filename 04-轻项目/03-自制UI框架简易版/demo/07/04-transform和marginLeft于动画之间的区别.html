@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .wrapper {
+      display: flex;
+    }
+
+    .container {
+      flex-grow: 1;
+    }
+
+    .sider {
+      position: relative;
+      width: 150px;
+      height: 100vh;
+      border: 1px solid red;
+    }
+
+    .sider button {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .header {
+      height: 10vh;
+      border: 1px solid red;
+    }
+
+    .content {
+      height: 70vh;
+      border: 1px solid red;
+    }
+
+    .footer {
+      height: 20vh;
+      border: 1px solid red;
+    }
+
+    .showSider {
+      position: fixed;
+      top: calc(50vh - .5em);
+      left: 0;
+    }
+
+    /* .slide-enter-active, .slide-leave-active {
+      transition: transform .5s;
+    }
+    .slide-enter, .slide-leave-to {
+      transform: translateX(-100%); 
+    } */
+
+    .slide-enter-active, .slide-leave-active {
+      transition: all .5s;
+    }
+    .slide-enter, .slide-leave-to {
+      margin-left: -150px; 
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper" id="app">
+    <div class="sider-container">
+      <transition name="slide">
+        <div class="sider" v-if="visible" key="close">
+          sider
+          <button @click="visible = false">close</button>
+        </div>
+        <button v-else @click="visible = true" class="showSider" key="show">show</button>
+      </transition>
+    </div>
+    <div class="container">
+      <div class="header">header</div>
+      <div class="content">content</div>
+      <div class="footer">footer</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        visible: true
+      },
+    })
+  </script>
+</body>
+
+</html>
