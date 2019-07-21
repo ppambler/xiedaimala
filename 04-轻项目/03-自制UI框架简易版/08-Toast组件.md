@@ -200,11 +200,92 @@ typora-copy-images-to: img\08
 
 ![1563698822888](img/08/1563698822888.png)
 
-`<slot></slot>`无法使用 `v-html`
+`<slot></slot>`是个单独特性，它可无法使用 `v-html`，即无法这样 `<slot v-html></slot>`
 
 ---
 
 ## ★完善功能
+
+### ◇我想传有HTML标签的字符串
+
+> 经过权衡，折中的选择了一个办法
+
+1. 使用一个假的slot，即不用 `<slot></slot>`了
+2. 传HTML是一个比较危险的办法，所以让用户自行决定传不传HTML，因此我们只需要添加一个props即可！默认是不解析HTML的
+
+### ◇关闭二字竖着显示
+
+![1563704862384](img/08/1563704862384.png)
+
+父元素是个flex，所以子元素搞成是默认不缩的 `flex-shrink:0;`
+
+### ◇文字很多会很丑
+
+![1563705779447](img/08/1563705779447.png)
+
+造成这种现象的原因是「高度不能自适应」
+
+解决字的容纳问题：
+
+1. 永远不要写死高度，可以改成是 `min-height`
+
+然而这导致了另外一个bug，那就是子元素的 `height:100%;`（那根线）咩有办法根据父元素算了。不要问为什么会这样，它就是如此你有啥办法呢？
+
+可以使用绝对定位，但是这线的位置变了。
+
+所以使用JavaScript姿势。
+
+主要用到 `$refs`这个属性
+
+我们在mounted里边获取父元素的高度，然而这存在时间差的问题，即这是异步的，于是我们用了 `$nextTick()`这个办法拿到了父元素高度：
+
+![1563706572281](img/08/1563706572281.png)
+
+>  `this.$refs.wrapper.style` ：返回一个 [`CSSStyleDeclaration`](https://developer.mozilla.org/zh-US/docs/DOM/CSSStyleDeclaration) 对象，表示元素的 内联[`style` 属性（attribute）](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes#style)，但 <mark>忽略任何样式表应用的属性</mark> 。 通过 `style` 可以访问的 CSS 属性列表。
+>
+> 所以你是无法读取到元素的height值的，我们一般通过这个属性来向DOM上加上内联的css属性，而不是修改自己原来写好的css属性
+>
+> **➹：**[demo](./demo/08/02-style属性能访问啥.html)
+>
+> 似乎是没有动态创建组件，并咩有出现异步情况！反正如果出现时间差的问题，那就异步执行一下呗！
+
+**➹：**[HTMLElement.style - Web API 接口参考 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style)
+
+**➹：**[javascript - js中动态修改style属性的问题 - SegmentFault 思否](https://segmentfault.com/q/1010000005862366)
+
+总之，`min-height`并不是说它是有高度的！所以儿子为百分比单位高度是不知道爸爸有多高的！
+
+由于这个方法太tricky了，所以显得并不是很好呀！即看懂，所以我们应该重构了。
+
+### ◇重构
+
+说白了是封装成两个函数呗——
+
+### ◇如何加padding？
+
+为提示信息追加一个div，然后再加上padding，不然，如果你加到父元素身上的话，那根线是会有间隙。
+
+其实这想想也是很有道理的：
+
+![1563721447497](img/08/1563721447497.png)
+
+> 我发现字体变大了，父容器的高度也变高了，但是那根线却咩有随着变高到一定程度，说白了，mounted执行一遍就GG了。
+>
+> ![1563721803122](img/08/1563721803122.png)
+
+总之，CSS是最没有逻辑的，所以请不要问我为什么，多写多练就好了。
+
+## ★重构
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -255,6 +336,16 @@ typora-copy-images-to: img\08
 所以这需要自己删掉呀！
 
 > 这是测试出来的结果！
+
+### ④再看生命周期图？
+
+![img](img/08/1667867-20190608154311855-1964957884.png)
+
+**➹：** [demo](./demo/08/01-再看Vue生命周期.html)
+
+**➹：**[vue 生命周期函数 - weixin_43208813的博客 - CSDN博客](https://blog.csdn.net/weixin_43208813/article/details/91077805)
+
+**➹：**[2019.7.15 - 7.21 中你学到什么？ · Issue #1 · KieSun/today-i-learned](https://github.com/KieSun/today-i-learned/issues/1)
 
 
 
