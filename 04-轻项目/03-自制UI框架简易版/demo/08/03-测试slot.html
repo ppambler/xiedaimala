@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <slot-demo ref="default"></slot-demo>
+      <slot-demo ref="custom">我是覆盖slot默认内容的内容</slot-demo>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      let slotDemo = {
+        template: `
+          <div class="slot-demo">
+            <slot>我是slot默认的内容</slot>
+          </div>
+        `,
+        // render(createElement) {
+        //   return createElement('h1',this.$slots.default)
+        // }
+      }
+      Vue.component('slot-demo',slotDemo)
+      let vm = new Vue({
+        el: '#app'
+      })
+      
+      // 拿到slot-demo组件实例
+      console.log(vm.$refs.default)
+      console.log(vm.$refs.custom)
+
+      // 测试让它们俩的 $slots
+      console.log(vm.$refs.default.$slots) //空对象
+      console.log(vm.$refs.custom.$slots) //有个叫default的key,它的值是Array类型的，有个虚拟节点
+      console.log(vm.$refs.custom.$slots.default = ['xx'])
+
+      vm.$refs.default.$slots.default = ['我是用JavaScript弄出来的字符串'] //这不是一个VNode元素呀！
+
+      // 如何生成一个VNode元素？——没有找到方法
+
+      // 动态生成一个slot-demo实例：
+      let Constructor = Vue.extend(slotDemo)
+      let xx = new Constructor()
+      console.log(xx)
+      console.log(xx.$slots.default)
+      xx.$slots.default = ['我是动态字符串','zzz']
+      xx.$mount()
+      document.body.appendChild(xx.$el)
+
+    </script>
+</body>
+</html>

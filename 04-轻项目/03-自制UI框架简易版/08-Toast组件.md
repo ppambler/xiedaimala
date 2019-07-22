@@ -143,6 +143,10 @@ typora-copy-images-to: img\08
 
 - 目前初步达成了，接下来完善功能
 
+效果：
+
+![y2R5PLyMrS](img/08/y2R5PLyMrS.gif)
+
 ## ★更多需求
 
 ### ◇自动关闭
@@ -275,6 +279,18 @@ typora-copy-images-to: img\08
 
 总之，CSS是最没有逻辑的，所以请不要问我为什么，多写多练就好了。
 
+### ◇效果
+
+弹出3s后自动关闭：
+
+![Fy5cs3bp1l](img/08/Fy5cs3bp1l.gif)
+
+主动关闭（为了效果明显，我设置自动关闭为6s，总之，如果你在6s之内不点「关闭」按钮，那么6s一到也会自动关闭）：
+
+![lX8QisSVVq](img/08/lX8QisSVVq.gif)
+
+
+
 ## ★重构
 
 > 根据用例图对比我们已经实现的功能！
@@ -306,6 +322,10 @@ typora-copy-images-to: img\08
 
 总共10行代码，而CSS代码严格上来说不能算是代码，而template的可以算是代码！
 
+效果：
+
+![U1hfjtrkAa](img/08/U1hfjtrkAa.gif)
+
 ### ◇用户持续点击，toast该咋办呢？
 
 <mark>**①如果已经有一个toast，那就把之前的给干掉，然后再创建新的**</mark>
@@ -318,6 +338,10 @@ typora-copy-images-to: img\08
 
    ![1563759784219](img/08/1563759784219.png)
 
+效果：
+
+![JkaN6cGQhP](img/08/JkaN6cGQhP.gif)
+
 `commit：实现了只能有一个toast的功能`
 
 实现多个toast的之后再做，因为目前来看这性价比不高，而实现动画的则性价比更高！
@@ -325,9 +349,14 @@ typora-copy-images-to: img\08
 <mark>**②实现动画，因为toast的弹出和消失是很突兀的**</mark>
 
 1. 直接使用CSS实现即可！
+
 2. 如何做进入的动画？
+
    1. 声明一个动画然后加到toast上边，然后写上初始的状态和结尾的状态
+
 3. 使用transform会出现跳跃现象！
+
+   ![bX2jEHGIoQ](img/08/bX2jEHGIoQ.gif)
 
 额为的优化：
 
@@ -391,7 +420,9 @@ typora-copy-images-to: img\08
 
 关于动画的时间，我们需要做一个变量，一般它的值建议是300ms或者是250ms。
 
+效果：
 
+![4RxjMFqvyw](img/08/4RxjMFqvyw.gif)
 
 `commit：优化三种动画`
 
@@ -452,6 +483,8 @@ typora-copy-images-to: img\08
 - 做了什么？——自动关闭toast、主动关闭toast、怎么弹出toast
 - 咩有做可以弹出多个toast，因为目前来看，这性价比不高
 - 关于主动关闭的按钮，点击该按钮会执行一个callback，而这个callback可以高级点，比如可以拿到组件实例的`this`值，这样就可以访问组件实例的method，而这样一来，但用户点击关闭，执行该callback就会有更多的功能更多的操作了。
+- 愈发觉得学习应该先学习核心的，其次再是根据项目推动去学习一些边角料知识点。
+- 之前是在自定义标签上写自定义属性，而这次则是作为一个函数的参数，来写自定义属性。
 
 ## ★Q&A
 
@@ -497,7 +530,114 @@ typora-copy-images-to: img\08
 
 **➹：**[2019.7.15 - 7.21 中你学到什么？ · Issue #1 · KieSun/today-i-learned](https://github.com/KieSun/today-i-learned/issues/1)
 
+### ⑤关于Vue的插件？
 
+为啥需要插件？——因为我需要为 Vue 添加全局功能
 
+如：
 
+1. 我需要添加 Vue 实例方法，而这可以通过把它们添加到 `Vue.prototype` 里边实现。
+2. 我想搞个库，它可以提供自己的 API，同时为Vue提供一个或多个全局功能。如 [vue-router](https://github.com/vuejs/vue-router)
 
+那么如何使用插件呢？
+
+通过全局方法 `Vue.use()` 使用插件。它需要在你**调用 `new Vue()` 启动应用之前**完成
+
+```js
+// 调用 `MyPlugin.install(Vue)`
+Vue.use(MyPlugin)
+
+new Vue({
+  // ...组件选项
+})
+```
+
+`Vue.use(MyPlugin)`相当于是 `MyPlugin.install(Vue)`
+
+如何开发一个插件？
+
+1. 暴露一个 `install` 方法
+   1. 第一个参数是 `Vue` 构造器
+   2. 第二个参数是一个可选的选项对象
+
+如：添加实例方法
+
+```js
+MyPlugin.install = function (Vue, options) {
+	// 4. 添加实例方法
+  Vue.prototype.$myMethod = function (methodOptions) {
+    // 逻辑...
+  }
+}
+```
+
+测试：
+
+搞一个可以创建Toast组件的插件：
+
+```js
+ let plugin = {
+  install(Vue,options) {
+    Vue.prototype.$toast = (message) => {
+      let Constructor = Vue.extend(Toast)
+      let toast = new Constructor()
+      toast.$slots.default = [message]
+      toast.$mount()
+      document.body.appendChild(toast.$el)
+    }
+  }
+}
+```
+
+使用：
+
+```js
+Vue.use(plugin) //plugin.install(Vue) or plugin.install(Vue,options)
+```
+
+> 消息传递：
+>
+> `person.cut('jj')`：
+>
+> 1. 给 persom 对象发送了一个 cut 消息
+> 2. person 对象会响应这个消息
+>
+> 这是函数调用姿势，下边这个是另一种语言的语法
+>
+> Smalltalk ：`person cut: 'jj'`
+>
+> 所以 `plugin.install(Vue)`：
+>
+> 1. 给 plugin 对象发送个 install 消息
+> 2. plugin 对象会响应这个消息
+>
+> `plugin install: Vue`
+>
+> 假装理解 `Vue.use(plugin)`：
+>
+> ```js
+> class Vue {
+> 	static use(xxx) {
+> 		return xxx.install(this)
+> 	}
+> }
+> Vue.use(plugin)
+> ```
+
+**➹：**[插件 — Vue.js](https://cn.vuejs.org/v2/guide/plugins.html)
+
+### ⑥ `toast.$slots.default = [message]`？动态为组件的插槽赋值？
+
+**➹：** [demo](./demo/08/03-测试slot.html)
+
+**➹：**[细谈 vue - slot 篇 - 掘金](https://juejin.im/post/5cced0096fb9a032426510ad#heading-1)
+
+ps：
+
+![1563797624630](img/08/1563797624630.png)
+
+### ⑦ `transform: translate(-50%, -50%);`的作用？
+
+![1563805910639](img/08/1563805910639.png)
+
+一般都是配合定位来搞事情的。
