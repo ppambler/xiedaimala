@@ -432,6 +432,10 @@ typora-copy-images-to: img\08
 
 ![1563773961394](img/08/1563773961394.png)
 
+> 1s后，触发vm的close方法，而close里边有个 `this.$emit('close')`，所以 `close`事件被执行了，此时toast元素已经 `remove`了
+>
+> 可见，这代码技巧性十足啊！
+
 本来这代码是这样的：
 
 ![1563774091843](img/08/1563774091843.png)
@@ -485,6 +489,8 @@ typora-copy-images-to: img\08
 - 关于主动关闭的按钮，点击该按钮会执行一个callback，而这个callback可以高级点，比如可以拿到组件实例的`this`值，这样就可以访问组件实例的method，而这样一来，但用户点击关闭，执行该callback就会有更多的功能更多的操作了。
 - 愈发觉得学习应该先学习核心的，其次再是根据项目推动去学习一些边角料知识点。
 - 之前是在自定义标签上写自定义属性，而这次则是作为一个函数的参数，来写自定义属性。
+- 作曲与编曲的关系，就像HTML和CSS的关系一样，没有编曲，那么演唱出来的歌曲就没有想象中那么富有表现力。总之，简单来说，作曲者是给了骨架，而编曲者则是给了血肉。
+- 关于优化的细节，如果我没有任何产品经验的话，只凭感觉自己去调的话，那么这是没有尽头的。所以你最好就是点到为止。
 
 ## ★Q&A
 
@@ -641,3 +647,62 @@ ps：
 ![1563805910639](img/08/1563805910639.png)
 
 一般都是配合定位来搞事情的。
+
+### ⑧关于合并参数的理解？
+
+![1563845121044](img/08/1563845121044.png)
+
+总之，写一个数字3相当于是两层意思，一层是我想要自动关闭，另一层是3s后关
+
+### ⑨凡是用到了JavaScript，就得单元测试吗？
+
+如：toast元素里边的那根线的高度，我们是根据JavaScript计算出来的
+
+```js
+  describe('CSS', function () {
+    it('line 的高度', (done) => {
+      const Constructor = Vue.extend(Toast)
+      const vm = new Constructor({
+        propsData: {
+          position: 'middle',
+          closeButton: {
+            text: '已充值',
+            callback() {
+              console.log('他说已经充值智商了！')
+            }
+          },
+          autoClose: false,
+        }
+      }).$mount()
+      let line = vm.$el.querySelector('.line')
+      let toast = vm.$el.querySelector('.toast')
+      document.body.appendChild(vm.$el) 
+      setTimeout(()=>{
+        expect(line.style.height).to.eq(`${toast.getBoundingClientRect().height}px`)
+        done()
+        vm.$el.remove()
+        vm.$destroy()
+      })
+    })
+  })
+
+```
+
+测试是通过了，但是报错了：
+
+![1563851535042](img/08/1563851535042.png)
+
+表示找不到解决方案。
+
+**➹：**[Vue单元测试探索 - 掘金](https://juejin.im/post/5b308f5e6fb9a00e5d798c3c)
+
+
+
+### ⑩ `Vue.config.errorHandler = done`？
+
+![1563848435021](img/08/1563848435021.png)
+
+**➹：**[fix(toast): 添加toast的测试用例 · zyqq/wheel@cf74c2b](https://github.com/zyqq/wheel/commit/cf74c2b981d509a386e10b3bbb759425945b54b3)
+
+> 是在测试代码里边使用了Vue.nextTick才配置好吧！
+
