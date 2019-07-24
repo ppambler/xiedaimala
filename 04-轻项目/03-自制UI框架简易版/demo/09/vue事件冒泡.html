@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <g-a>
+      <g-b>
+        <g-c></g-c>
+      </g-b>
+    </g-a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    let a = {
+      template: '<div class="a"><slot></slot></div>',
+     
+    }
+    let b = {
+      template: '<div class="b"><slot></slot></div>',
+      created() {
+        this.$root.$emit('xxx','我是b组件给你传的参数')
+      }
+    }
+    let c = {
+      template: '<div class="c">我是c</div>',
+      created() {
+        console.log('我会于xxx事件的callback先执行吗？')
+      }
+    }
+
+    Vue.component('g-a',a)
+    Vue.component('g-b',b)
+    Vue.component('g-c',c)
+
+    new Vue({
+      el: '#app',
+      created() {
+        this.$root.$on('xxx',this.yyy)
+      },
+      methods: {
+        yyy(z) {
+          console.log('触发了root的xxx事件')
+          console.log(z)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
