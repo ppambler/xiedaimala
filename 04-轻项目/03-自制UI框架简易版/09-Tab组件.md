@@ -580,7 +580,7 @@ ps：事件系统和事件中心是不是一回事呢？似乎满足监听事件
 
 - tab和tab之间的间隙，用em，因为这关系它们之间隔了几个字
 
-- slot上边是不能加class的，所以需要加个 `action-wrapper`（包裹器），为啥不加 `action`呢？因为需要区分 `slot`的name：
+- slot上边是不能加class的，所以需要加个 `action-wrapper`（包裹器），为啥不叫 `action`呢？因为需要区分 `slot`的name：
 
   ```html 
   <div class="action-wrapper">
@@ -588,20 +588,257 @@ ps：事件系统和事件中心是不是一回事呢？似乎满足监听事件
   </div>
   ```
 
-- 在tabs-head里边，flex item都居左，那么其中一个flex item有这个 `margin-left:auto;`，那么该item就会跑到右边去。原理？——我也不知道为啥，芳芳也是抄人家的，所以我们就抄芳芳的，这可谓是知识的薪火相传
-
-- 
+- 在tabs-head里边，flex item都左对齐（`justify-content: flex-start;`），而其中有一个flex item有这个 `margin-left:auto;`，那么该item就会跑到右边去。原理？——我也不知道为啥，芳芳也是抄人家的，所以我们就抄芳芳的，这可谓是知识的薪火相传
 
 
+### ◇默认pane是隐藏的，只有激活时才出现（决定active的归属）
+
+话说，这激活怎么做呢？——有两种姿势可以做到
+
+1. 作为tabs-item的props的一个属性。默认是false，即未激活状态
+2. 作为data的一个属性
+
+![1564114713321](img/09/1564114713321.png)
+
+很多面试官经常会问到「data和props有啥区别？」 （这个知识点很重要）
+
+小白：都是数据呗！还能有啥区别啊！
+
+芳芳的选择是data，既然有选择，那么就会有为什么。
+
+解释一下为什么：
+
+1. 什么时候用props呢？——如果你需要用户（是前端开发者，而不是普通用户）传值，那么你就把值放到props里边，因为props是你的输入参数啊！就像是你写一个函数这样：
+
+   ```js
+   function xxx(prop1,prop2) {}
+   ```
+
+   而data则是函数内部维护的变量：
+
+   ```js
+   function xxx(prop1,prop2) {
+   	var data1
+   	var data2
+   }
+   ```
+```
+   
+
+所以它们俩的区别是：props需要用户传值，而data则不需要用户传值
+
+既然data不需要用户传值，那谁传值给它？——自身维护值呀！
+
+总之，active是true还是false，外界不用告诉我，我组件本身自己知道，就像是这样：
+
+​```js
+function xxx(prop1,prop2) {
+	var data1 = prop1
+	data1 = 2
+	var data2
+}
+```
+
+虽然我的data1可能从你的prop1里边拿，但是最终我还是自己去维护，如 `data1 = 2 `这样的另外一个值，而不是用户说啥值就得是啥值
+
+<mark>总之，props就是形参，而data就是局部变量，而组件其实就是一个函数。</mark>
+
+![1564116270998](img/09/1564116270998.png)
+
+> 有这么一个「公式」：程序 = 数据结构 + 算法
+>
+> 在Vue组件里边，主要维护的全局数据的似乎就只是props和data，而像是computed等这一类的都是基于它们二者搞事情的。
+>
+> **➹：**[怎样反驳「程序 = 算法 + 数据结构」的言论？ - 知乎](https://www.zhihu.com/question/28026777)
+>
+> 题外话：
+>
+> ```
+> 程序 = 算法 + 数据结构
+> 软件 = 程序 + 软件工程
+> 软件公司 = 软件 + 商业模式
+> 
+> 往往软件工程的质量直接决定软件的质量，商业模式的优劣决定了一个公司的成败
+> ```
+>
+> 感觉软件工程这专业起到承上启下的作用呀！就像是前端夹在UI和后端之间
+>
+> ```
+> 文学 = 字 + 标点
+> 所以，研究字和标点就能写出好的作品。
+> ```
+
+所以，接下来分析active需不需要用户传？——我们在设计API的时候，就没有想过要用户传，而是让name属性传给tabs组件的selected属性，进而控制其它tabs-item组件和tabs-pane组件的active。
+
+ 总之，用data可以方便我们组件自己去修改active的值，而且用户也不用在意这个值，甚至 `app.js`也不知道有 `active`这么一个状态
+
+总之，如果你不想要外界（指的是在`div#app`里边使用tabs组件这样的API）知道，那就用data呗！当然，你硬要用props也行，随你喜欢呗，反正这是思考角度的问题，如我思考的并不是能不能做到，而是在想着是自己组件维护还是用户自己闲得蛋疼自己去维护。
+
+而这就是芳芳为啥选择data的原因所在了。
+
+### ◇默认知道谁被选中了，那么如何选中它呢？
+
+1. 使用事件
+
+2. 在tabs组件mounted（不要用created，因为只要mounted才能保证tabs的子元素都被创建好了）之后，就让eventBus触发 `update:selected`事件
+
+   ```js
+     mounted() {
+       this.eventBus.$emit('update:selected', this.selected)
+     }
+   ```
+
+   告诉事件中心，用户选中了 `sports`（默认选中这个），那么其它（如tabs-item和tabs-pane这样的子组件）监听了 `update:selected`事件的，就会触发它们自身的callback了。
+
+3. 回顾这个过程：
+
+   1. tabs组件的props的selected收到了 `sports`这个用户传过来的值
+
+   2. tabs组件在mounted之后就给所有的子孙说一句话「各位子孙，体育被选中了，大家看着办吧！」
+
+      ![1564119528283](img/09/1564119528283.png)
+
+   3. 可见这就是所谓的发布订阅呀！总之，这TM就是村长广播了一个事件（马冬梅上台领奖），让所有子孙们都听到了，然后子孙们自己都判断一下自己是不是叫马冬梅？——是的，就上去领奖呗！「注：村里就只有一个马冬梅，毕竟一条村的人都是亲戚，总不能二叔的儿子叫xxx，三叔的儿子也叫xxx吧！」
+
+      ![1564119171750](img/09/1564119171750.png)
+
+> 之所以叫发布订阅，那是因为程序的行为很像发布订阅。
+>
+> 关于监听：
+>
+> ```js
+>   created() {
+>     this.eventBus.$on('update:selected', (name) => {
+>       this.active = name === this.name
+>     })
+>   },
+> ```
+>
+> 按理说eventBus全局只有一个，所以callback理应也只有一个才对，但是我猜测，可能是inject的缘故，让每个callback都按顺序pusn到一个 `update:selected`事件队列里边去了。
+>
+> ![1564127934068](img/09/1564127934068.png)
+
+### ◇active的值可以更改后，那就搞样式呗
+
+- 搞样式需要用到计算属性，因为这个样式需要根据active的true or false来决定！
+
+  ![1564128163226](img/09/1564128163226.png)
+
+其实tabs-item和tabs-pane里边出现了重复代码，如classes这个计算属性，created里边的事件监听
+
+遇到重复，第一个想到的就是，重复即bug（一处错了，另外一处一模一样的代码可能会被忽视掉），当然，你也可以不优化，这得看你的意愿了。
+
+> `webstorm：`
+>
+> 定义模板：
+>
+> ![1564128530487](img/09/1564128530487.png)
+
+小结一下：
+
+通过一个事件通知子孙组件们自己维护自己的active状态（自觉是王道），万一有一个组件没做好，如pane组件，那么就是轮子开发者的事儿了，毕竟这是我们自己写的pane组件，假如是其它人写的组件，那么谁写的组件就谁负责。
+
+### ◇如何做到pane隐藏？
+
+- 通过active的true or false ，来控制 元素显示与否。做法是`v-if`的使用
+
+**➹：** [⑨](#jiu)
+
+之后，会通过transition来加动画，目前就做个简单的切换即可！
 
 
+### ◇效果
+
+![ev9Nvs6ki2](img/09/ev9Nvs6ki2.gif)
+
+> 其实，就是通过更改active这个class，来切换不同的样式。
+
+### ◇小结
+
+回顾一下我们做了什么：
+
+1. 分析需求，知道用户怎么用（设计API）。于是创建了5个组件
+2. tabs：
+   1. 接收一个selected属性，该属性是可以 `.sync`的，即可以双向同步的
+   2. 接收一个direction属性，用于切换tabs的方向
+   3. 提供一个事件中心eventBus（用到了data和provide）
+   4. 在mounted里边触发了 `update:selected`事件，用于让tab有个默认的初始值。
+3. tabs-head：
+   1. 没有任何的props，用于在组件标签上边，加一些本来就可以添加的class、style、name属性等
+   2. 总之它没有任何事件和属性（如data），它的存在就是为了搞一个清晰的HTML结构
+4. tabs-item：
+   1. 它是用作tabs-head的子组件，它较为复杂一点
+   2. props：disabled（用于禁用这个item）、name（必须写）
+   3. 监听了外部的 `update:selected`事件以及监听了内部的click事件，click事件用于触发外部的 `update:selected`事件
+   4. data：用于判断该item是否被激活
+5. tabs-pane：
+   1. 几乎同上
+6. tabs-body：
+   1. 同tabs-head一样，都是用于做HTML结构的！
+
+一些疑问：
+
+1. 组件能不能改自己的props？——不能改！如果改自己的props就相当于是写了这样一个函数：
+
+   ```js
+   function xx(obj) {
+   	obj.a
+   	return obj
+   }
+   ```
+
+   接收一个对象，然后把对象的值改了再返回出去。
+
+   这样做到底好不好呢？——虽然这没有多大问题，但是我们一般都说「不要改参数传来的东西」，所以Vue也坚持了这个原则，即只要是传进来的东西，你不允许做任何的修改，如果你要改的话，你得这样改：
+
+   ```js
+   function xx(obj,n) {
+   	obj.a
+   	var number = n
+   	number.a
+   	return obj
+   }
+   ```
+
+   声明一个内部你自己的n，然后自己再去改你自己的东西，总之，你不要改外部传来的东西，因为一旦改了的话，那么这个事情就不好说了，。
+
+   说一个题外话：「框架为啥会有这么多规矩？」
+
+   **➹：** [⑩](#shi)
 
 
 
 ## ★总结
 
 - 以后看template，请以树的角度去看，定位到root组件节点（一般都是 `#app`，如果站在tab组件来看，那么tab组件就是root组件了），然后一个个后代子组件实例即是一个个节点。
+
 - 如果能看用英文的vue文档，那就看英文的！而不是切换到中文再去看！当你去文档查看provide和inject时，能不能看懂这还得结合你的需求来！
+
+- 关于事件中心，每个组件都需要inject一下，这就像是留了一个eventBus的电话号码一样！
+
+- 关于flex容器的main轴和cross轴，我似乎可以理解成几何辅助线。
+
+- 在写组件的时候，请把不变的选项对象，写在前边：
+
+  ![1564106669017](img/09/1564106669017.png)
+
+- 在每个注入（inject）了eventBus的组件里边，写上这段代码：
+
+  ```js
+    created() {
+      this.eventBus.$on('update:selected', (name) => {
+        this.active = name === this.name
+      })
+    },
+  ```
+
+  仅仅只是为了让callback能访问该组件里边的一些数据（如修改active的值）吗？而不是说所谓的「订阅」？
+  
+- `.sync`这部分知识点不是很熟！
+
+- 我之前把Tab组件里边的每个item当作是tab了，其实它们是item呀！
+
+
 
 ## ★Q&A
 
@@ -631,7 +868,7 @@ selected值，目前是不需要的，如果不爽，那就给个默认值。
 
 在某个时期，就会触发 `update:selected` 事件，而事件的值目前还不知道。
 
-为了是 `.sync`修饰符有用，我们必须要触发这个事件：
+为了使 `.sync`修饰符有用，我们必须要触发这个事件：
 
 ![1563936607326](img/09/1563936607326.png)
 
@@ -680,4 +917,202 @@ selected值，目前是不需要的，如果不爽，那就给个默认值。
 
 
 **➹：**[API — Vue.js](https://cn.vuejs.org/v2/api/#provide-inject)
+
+### ⑦除了class和Sstyle属性以外，name属性也是可以直接写在组件标签上的？
+
+template：
+
+```
+<div id="app">
+  <g-tabs :selected.sync="selectedTab">
+    <g-tabs-head>
+      <template slot="actions">
+        <button>设置</button>
+      </template>
+      <g-tabs-item name="woman">
+        <g-icon name="settings"></g-icon>
+        美女
+      </g-tabs-item>
+      <g-tabs-item name="finance" disabled>财经</g-tabs-item>
+      <g-tabs-item name="sports">体育</g-tabs-item>
+    </g-tabs-head>
+    <g-tabs-body>
+      <g-tabs-pane name="woman">美女相关资讯</g-tabs-pane>
+      <g-tabs-pane name="finance">财经相关资讯</g-tabs-pane>
+      <g-tabs-pane name="sports">体育相关资讯</g-tabs-pane>
+    </g-tabs-body>
+  </g-tabs>
+</div>
+
+```
+
+编译后的结果：
+
+![1564104441983](img/09/1564104441983.png)
+
+不过这个就没有了：
+
+```vue
+<template>
+  <div class="tabs-head">
+    <slot></slot>
+    <slot name="actions"></slot>
+  </div>
+</template>
+```
+
+写在插槽的name属性是咩有的，它的作用就是给个名字，所以这也叫具名插槽。
+
+### ⑧回顾组件created和mounted钩子的执行顺序？
+
+```html
+<div id="app">
+  <g-tabs :selected.sync="selectedTab">
+    <g-tabs-head>
+      <template slot="actions">
+        <button>设置</button>
+      </template>
+      <g-tabs-item name="woman">
+        <g-icon name="settings"></g-icon>
+        美女
+      </g-tabs-item>
+      <g-tabs-item name="finance" disabled>财经</g-tabs-item>
+      <g-tabs-item name="sports">体育</g-tabs-item>
+    </g-tabs-head>
+    <g-tabs-body>
+      <g-tabs-pane name="woman">美女相关资讯</g-tabs-pane>
+      <g-tabs-pane name="finance">财经相关资讯</g-tabs-pane>
+      <g-tabs-pane name="sports">体育相关资讯</g-tabs-pane>
+    </g-tabs-body>
+  </g-tabs>
+</div>
+```
+
+created执行后：
+
+1. g-tabs
+2. tabs-head
+3. tabs-item * 3
+4. tabs-body
+5. tabs-pane * 3
+
+![1564121289667](img/09/1564121289667.png)
+
+mounted执行后：
+
+1. item * 3
+2. head 
+3. pane * 3
+4. body
+5. tabs
+
+![1564121693911](img/09/1564121693911.png)
+
+mounted执行完了，意味着整个Vue实例已经初始化完毕了，接着这些组件们都是处于运行阶段了。也就是说item实例先初始化完毕，然后就是head，接着是pane，再接着是是body，最后是tab的。
+
+总之，第一个created的是 `#app`，然后就开始编译模板：
+
+> 把Vue代码中的那些指令进行执行，最终，在内存中生成一个编译好的最终模板字符串，然后把这个模板字符串，渲染为内存中的DOM，此时只是在内存中渲染好了模板，并没有把模板挂载到真正的页面中去。
+
+在beforeMount和mounted之间，是Vue往页面append DOM的阶段。
+
+即页面已经出现这个了：
+
+![1564104441983](img/09/1564104441983.png)
+
+所以`#app`可以开始执行你的mounted了。总之这个 `#app`root组件是最后一个mounted，也是最后一个菜到达运行阶段的。
+
+> 我之前以为，子组件会先出现在页面里！但其实 `#app`在页面里边了，它们才会在页面里，也就说它们在内存里边一点点append着。所有这就是为啥父元素的mounted能访问到子元素原因所在了。
+>
+> ![1564123278910](img/09/1564123278910.png)
+>
+> 而`#app`的mounted，也就是能访问到所有的子孙元素了。
+
+**➹：**[1667867-20190608154311855-1964957884.png (2498×2798)](https://ppambler.github.io/xdmala/04-%E8%BD%BB%E9%A1%B9%E7%9B%AE/03-%E8%87%AA%E5%88%B6UI%E6%A1%86%E6%9E%B6%E7%AE%80%E6%98%93%E7%89%88/img/08/1667867-20190608154311855-1964957884.png)
+
+### <a id="jiu">⑨ `v-if`和 `v-show`的区别？</a>
+
+- v-if是动态的向DOM树内添加或者删除DOM元素；v-show是通过设置DOM元素的display样式属性控制显隐；
+- 一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
+
+有种非黑即白的使用，即了解一个就好了，一个不行，那就选则第二个呗！
+
+不知道tab的切换算不算频繁地切换嘞！
+
+**➹：**[Vue中v-if和v-show的使用场景 - 知乎](https://zhuanlan.zhihu.com/p/38179618)
+
+### <a id="shi">⑩框架为啥会有这么多规矩？</a>
+
+![1564134543947](img/09/1564134543947.png)
+
+请问大家「框架是用来干嘛的？」
+
+额……
+
+1. 为了写出更好的代码？——好像所有框架都是为了写出更好的代码额！（等于没说）
+2. 为了让代码更好看？——难道有什么东西是为了让代码不好看的吗？（也是等于没说）
+3. 提高效率，少写代码，防止出错？——防止出错？——代码的bug是无法避免的
+
+框架的主要目的是「让团队的傻逼也写不出辣鸡代码！」
+
+有很多好的代码，也有很多坏的代码，比如说这个
+
+```js
+function xx(obj,n) {
+	obj.a = 1 //bad
+	var number = n //good
+	number = 2
+	return obj
+}
+```
+
+把别人输入的参数给改了，这就是bad的行为了
+
+如果你自己声明一个变量改自己值，如搞个深拷贝什么的，那就是good行为了
+
+那么我们如何防止有些人写出类似这种bad代码呢？——用框架把这些人给框起来，一旦写出了这样的代码，Vue就会把错说「傻逼不要写这样的代码！」
+
+所以框架最主要的目的是「就算你团队里边招了一个傻逼，它也写不出很辣鸡很辣鸡的代码」
+
+这样一来，就可以保证代码的平均质量了，即不至于有的地方很好，有的地方很差！
+
+总之，就是希望所有人写出来的代码都像是一个人写的，即便这个人智力一般，理解能力一般，而他写的代码只要普通人能看懂，傻逼也能看懂，那么这样的代码就是好代码了。
+
+每个人都有一些主观的东西，比如说「xx认为把每个变量声明都写成一行是good行为」、「yyy赞同写成一行……」
+
+每个人都有一些主观的东西，那我们把所有主观好的东西做成一个工具，那么这个工具就应该叫做框架
+
+总之，框架的最终目的就是要框住你 呀！除了提供一个架子以外，你不能逃出这个架子，而如果你逃出来，那么你看到的可能是好的东西，也有可能是坏的东西
+
+框架把好的东西都框给你用了，如Vue经常会说一些推荐你怎么写：
+
+可是，就目前而言，Vue推荐的东西是否足够好呢？——好是好，但是还不够多
+
+而目前真正能算作框架的是Angular，而Vue还是在变成框架的途中
+
+为啥说Angular是一个框架，而Vue不是呢？
+
+因为Angular说该怎么写代码，基本上给了一个非常主观的推荐，比如说：
+
+1. 你应该写单元测试，而Vue则没有告诉你写，而是说「想写就写，不写就拉倒呗！」，但是在Angular里边就用了非常大的笔墨来给你介绍说「单元测试的每行代码该怎么写，如如何测试组件的绑定，如何测试xxx……」，而Vue是没有的
+
+**➹：**[Angular - 测试](https://angular.cn/guide/testing#component-binding)
+
+所以，Vue现在离框架就差一步，需要一个人（可能不是Vue的作者，可能是一个公司里边非常厉害的团队），告诉所有的Vue使用者「如何是最好的写代码方式」，而这也叫做最佳实践哈！
+
+总之，把最佳实践搞在一起写成一个框架，而它的名字可以叫做 「Vue-Best」之类的
+
+只要你用了Vue-Best，如果你不想写测试，那么不好意思 ，我就报错，不让你发布代码！
+
+反正，你不写，那么你就要用这个框架了
+
+总之，要么写出平均质量的代码，要么就别写代码，不容忍辣鸡代码出现
+
+所以最好的框架，就是能自动检测出哪些代码是有问题的，或许你会问「能不能让框架自己写代码呢？」
+
+哈，这是不行的！毕竟连需求都讲不清楚
+
+总之，至少能给 你一个参考，即不写测试是一定不行的，而这样一来代码质量就会提升
+
+如果有个傻逼程序员说，我不会写测试，那么你就不要写了
 
