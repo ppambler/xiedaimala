@@ -608,22 +608,20 @@ ps：事件系统和事件中心是不是一回事呢？似乎满足监听事件
 
 解释一下为什么：
 
-1. 什么时候用props呢？——如果你需要用户（是前端开发者，而不是普通用户）传值，那么你就把值放到props里边，因为props是你的输入参数啊！就像是你写一个函数这样：
+什么时候用props呢？——如果你需要用户（是前端开发者，而不是普通用户）传值，那么你就把值放到props里边，因为props是你的输入参数啊！就像是你写一个函数这样：
 
-   ```js
-   function xxx(prop1,prop2) {}
-   ```
-
-   而data则是函数内部维护的变量：
-
-   ```js
-   function xxx(prop1,prop2) {
-   	var data1
-   	var data2
-   }
-   ```
+```js
+function xxx(prop1,prop2) {}
 ```
-   
+
+而data则是函数内部维护的变量：
+
+```js
+function xxx(prop1,prop2) {
+	var data1
+	var data2
+}
+```
 
 所以它们俩的区别是：props需要用户传值，而data则不需要用户传值
 
@@ -631,12 +629,12 @@ ps：事件系统和事件中心是不是一回事呢？似乎满足监听事件
 
 总之，active是true还是false，外界不用告诉我，我组件本身自己知道，就像是这样：
 
-​```js
-function xxx(prop1,prop2) {
-	var data1 = prop1
-	data1 = 2
-	var data2
-}
+```js
+ function xxx(prop1,prop2) {
+     var data1 = prop1
+     data1 = 2
+     var data2
+ }
 ```
 
 虽然我的data1可能从你的prop1里边拿，但是最终我还是自己去维护，如 `data1 = 2 `这样的另外一个值，而不是用户说啥值就得是啥值
@@ -678,19 +676,19 @@ function xxx(prop1,prop2) {
 
 ### ◇默认知道谁被选中了，那么如何选中它呢？
 
-1. 使用事件
+①使用事件
 
-2. 在tabs组件mounted（不要用created，因为只要mounted才能保证tabs的子元素都被创建好了）之后，就让eventBus触发 `update:selected`事件
+②在tabs组件mounted（不要用created，因为只要mounted才能保证tabs的子元素都被创建好了）之后，就让eventBus触发 `update:selected`事件
 
-   ```js
-     mounted() {
-       this.eventBus.$emit('update:selected', this.selected)
-     }
-   ```
+```js
+  mounted() {
+    this.eventBus.$emit('update:selected', this.selected)
+  }
+```
 
-   告诉事件中心，用户选中了 `sports`（默认选中这个），那么其它（如tabs-item和tabs-pane这样的子组件）监听了 `update:selected`事件的，就会触发它们自身的callback了。
+告诉事件中心，用户选中了 `sports`（默认选中这个），那么其它（如tabs-item和tabs-pane这样的子组件）监听了 `update:selected`事件的，就会触发它们自身的callback了。
 
-3. 回顾这个过程：
+③回顾这个过程：
 
    1. tabs组件的props的selected收到了 `sports`这个用户传过来的值
 
@@ -778,18 +776,18 @@ function xxx(prop1,prop2) {
 
 一些疑问：
 
-1. 组件能不能改自己的props？——不能改！如果改自己的props就相当于是写了这样一个函数：
+①组件能不能改自己的props？——不能改！如果改自己的props就相当于是写了这样一个函数：
 
-   ```js
-   function xx(obj) {
-   	obj.a
-   	return obj
-   }
-   ```
+```js
+function xx(obj) {
+	obj.a
+	return obj
+}
+```
 
-   接收一个对象，然后把对象的值改了再返回出去。
+即接收一个对象，然后把对象的值改了再返回出去。
 
-   这样做到底好不好呢？——虽然这没有多大问题，但是我们一般都说「不要改参数传来的东西」，所以Vue也坚持了这个原则，即只要是传进来的东西，你不允许做任何的修改，如果你要改的话，你得这样改：
+ 那么这样做到底好不好呢？——虽然这没有多大问题，但是我们一般都说「不要改参数传来的东西」，所以Vue也坚持了这个原则，即只要是传进来的东西，你不允许做任何的修改，如果你要改的话，你得这样改：
 
    ```js
    function xx(obj,n) {
@@ -800,13 +798,13 @@ function xxx(prop1,prop2) {
    }
    ```
 
-   声明一个内部你自己的n，然后自己再去改你自己的东西，总之，你不要改外部传来的东西，因为一旦改了的话，那么这个事情就不好说了，。
+声明一个内部你自己的n，然后自己再去改你自己的东西，总之，你不要改外部传来的东西，因为一旦改了的话，那么这个事情就不好说了，。
 
-   说一个题外话：「框架为啥会有这么多规矩？」
+说一个题外话：「框架为啥会有这么多规矩？」
 
-   **➹：** [⑩](#shi)
+**➹：** [⑩](#shi)
 
-
+----
 
 ## ★总结
 

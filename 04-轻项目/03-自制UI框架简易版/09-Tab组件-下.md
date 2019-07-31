@@ -12,11 +12,83 @@ typora-copy-images-to: img\09\01
 - 可交互区域——点击item的区域
 - 使用JS做动画——切换每个item时的下边框是滑动的
   - 触发自定义事件时需要告知每个item和pane是哪个item，以及改item的DOM是啥
-  - 
 
 ### ◇注意点
 
 - item触发了自定义事件，它可以传递当前vm实例给监听了该事件的tabs-item的callback，说白了，监听事件的callback可以接收多个参数，而触发事件的也可以传递多个参数，而这是一一对应的。之前我一直以为只能穿一个参数，如果传过个参数的话，只能用数组了，就像是apply这个API一样。
+
+- 如果你学过用户交互设计的话，那么你会非常在乎可交互区域这一点。
+
+- 很多时候，芳芳写CSS的调试技巧是border大法，用于观测这个元素的边界在哪儿，而知道边界了，那么对元素添加padding、margin、flex等就有很明确的指引了。
+
+- 在写CSS的时候，你得脑海里边必须有这样的认识，即默认状态下，元素的样式为几何，有交互后，元素的样式又是为几何？
+
+- 关于item下的边线，你可能会用`before` 或 `after`来做，但我建议你还是单独用一个元素来做，因为这样它才能滑来滑去。让线动起来，对于CSS来说是无计可施的，于是只好用JS了
+
+- 子元素写了绝对定位，那么不要忘记了还得给父元素一个相对定位，这可以说是配套使用的
+
+- 如何知道线需要动在哪里呢？——让head知道就好了，但是head只知道，哪个item被点击了，无法断定这个item的位置，所以需要利用 `getBoundingClientRect`这个API获取当前被点击的item的位置。
+
+- 有些时候，为了做一个动画效果，需要为监听自定义事件的callback多传一些东西
+
+- 页面初始化状态时，也是需要让线动起来的。
+
+- 多重循环里边最好不要出现重名的形参：
+
+  ```js
+      this.$children.forEach((vm)=>{
+        if(vm.$options.name === 'WarmTabsHead') {
+          vm.$children.forEach((childVm)=>{
+            if(childVm.$options.name === 'WarmTabsItem'
+              && childVm.name === this.selected) {
+                this.eventBus.$emit('update:selected', this.selected, childVm)
+            }
+          })
+        }
+      })
+  ```
+
+  不然：
+
+  ![1564540556605](img/09/01/1564540556605.png)
+
+  总之即便是形参的命名，也要有语义表明传过来的值是什么！
+
+- `$options`：来自于`export`出来的选项对象，我们通常都会有这样的代码：
+
+  ```js
+  export default {
+    name: "WarmTabs",
+    props: {
+    	name: {
+    		type: String
+    	}
+    }
+  }
+  ```
+
+  而props里边的name，可以不用 `vm.props.name`取到这个值，直接 `vm.name`即可
+
+  而根下边的name属性，则是需要通过 `$options`才能取到！总之都叫name，只是巧合罢了，没有啥特殊含义！
+
+- `webstorm：`修复上次的commit的，修复好后，提交之前点一下 `Amend commit`就好了，这样上次的提交就会多了这些用于修复的代码！总之，点了它，git的提交历史，不会多了这次提交。
+
+- 每次点击item都会知道哪个元素被点击了，然后根据这个元素，就把线移到它的下边去！那么这个该怎么移呢？——`getBoundingClientRect`这个API可以拿到元素的宽高、left、top，宽可以确定线有多宽，left可以确定线应该移动到哪个item的下边，而这一切都是我们能获取到item这个元素为前提的！
+
+- 让线平滑的滑动，而且它的宽度变化也是平滑的，所以这得用CSS搞动画了。
+
+  ```css
+  transition:left 1s,width 1s;
+  transition: all 1s; //简单起见的做法
+  ```
+
+- transform可以做硬件3d加速，而left则不能，不过由于用了width，你加不加速都是很慢的！
+
+- 提交的时候很多人都是用fix什么的，其实这很不好！
+
+- 我们的组件里边写了个props `disabled`，而外边则不用写 `disabled=true`什么的，直接写个 `disabled`，那么它传过去就是true的值了！如果元素是disabled，那么你即便点击了这个元素也没啥用！因为此时的callback直接返回了呀！disabled了的元素其实也可以被选中，只是需要用到JavaScript，我们用户直接用鼠标肯定不行，但是JavaScript行啊！
+
+- 目前大部分功能已实现，直接就是测试！
 
 ### ◇我要做什么
 
@@ -51,6 +123,7 @@ typora-copy-images-to: img\09\01
       ![o23HeCbyOX](img/09/01/o23HeCbyOX.gif)
 
   - 思路
+    
     - 很简单，在item触发自定义事件的时候，传一个this过去给head的callback就好了。不过需要注意的是，tabs模板创建好后，还需要默认触发一下自定义事件，而这个在mounted执行就好了，毕竟此时的mounted能访问所有子组件，然后就把默认选中的item交给head的callback就好了。
   - How？
     - 在head的template新增个叫 `line`的div，毕竟我们能页面能看到它！然后对它就是一顿绝对定位操作，不过我们只给了bottom这个属性，至于left属性为啥不给，你之后就明白了
@@ -150,6 +223,8 @@ typora-copy-images-to: img\09\01
 - 在测试的时候，如果你没有什么异步代码就不要写done，不用会报诸如超过2000ms的错误……
 
 - 为了让代码可测试，所以我们往轮子代码里边追加了一些**服务于测试代码**的代码
+
+- `'' && 6`：返回的是空字符串；`'' || 6`：返回的是6。前者第一个值为falsy值，那么就返回第一个值，而后者则是第一个值truly值就返回第一个值。反正它们俩最终结果出来了，那就不用计算了，即所谓的短路运算。
 
 
 
@@ -272,11 +347,35 @@ typora-copy-images-to: img\09\01
 
 目前，就不测有关tabs的其它组件了，用于留个坑之后填！
 
+### ④v-if和UI任务的那些事儿？
 
+![1564542572934](img/09/01/1564542572934.png)
 
+那么如何把把下边代码放到更新UI任务执行后才执行呢？——使用nextTick啊！
 
+![1564542761341](img/09/01/1564542761341.png)
 
+> 我们想要是用transform，但还是咩有解决页面刷新，线从left为0的位置滑到最终目标的位置。而使用left的话则不会
 
+虽然使用了left性能差些，但是bug更少，代码更少，总之这是需要权衡的
+
+当然，如果你能接受transform那种滑动倒是可以的！
+
+### ⑤纯CSS禁止鼠标点击事件？
+
+```css
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+}
+```
+
+用于解决元素是disabled状态，但还可以响应鼠标事件（如click事件）的问题！
+
+**➹：**[用纯CSS禁止鼠标点击事件 – WEB骇客](http://www.webhek.com/post/css-pointer-events-preventdefault.html)
+
+**➹：**[disabled - Mozilla 产品与私有技术 - MDN](https://developer.mozilla.org/zh-CN/docs/Mozilla/Tech/XUL/Attribute/disabled)
 
 
 
