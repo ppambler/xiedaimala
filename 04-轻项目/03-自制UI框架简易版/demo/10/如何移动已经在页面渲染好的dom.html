@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <title>如何移动已经在页面渲染好的dom</title>
+  <style></style>
+</head>
+
+<body>
+  <div id="fa">
+    我是爸爸
+    <div id="son">我是儿子</div>
+  </div>
+  <script>
+    let xx = document.getElementById('son')
+    document.body.appendChild(xx)
+  </script>
+</body>
+
+</html>
