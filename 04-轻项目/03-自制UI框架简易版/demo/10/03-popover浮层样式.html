@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <title>03-popover浮层样式</title>
+  <style>
+    .popover {
+      margin: 100px 200px;
+      position: absolute;
+      border: 1px solid #333;
+      border-radius: 4px;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .5));
+      background-color: white;
+      padding: .5em 1em;
+      max-width: 20em;
+      word-break: break-all;
+    }
+
+    .popover::before {
+      content: '';
+      display: block;
+      border: 10px solid red;
+      border-top-color: black;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 100%;
+      left: 10px;
+    }
+
+    .popover::after {
+      content: '';
+      display: block;
+      /* border: 10px solid #333;
+      border-top-color: white;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent; */
+      /* 优化5行代码为2行，webstorm可以智能优化！ */
+      border: 10px solid transparent;
+      border-top-color: white;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: calc(100% - 1px);
+      left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="popover">我是浮层呀！</div>
+  <script></script>
+</body>
+
+</html>
