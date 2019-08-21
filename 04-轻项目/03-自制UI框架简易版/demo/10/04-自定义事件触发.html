@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <title>04-自定义事件触发</title>
+  <style>
+    #xxx {
+      margin-top: 50px;
+      border:1px solid red;
+    }
+    #btn {
+      margin-top: 50px;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div id=xxx>鼠标经过我会有log</div>
+  <button id=btn>click me trigger mouseenter</button>
+  <script>
+    xxx.addEventListener('mouseenter',()=>{
+      console.log('mouseenter事件触发了')
+    })
+    btn.addEventListener('click',()=>{
+      // 用JavaScript代码触发mouseenter事件，而不是我们手动触发！
+      let event = new Event('mouseenter')
+      xxx.dispatchEvent(event)
+    })
+  </script>
+</body>
+
+</html>
