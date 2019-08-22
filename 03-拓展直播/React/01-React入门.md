@@ -250,7 +250,189 @@ const div = (
 
 ---
 
-## ★做项目
+## ★如何声明一个组件
+
+### ◇完善写法
+
+> 这是之前说到一个创举，即编译前的代码
+
+```react
+const div = (
+  <div>
+    <p>
+      <span>我是一个span</span>
+    </p>
+  </div>
+)
+```
+
+当你写了这种语法（ React 的核心），那么你在心里边就默念成这样的：
+
+```js
+const div = (
+  React.createElement('div', null,
+    React.createElement('p', null,
+      React.createElement('span', null, '我是一个span')))
+)
+```
+
+> `<`：`React.createElement`
+>
+> `>`：`,`
+
+### ◇构建更复杂的东西
+
+![1566485795594](img/01/1566485795594.png)
+
+> 加个花括号表示引入的是另外一个组件哈！
+
+我们可以看到像任意组合变量那样，组合成一个页面！甚至还可以把`Header`这个变量移到另外一个页面里去！
+
+以上就是 React 提供的组件化思维，而 Vue 则需要你自己写一个vue单文件组件，即 Vue 它自己发明语法，而 React 不发明任何语法，只是告诉你，这可以简写成 `const span = (<span>hi</span>)`，当然，你也不阻止你 `React.createElement('span', null, 'hi')`这样写，不过，应该没有人会这样写吧！毕竟敲那么多字符实在是太麻烦了！
+
+>  React 的第二个思想：使用纯 JS 的组合来实现组件化
+
+### ◇让组件支持参数
+
+在 JS 里边支持参数的就只有函数了
+
+所以，如果我们的 `Header`可以是一个函数的话，那么该组件就可以接受参数了
+
+![1566487642028](img/01/1566487642028.png)
+
+我们可以发现 React 特别巧妙，它不给你提供任何API，它只在写法上给你做文章！
+
+而这就是 React 作者的思路了——使用很简单的做法，就能实现传参！
+
+回过头来看 Vue ，它的思路是发明一个新的语法！如 `v-if`啥的！
+
+> 其实我们在使用 Vue 组件的时候也是像②那样传参的！不过，你咩有写过 React 的话，你是不知道第二种姿势其实是一种函数调用的简写姿势哈！说白了，你写过 React 之后，才会知道 Vue 组件化那种设计是怎样来的！
+
+### ◇让组件使用自身的变量
+
+![1566490615250](img/01/1566490615250.png)
+
+> `onClick`这里的代码，是特属于 React 的语法，原生 JS 可不能这么用哈！
+
+这里的 `onClick`必须得是大写，才表示这是在监听一个click事件，而其值必须得要用 `{}`包裹才行，如果直接用 字符串的话，那是会报错的！
+
+以下是翻译之后的写法，在 `()` 用到原生 JS 代码 请一定 使用 `{}`括起来！这表示里边的内容是 JS 代码哈！用于区分普通的字符文本！
+
+```react
+const Bottom2 = function() {
+  const [n, setN] = React.useState(0)
+  return (
+    <div>
+      {n}
+      {React.createElement('button',{
+        onClick: function() {
+          setN(n+1)
+        }
+      },'+1')}
+    </div>
+  )
+}
+```
+
+关于 `setN`存在的意义：
+
+针对下边这个代码，按照正常的 JS 思路来说，点击 `+1`这个button显然会加1
+
+``` react
+const Bottom2 = function() {
+  let n = 0
+  return (
+    <div>
+      {n}
+      <button onClick={
+        function() {
+          n = n+1
+        }
+      }>+1</button>
+    </div>
+  )
+}
+```
+
+然而结果是没反应！
+
+而这就涉及到 React 的核心思想了——如果你要在一个组件内边使用一个内部的状态的话，那么你得这样写：
+
+```react
+const Bottom2 = function() {
+  const [n, setN] = React.useState(0)
+  return (
+    <div>
+      {n}
+      <button onClick={
+        function() {
+          setN(n+1)
+        }
+      }>+1</button> //为button绑定click事件
+    </div>
+  )
+}
+```
+
+`const [n, setN] = React.useState(0)`：表示这个状态的初始值是`0`，而这个状态的值是 `n`，而这个状态的更新方法时 `setN`，`[n, setN]`是个析构赋值
+
+> 我本来想说，状态n的初始值是 `0`，但这样说并不能很好体现一个组件内部可以存在多个状态呀！
+
+用法：
+
+- 显示n：`{n}`
+- 改n：`setN(n+1)`，`setN`似乎是这样的 `function setN(n){return n}`，然后把返回值赋值 `n`
+
+回过头来看 `Bottom2`这个变量的代码，我们使用到的 React  API就只有 `React.useState(0)`这个，其它的都是原生 JS 自带的内容（变形那个并不算是使用了 React 的API，因为编译后的结果就是原生 JS 了）
+
+而这也是 React 和 Vue 最大的不同，即 React 的API极少极少，但是与 Vue 的功能是一样的！
+
+总之，如果你喜欢 React ，那就用 React 呗！不喜欢，也没事，毕竟，还可以用 Vue 哈！
+
+### ◇使用类构造一个组件
+
+> 这种写法很麻烦！
+
+```react
+class Bottom3 extends React.Component{
+  render() {
+    return (
+      <div>bottom 3</div>
+    )
+  }
+}
+```
+
+这是ES6提供的功能，而不是 React 提供的，回顾那句话「如果你 JS 学得不好，那么你就不要学 React 了」
+
+类组件比函数组件要难理解得多，因此函数组件要流行得多！
+
+用法，还是直接 `<Bottom3 />`即可！
+
+总之，我们可以用函数做一个简单的组件，也可以用类做一个简单的组件
+
+不过，我们之后，主要用的就是函数组件了，因为简单、逼格高呀！
+
+而类组件这种语法，只要背就好了，人人都会
+
+而函数组件这种语法是比较新的，还有很多面试官不会！如果你在面试的时候用新语法的话，那么面试官肯定会觉得你很厉害呀！或者说你是一个很好学的人。
+
+总之，首推函数组件写法！
+
+### ◇总结一下 React 的几个功能
+
+- 可以使用标签的形式直接创建一个虚拟div，然后里边可以写上任意的子元素
+- 在Xx组件里边，可以通过 `{}`直接把Zzz组件给引进来！ `{Zzz}`
+- 把Zzz组件写成一个函数，然后调用一下Zzz引进到Xx组件里边来！ `{Zzz({name:'frank'})}`
+- 优化上一个功能，即写成一个标签，`<Zzz name="frank" />`，把参数写成是标签的属性，上一个功能与这个功能的结构一模一样，只是写法上不一样
+- 如果你希望一个组件拥有自己的状态，那么你就使用 `React.useState()`这么一个API，然后再给上一个初始化的值，然后再给上一个读的API和一个写的API，如这样 `const [n, setN] = React.useState(0)`，那么读的就是 `n`，写的就是 `setN`
+- 使用类创建组件
+
+接下来正式搞那个井字棋项目了，毕竟我们目前已经知道如何声明一个简单组件了！
+
+---
+
+
 
 
 
@@ -284,5 +466,40 @@ const div = (
 
 **➹：**[npm，yarn如何查看源和换源 - 知乎](https://zhuanlan.zhihu.com/p/35856841)
 
+### ②为啥写在HTML上的onClick能触发callback执行？
 
+**如果你是写在HTML中，那HTML的标签是不分大小写的**     
+
+ 比如： 
+
+```html
+<a href="#" id="myclick" onclick="dosomething();">Click me!</a>
+```
+
+ 这里的`onclick`，你可以写成`ONCLICK`，或是别的什么，因为那是HTML，HTML不分大小写。    
+
+ 但是如果你写成Javascript，那就不是这样了：     
+
+ 比如：     
+
+```js
+ var link = document.getElementById('myclick');    
+ link.onclick = function(){    
+   alert('hello');    
+ }     
+```
+
+ 你要把`onclick`改成`onClick`，那就是一个`onClick`的新方法，和 `onclick`事件无关。
+
+**➹：**[onClick还是onclick，第一个c是否要大写，发现虽然mdn和msdn上都说的是onclick，但是浏览器也能触发onClick事件，这是为什么？ - 知乎](https://www.zhihu.com/question/19942453)
+
+### ③为啥要加 `()`？
+
+> 为了好看呗！
+
+反正不加括号就会报错，而加了括号就会被 `babel-jsx` 翻译成原生 JS 
+
+**➹：**[你对return后面的括号了解多少？ - 简书](https://www.jianshu.com/p/e9230dc06044)
+
+**➹：**[render方法括号的作用 - on the way - SegmentFault 思否](https://segmentfault.com/a/1190000012360432)
 
