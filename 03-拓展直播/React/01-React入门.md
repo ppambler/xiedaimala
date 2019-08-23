@@ -288,7 +288,7 @@ const div = (
 
 我们可以看到像任意组合变量那样，组合成一个页面！甚至还可以把`Header`这个变量移到另外一个页面里去！
 
-以上就是 React 提供的组件化思维，而 Vue 则需要你自己写一个vue单文件组件，即 Vue 它自己发明语法，而 React 不发明任何语法，只是告诉你，这可以简写成 `const span = (<span>hi</span>)`，当然，你也不阻止你 `React.createElement('span', null, 'hi')`这样写，不过，应该没有人会这样写吧！毕竟敲那么多字符实在是太麻烦了！
+以上就是 React 提供的组件化思维，而 Vue 则需要你自己写一个vue单文件组件，即 Vue 它自己发明语法，而 React 不发明任何语法，只是告诉你，这可以简写成 `const span = (<span>hi</span>)`，当然，也不阻止你 `React.createElement('span', null, 'hi')`这样写，不过，应该没有人会这样写吧！毕竟敲那么多字符实在是太麻烦了！
 
 >  React 的第二个思想：使用纯 JS 的组合来实现组件化
 
@@ -432,6 +432,405 @@ class Bottom3 extends React.Component{
 
 ---
 
+## ★搞一个棋盘出来
+
+> 之前大概讲了 React 的基本用法，而且就只用到了一个 `React.useState()`这个 API，其余的都是 JS ，而 说到 Vue 的基本用法呢？则讲了有6、7个API
+
+### ◇注意点
+
+- `import ReactDOM from 'react-dom';`是为了让虚拟DOM可以出现在body里边
+- 关于render一个组件：
+
+```react
+ReactDOM.render(<div>
+  <Chessboard />
+</div>, document.getElementById('root'))
+```
+
+一般都是裹上一层`div`，然后再render，因为这样好写一点，当然，你不包裹也行！
+
+- HTML可以用class属性，但是 React 不能：
+
+```react
+//错误例子
+const Cell = function (props) {
+  return (                      
+    <div class="cell">
+      {props.text}
+    </div>
+  )
+}
+//正确例子
+const Cell = function (props) {
+  return (                      
+    <div className="cell">
+      {props.text}
+    </div>
+  )
+}
+```
+
+为啥不能呢？——因为我们并不是在写HTML呀！这是 React 的JSX 语法啊！
+
+总之，简单来说，我们用原生 JS 的时候是这样添加class的：
+
+```js
+const div = document.createElement('div')
+div.className = 'red'
+```
+
+为啥原生 JS 不是向下边这样呢：
+
+```js
+div.class = 'red'
+```
+
+因为在 JS 里边，class是关键字啊！而早期的 JS 是不支持把关键字当作属性的，所以它为了避嫌，于是就用了 `className`，而这就好比古代的人，父亲的名字有个「强」字，那么儿子的名字就不能由个「强」字了，当然兄弟之间不用避嫌，但是父子关系就得避嫌了，所以你日后为你的孩子取名字的时候，得注意哈！
+
+所以为了避讳 `class`这个名字，所以只好叫做 `className`，虽然实际上HTML里的是 `class`属性！
+
+因此我们可以得出这样一个结论：
+
+>  JS 里边如果要加class name的话，那么就只能用`className`，而不是`class`
+
+而我们的这个：
+
+```jsx
+(                      
+  <div className="cell">
+    {props.text}
+  </div>
+)
+```
+
+是 JS 啊！而不是HTML，因为它翻译的结果就是 `React.createElement(……)`
+
+因此，我们就得用`className`，而不是 想写HTML那样用`class`
+
+- 关于样式的引入，很简单，直接 `import './style.css'`
+- 为啥在为组件绑定事件时需要加个 `{}`呢？
+
+```react
+const Bottom2 = function() {
+  const [n, setN] = React.useState(0)
+  return (
+    <div>
+      {n}
+      <button onClick={
+        function () {
+          setN(n+1)
+        }
+      }>+1</button>
+    </div>
+  )
+}
+```
+
+因为不加的话，就会报错（如 识别`onClick=function (){}`的 `onClick=function`就表示一个属性的结束了），反正这是语法规定的，所以这些语法还是得记住呀！毕竟这是 React 自己写的 `babel-jsx`
+
+不过这样写实在是太丑了吧！
+
+于是，利用 JS 提供的变量功能，把callback提取出来，然后再用变量引入进去！
+
+``` React 
+const Cell = function (props) {
+  const onClickButton = function() {
+    console.log('click')
+  }
+  return (
+    <div className="cell" onClick={onClickButton}>
+      {props.text}
+    </div>
+  )
+}
+```
+
+总之，这就是 React 如何正常绑定一个事件的写法了。
+
+需要注意的是，`onClickButton`这个函数可以写在函数 `Cell`这个函数外边，反正都是 JS ， React 永远不限制你，不过一般，该函数是该组件用到的，那么最好就是写在组件内，毕竟你写在外边的话，别人是不知道你这个`onClick`是在调用哪个callback的！
+
+> 关于`onClick`这个名字，我们在原生 JS 里边是 `onclick`，而HTML大小写都无所谓，所以这就有点矛盾了！
+>
+> 反正就是小驼峰，没有关键字呗！
+
+> vim技巧：`di{`拿到花括号里的内容，然后摁 `p` 粘贴
+
+-  关于DOM的更新， React 会自动检查DOM有咩有变化，如果有变化，那就更新，咩有那就不更新！
+
+```react
+const Cell = function (props) {
+  const [text,setText] =  React.useState('')
+  const onClickButton = function() {
+    setText('x')
+  }
+  return (
+    <div className="cell" onClick={onClickButton}>
+      {text}
+    </div>
+  )
+}
+```
+
+总之，内容是`×`了，再点击 Cell 重新为`text`赋一样的值是，是不会更新DOM的：
+
+![1566530938035](img/01/1566530938035.png)
+
+关于内容不居中的问题，这是字体的问题，如果你用的是icon，这是没问题的！
+
+- 关于组件的名字，最好都是首字母大写的，不然很容易冲突！（或许这是用于识别普通函数和构建组件的函数，毕竟声明一个普通函数，我们用的是小驼峰）
+
+- 数组的map这个API：对数组里边的每个元素做一个操作，然后返回一个新数组，而原数组的内容不会改变！
+
+  ![1566540213887](img/01/1566540213887.png)
+
+- 在遍历生成9个Cell的过程中， React 啥也没做（用的是原生 JS ），而使用 Vue 的话则需要用到 它自己发明的 `v-if`指令，可见 React 啥也没做，就能成为一个框架了！
+
+- 
+
+
+
+### ◇开搞
+
+1. 先把所有东西都放到 `index.js`里边做，之后在把它们抽到 `App.js`里边去！
+
+2. 先写一个`Cell`组件
+
+3. 生成多个`Cell`组件，通过一个叫 `map`的二维数组来遍历生成9个Cell，如果 vue 想用这种方式生成的话，需要用到 `v-for`，而 React 则不需要，直接原生 JS 搞起！
+
+   ![1566540862434](img/01/1566540862434.png)
+
+### ◇重新看一遍做了哪些功能
+
+1. 声明了一个表示每个格子的二维数组
+2. 而格子就是一个div，以及其里边需要展示的 `x` 和 `o`
+3. 搞了一个棋盘，它也是个div，其里边的内容是对二维数组里的每个格子的映射，即一个格子映射成一个Cell
+
+整体结构就是三行row，三列col，内容是一个 `Cell`组件！
+
+总之，最后看的其实就是这句代码：
+
+``` React 
+ReactDOM.render(<div>
+  <Chessboard />
+</div>, document.getElementById('root'))
+```
+
+我们的 `Chessboard`组件的内容到底是啥样的DOM结构，如果你不具体到 `Chessboard`组件的 细节的话，那么这其实可以很面向对象的编程！
+
+![1566541510113](img/01/1566541510113.png)
+
+> 话说这 `<div></div>`有点冗余！
+
+## ★复杂点的操作
+
+### ◇注意点
+
+- 变量是谁传过来的，就谁改！如下边这样是不行的，text的值来自于 `Chessboard`这个组件的item
+
+``` React 
+const Cell = function(props) {
+  const onClickCell = () =>{
+    props.text = 'x'
+  }
+  return (
+    <div className="cell" onClick={onClickCell}>
+      {props.text}
+    </div>
+  )
+}
+```
+
+你得这样才行：
+
+``` React 
+const Cell = function (props) {
+  return (
+    <div className="cell" onClick={props.onClick}>
+      {props.text}
+    </div>
+  )
+}
+
+const Chessboard = function () {
+  const onClickCell = () => {
+    console.log('on click cell')
+  }
+  return (
+    <div>
+      {
+        cells.map((items, row) =>
+          <div className="row">
+            {items.map((item, col) =>
+              <div className="col">
+                <Cell text={item} onClick={onClickCell} />
+              </div>
+            )}
+          </div>
+        )
+      }
+    </div>
+  )
+}
+```
+
+`Cell`组件写了个 `onClick`属性，意味着这是一个自定义事件，把其中的值，即callback传给了Cell组件里边，当Cell所映射的内容，被点击后，就会触发  `onClickCell`执行！
+
+> 对于vue的父子组件间通信可以总结成一句话：
+>
+> 父组件通过 `prop` 给子组件下发数据，子组件通过`$emit`触发事件给父组件发送消息，即 `prop` 向下传递，事件向上传递。
+>
+> **➹：**[ vue 父子组件间通信 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000014381699)
+
+此时 `Chessboard`组件是父组件，而`Cell`则是子组件，在父组件这个范围内，传了两个参数给 `Cell`这个子组件，分别是 `text`的值和 `onClick`的值
+
+那么 `onClickCell`这个callback应该写在哪儿呢？是写在`Cell`组件里边，还是 `Chessboard`里边呢？
+
+我们需要通过点击每个Cell触发click事件，更改每个`Cell`的内容，由于这个内容的传递是来自于父组件的`item`的，所以我们就把callback写到父组件里边去了，而不是子组件。
+
+至于子组件的的功能就只接收数据，不处理数据。
+
+注意，`Cell`是个组件标签，所以我们不能直接为它绑定 `onClick`事件，而是绑定到它所映射的原生HTML上去！
+
+总之 `Chessboard`就像是个Controller，而`Cell`则是个Model
+
+- ![1566554271144](img/01/1566554271144.png)
+
+  只是个警告而已，不影响我们的代码，以后再说这个点！
+
+- 如果一个函数想有自己的状态，那么这就不应该用变量，而是用 `state`，所以我们原先这样的代码：
+
+```js
+const cell = [
+	 [null, null, null],
+   [null, null, null],
+   [null, null, null],
+]
+```
+
+就得写在 `Chessboard`组件里边去：
+
+```js
+  const [cells, setCells] = useState([
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ])
+```
+
+至此这个函数组件，就拥有一个可以改写的状态了！
+
+- `onClickCell`和 `(p)=>onClickCell(p)`是等价的吗？
+
+```
+//为啥不这样：
+<Cell text={item} onClick={onClickCell} />
+//而是要这样：
+<Cell text={item} onClick={() => onClickCell(row, col)} />
+```
+
+数学的角度来看它们俩是一样的
+
+```
+onClickCell(1)
+const fn = (p) => onClickCell(p)
+fn(1)
+```
+
+都会执行 `onClickCell(1)`，只是后者中转了一层！
+
+因此，从数学角度来看，任何一个 函数`fn`你的都可以改写成 `()=>fn()`这种格式，如果有参数的话，那就这样 `(…args)=>fn(…args)`
+
+它们的功能从外表上来看是咩有区别的！ 
+
+因此就有了这样的代码：
+
+``` React 
+(
+    <div>
+      {
+        cells.map((items, row) =>
+          <div className="row">
+            {items.map((item, col) =>
+              <div className="col">
+                <Cell text={item} onClick={() => onClickCell(row, col)} />
+              </div>
+            )}
+          </div>
+        )
+      }
+    </div>
+)
+```
+
+如果你还是这样的话：
+
+``` React 
+<Cell text={item} onClick={onClickCell} />
+```
+
+`onClickCell` 是无法接收参数 的，如果你这样写的话：
+
+```React
+<Cell text={item} onClick={onClickCell(row,col)} />
+```
+
+那么 `onClickCell`就会立即执行，然后把返回结果交给了 `Cell`组件的 `onClick`属性！而这样一来，点击事件就没有可用的callback执行了！
+
+言归正传，`row`和 `col`是来自闭包的！即它们的值，都是每次遍历的其中一次结果！你点击不同的Cell就会拿到不同的row值和col值！
+
+- 深拷贝和浅拷贝：cells是的值是个地址！如果地址不变，那么UI就不会变！所以需要这行代码：
+
+```js
+const copy = JSON.parse(JSON.stringify(cells))
+```
+
+这是一种很简单的深拷贝办法，即把对象字符串化，然后再变成一个有着新地址的新对象：
+
+![1566567013795](img/01/1566567013795.png)
+
+不过这种做法，比较原始，一般不会这么写，但是，这是可以用呀！可以达到我们的目的的！
+
+![1566569837952](img/01/1566569837952.png)
+
+**➹：**[深拷贝的终极探索](https://yanhaijing.com/javascript/2018/10/10/clone-deep/)
+
+**➹：**[JS深拷贝总结 - 掘金](https://juejin.im/post/5b20c9f65188257d7d719c1c)
+
+话说，创建那么多对象不会影响性能吗？ 
+
+其实创建对象并不一定会影响性能，有些库可以让创建对象不影响性能
+
+知乎上有这样一个问题「为啥函数式编程这两年又火起来了？」
+
+因为内存够了呀！我们的电脑动不动就16G内存，开了很多东西，也不过占用了60%的内存，剩下的40%内存，对于这些小对象而言，你即便创建一万个对象也没事！
+
+那么以前为啥不流行呢？因为内存不够呀，拷贝十几份对象就GG了呀！
+
+而现在，就没啥问题，尤其是前端，前端写的页面是在用户电脑里边跑，所以用户电脑的内存可以随便用，即用函数式是咩有问题的！
+
+而后端呢？就不行了，因为一个电脑一万用呀，你访问一个淘宝，ta又访问一个淘宝，如果增加一次拷贝，那么服务器的压力又得增加一倍了呀！
+
+而前端就没这样的问题了，毕竟这是一对一服务的！内存是妥妥的足够的！
+
+话又说来，修改一个格子就会创建一个新的对象，这是很浪费内存的，而这就是针对函数式一个很吐槽的点了
+
+不过，我内存够，就喜欢这样写呀！你打我呀！
+
+不管怎样，在内存里边创建一个对象是非常快的事儿，而这比页面操作节点，那就不止超过一万倍了！
+
+总之，你得改变地址！而且不需要百分百的深拷贝！
+
+- 关于这个 `setN(n + 1)`，每次都会复制一遍`n+1`的值给n，永远不会改之前的n值，而这样做的好处，等你学你函数式就明白了！或许我可把 `setN(n + 1)`看作是 `fn(x) = y`，y的值就是n的值，在这里并没有出现 `n=setN(n + 1)`，即咩有赋值操作！
+
+  > 在其他类型的语言中，变量往往用来保存"状态"（state）。不修改变量，意味着状态不能保存在变量中。函数式编程使用参数保存状态
+
+### ◇思路
+
+- 点击Cell
+  1. n+1
+  2. 改变cells的值
+  3. 判断谁赢
+
 
 
 
@@ -440,7 +839,8 @@ class Bottom3 extends React.Component{
 
 ## ★总结
 
-
+-  JS 不好，请不要学  React ！
+- 闭包要学，不然看不懂 React ！
 
 ## ★Q&A
 
@@ -502,4 +902,17 @@ class Bottom3 extends React.Component{
 **➹：**[你对return后面的括号了解多少？ - 简书](https://www.jianshu.com/p/e9230dc06044)
 
 **➹：**[render方法括号的作用 - on the way - SegmentFault 思否](https://segmentfault.com/a/1190000012360432)
+
+### ④关于 `useState(0)`？
+
+- 返回值是`[0,f]`，即一个是0，一个是函数；我们都是这样赋值的 `const [n, setN] = useState(0)`
+- `setN(n + 1)`的返回值是 `undefined`，那么为啥n的值会变呢？而且你 ` setN(n + 1)`之后，log一下 `n`的值，`n`的值并没有立刻更新！
+- 重复 `setN(n + 1)`没有效果！
+- 每次点击Cell都会执行 `Chessboard`函数！——我觉得这时的n应该是有个新值了！经过测试确实如此：
+
+![1566582090897](img/01/1566582090897.png)
+
+或许这是状态发生了变化，然后导致函数组件的的重新执行！
+
+不管了，我得去看看芳芳的 React 入门视频才行了！
 

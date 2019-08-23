@@ -10,12 +10,16 @@
 <body>
   <button onclick="xxx()">log xxx</button>
   <button onClick={function (){console.log(1)};}>log yyy</button>
+  <button id="btn">log 1</button>
   <script>
     function xxx() {
       console.log("我是旧姿势触发button 的click callback")
     }
     function yyy() {
       console.log("我是新姿势触发button 的click callback")
+    }
+    btn.onclick = function() {
+      console.log(1)
     }
   </script>
 </body>
