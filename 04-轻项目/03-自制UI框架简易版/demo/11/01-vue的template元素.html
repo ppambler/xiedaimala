@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <title>01-vue的template元素</title>
+  <style></style>
+</head>
+
+<body>
+  <div style="display: none;">我是div,你能在DOM树看到我吗？</div>
+  <div style="visibility: hidden;">
+    我是div,你能在DOM树看到我吗？
+    <div style="visibility: visible;"> 我是visibility的儿子，我是visible</div>
+  </div>
+  <template id="tem">
+    <div id="app">
+      <h1 id="title">hello world!</h1>
+    </div>
+  </template>
+  <script type="text/javascript">
+    var tem = document.getElementById("tem");//获取template标签
+    console.log(tem);
+    console.log(tem.innerHTML);  //
+    console.log(typeof tem.innerHTML);  //
+    var title = tem.content.getElementById("title"); //在template标签内部内容，必须要用.content属性才可以访问到
+    console.log(title);
+  </script>
+</body>
+
+</html>
