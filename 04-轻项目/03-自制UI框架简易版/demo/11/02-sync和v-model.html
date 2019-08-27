@@ -1,0 +1,66 @@
+<html>
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="vue-sync">
+    <h3>I'm sync</h3>
+    <p>the input value is {{parentValue}}</p>
+    <vue-sync :value.sync="parentValue"></vue-sync>
+
+    <!--@update:value 可以简写为 @update-->
+    <!-- <vue-sync :value="parentValue" @update:value="val => parentValue = val"></vue-sync> -->
+  </div>
+
+  <div id="vue-v-model">
+    <h3>I'm v-model</h3>
+    <p>the input value is {{value}}</p>
+    <vue-model :value="value" @change="value = arguments[0]"></vue-model>
+  </div>
+</body>
+
+</html>
+<script>
+  Vue.component('vue-sync', {
+    template: '<input :value="input_value" @change="input($event.target.value)">',
+    props: ['value'],
+    data: function () {
+      return {
+        input_value: this.value
+      }
+    },
+    methods: {
+      input: function (value) {
+        this.$emit('update:value', value)
+      }
+    }
+  });
+
+  Vue.component('vue-model', {
+    template: '<input :value="input_value" @input="updateValue($event.target.value)">',
+    // props: ['input_value'],
+    methods: {
+      updateValue: function (val) {
+        this.$emit('change', val);
+      }
+    }
+  });
+
+
+
+  new Vue({
+    el: "#vue-sync",
+    data: {
+      parentValue: 1
+    }
+  });
+
+  new Vue({
+    el: "#vue-v-model",
+    data: {
+      value: 1
+    }
+  })
+</script>

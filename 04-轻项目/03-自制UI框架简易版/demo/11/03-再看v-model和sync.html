@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <title>03-再看v-model和sync</title>
+  <style>
+    .msg {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 父子不通信 -->
+    <g-c1></g-c1>
+
+    <!-- 通过props父子通信，相当于给你一个固定死的实参给C2 -->
+    <g-c2 msg="hi!my child"></g-c2>
+
+    <!-- 通过props父子通信，相当于给你个动态的实参给C3 -->
+    <g-c3 :msg="appMsg"></g-c3>
+
+    <!-- 儿子能否改变appMsg的值？ 进而影响到c3的msg？(测试得知这是可以的，而且这也做到了子父通信，和兄弟通信)-->
+    <g-c4 :msg="appMsg" v-on:change-app="changeAppMsg"></g-c4>
+
+    <!-- 子组件改变传过来的props，发现不能响应式更新 -->
+    <g-c5 :msg="appMsg"></g-c5>
+
+    <!-- 更便捷的子父通信，父子组件双向数据绑定， 特殊修饰符.sync，而且appMsg1的值一变，进而又会影响到子组件的msg的值！ -->
+    <!-- 说白了，子组件是在更新传过来的msg实参呀！之前说过不要在子组件里边更新传过来的props值，但是现在就有种很快捷的方式更新传过来的值了！ -->
+    <!-- 而这种方式也解决了响应式的更新？ -->
+    <!-- .sync是个糖。等价于<g-c6 :msg="appMsg1" @update:msg="val => appMsg1 = val"></g-c6>,说白了这是子父通信的简洁版！ -->
+    <!-- <g-c6 :msg.sync="appMsg1"></g-c6>
+    <g-c6 :msg="appMsg1" @update:msg="val => appMsg1 = val"></g-c6> -->
+    <g-c6 :msg="appMsg1" @update:msg="appMsg1 = $event"></g-c6>
+    来自c6的消息：<span class="msg">{{appMsg1}}</span>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // C1,Child1的简写
+    let C1 = {
+      template: '<div class="child">我是child1,#app的儿子</div>'
+    }
+    let C2 = {
+      props: ['msg'],
+      template: '<div class="child">我是child2,#app的儿子！#app给你的数据：<span class="msg">{{msg}}</span></div>'
+    }
+    let C3 = {
+      props: ['msg'],
+      template: '<div class="child">我是child3,#app的儿子！#app给你的数据：<span class="msg">{{msg}}</span></div>'
+    }
+    let C4 = {
+      props: ['msg'],
+      template: `<div class="child">
+                  我是child4,#app的儿子！#app给你的数据：
+                  <span class="msg">{{msg}}</span>
+                  <button @click="changeMsg">click Me！</button>
+                </div>`,
+      methods: {
+        changeMsg() {
+          this.$emit('change-app', '这个信息来自于Child4')
+        }
+      }
+    }
+    let C5 = {
+      props: ['msg'],
+      template: `<div class="child">
+        我是child5,#app的儿子！#app给你的数据：
+        <span class="msg">{{c5Msg}}</span>
+        <button @click="changeMsg">click Me! 更新 #app 给我的数据</button>
+        </div>`,
+      data: function () {
+        return {
+          c5Msg: this.msg
+        }
+      },
+      methods: {
+        changeMsg() {
+          this.c5Msg = 'change'
+        }
+      }
+    }
+    let C6 = {
+      props: ['msg'],
+      template: `<div class="child">
+          我是child6,#app的儿子！#app给你的数据：
+            <span class="msg">{{msg}}</span>
+            <button @click="updateAppMsg">click Me!直接update父组件的data值，而不是通过父组件的method来改变</button>
+          </div>`,
+      methods: {
+        updateAppMsg() {
+          this.$emit('update:msg', 'hi！这是C6对#app打招呼', 'xx')
+        }
+      }
+    }
+    Vue.component('g-c1', C1)
+    Vue.component('g-c2', C2)
+    Vue.component('g-c3', C3)
+    Vue.component('g-c4', C4)
+    Vue.component('g-c5', C5)
+    Vue.component('g-c6', C6)
+    new Vue({
+      el: '#app',
+      data: {
+        appMsg: '这是来自app的data里边的数据',
+        appMsg1: '测试父子组件双向绑定'
+      },
+      methods: {
+        changeAppMsg(msg) {
+          this.appMsg = msg
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>
