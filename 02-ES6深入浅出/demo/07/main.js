@@ -1,7 +1,9 @@
+import tofuA from './A.js'
+import tofuB from './B.js'
 setTimeout(() => {
-  window.tofuA()
+  tofuA()
 }, 3000)
 
 setTimeout(() => {
-  window.tofuB()
+  tofuB()
 }, 2000)
