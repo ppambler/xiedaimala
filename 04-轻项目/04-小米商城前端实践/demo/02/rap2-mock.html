@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <title>rap2-mock</title>
+  <style></style>
+</head>
+
+<body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.bootcss.com/Mock.js/1.0.1-beta3/mock-min.js"></script>
+  <script>
+    // 模拟网络错误（改一下域名即可）：http://rapapi.taobao.org/app/mock/124878/example/1568555973369
+    axios.get('http://rap2api.taobao.org/app/mock/124878/example/1568555973369')
+      .then((res) => {
+        console.log('你要的数据:', res)
+      }).catch((err) => {
+        console.log(err)
+        console.log('如果网路错误，那就返回默认数据给你呗：')
+        let data = Mock.mock({
+          "string|1-10": "★",
+          "number|1-100": 1,
+          "boolean|1-2": true,
+          "regexp": "/[a-z][A-Z][0-9]/",
+          "function": "() => Math.random()",
+          "array|1-10": [
+            {
+              "foo|+1": 5,
+              "bar|1-10": "★"
+            }
+          ],
+          "items": [
+            1,
+            true,
+            "hello",
+            "/\\w{10}/"
+          ],
+          "object": {
+            "foo|+1": 2,
+            "bar|1-10": "★"
+          },
+          "placeholder": "@title",
+          "image": "@img('200x100', '#50B347', '#FFF', 'Mock.js')"
+        })
+        console.log(data)
+      })
+  </script>
+</body>
+
+</html>
