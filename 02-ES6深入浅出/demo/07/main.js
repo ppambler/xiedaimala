@@ -1,2 +1,3 @@
-import * as xxx from './B.js'
-console.log(xxx)
+import { a } from './A.js'
+
+console.log(a)
