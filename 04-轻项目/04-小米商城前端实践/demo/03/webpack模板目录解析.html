@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>项目目录</title>
+</head>
+
+<body>
+  <div id="app">
+    <el-row>
+      <el-col :span="12">
+        <div>
+          <h2>2.9.3 -- webpack-template</h2>
+          <el-tree :data="webpackTemplate" :props="defaultProps" accordion></el-tree>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div>
+          <h2>3.0.0-beta.10 -- zero config</h2>
+          <el-tree :data="zeroConfig" :props="defaultProps" accordion></el-tree>
+        </div>
+      </el-col>
+    </el-row>
+
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      webpackTemplate: [{
+        label: 'build -- webpack相关配置',
+        children: [{
+          label: 'build.js -- 生产环境构建'
+        }, {
+          label: 'check-versions.js -- 检查package.json中node和npm版本要求'
+        }, {
+          label: 'utils.js -- 构建工具',
+          children: [{
+            label: 'assetsPath -- 静态路径设置'
+          }, {
+            label: 'cssLoaders -- css加载(包括postcss和预编译)'
+          }, {
+            label: 'styleLoaders -- 单组件vue以外的样式'
+          }, {
+            label: 'createNotifierCallback -- webpack错误提示'
+          }]
+        }, {
+          label: 'vue-loader.conf.js -- vue-loader配置'
+        }, {
+          label: 'webpack.base.conf.js -- webpack基础配置'
+        }, {
+          label: 'webpack.dev.conf.js -- webpack开发环境配置'
+        }, {
+          label: 'webpack.prod.conf.js -- webpack生产环境配置'
+        }]
+      }, {
+        label: 'config -- 项目相关配置',
+        children: [{
+          label: 'dev.env.js -- 开发环境变量'
+        }, {
+          label: 'index.js -- 主要配置(开发服务器设置、eslint设置，打包路径设置等)'
+        }, {
+          label: 'prod.env.js -- 生产环境变量'
+        }]
+      }, {
+        label: 'src -- 开发源代码',
+        children: [{
+          label: 'assets -- 静态资源(图片、样式等)'
+        }, {
+          label: 'components -- 公共组件'
+        }, {
+          label: 'router.js -- 路由配置'
+        }, {
+          label: 'App.vue -- 默认入口组件'
+        }, {
+          label: 'main.js -- 默认入口文件、根组件(加载资源、组件)'
+        }]
+      }, {
+        label: 'static -- 静态资源(不需要webpack打包处理)'
+      }, {
+        label: '.babelrc -- babel配置'
+      }, {
+        label: '.editorconfig -- 代码格式(不同编辑器间的编码风格一致)'
+      }, {
+        label: '.eslintignore -- eslint忽略'
+      }, {
+        label: '.eslintrc.js -- eslint配置'
+      }, {
+        label: '.gitignore -- git上传忽略'
+      }, {
+        label: '.postcssrc.js -- postcss配置'
+      }, {
+        label: 'index.html -- 主页'
+      }, {
+        label: 'package.json -- JSON格式的*包描述文件*'
+      }, {
+        label: 'README.md -- 使用说明'
+      }],
+      zeroConfig: [{
+        label: 'public -- 静态资源(不需要webpack打包处理)',
+        children: [{
+          label: 'favicon.ico -- 网页图标'
+        }, {
+          label: 'index.html -- 主页'
+        }]
+      }, {
+        label: 'src -- 开发源代码',
+        children: [{
+          label: 'assets -- 静态资源(图片、样式等)'
+        }, {
+          label: 'components -- 公共组件'
+        }, {
+          label: 'view -- 路由组件'
+        }, {
+          label: 'App.vue -- 默认入口组件'
+        }, {
+          label: 'router.js -- 路由配置'
+        }, {
+          label: 'store.js -- 状态管理配置'
+        }, {
+          label: 'main.js -- 默认入口文件、根组件(加载资源、组件)'
+        }]
+      }, {
+        label: '.babelrc -- babel配置'
+      }, {
+        label: '.eslintrc.js -- eslint配置'
+      }, {
+        label: '.gitignore -- git上传忽略'
+      }, {
+        label: '.postcssrc.js -- postcss配置'
+      }, {
+        label: 'package.json -- JSON格式的*包描述文件*'
+      }, {
+        label: 'yarn.lock -- 一致的依赖版本'
+      }],
+      defaultProps: {
+        children: 'children',
+        label: 'label'
+      }
+    },
+    methods: {
+      handleNodeClick(data) {
+        console.log(data);
+      }
+    }
+  })
+</script>
+
+</html>
