@@ -1,0 +1,46 @@
+---
+typora-copy-images-to: img\00
+---
+
+# README
+
+## ★引子
+
+我想重新学习CSS 3 或者说是 深入提高 CSS 技能！所以我就开始这门课了
+
+为什么我打算提高呢？——因为我认为 CSS 真得是前端的核心竞争力呀！虽然 现在都有很多 UI 库，我们只需要稍微改一下样式即可弄出一个还算漂亮的网页，但如果自己想造个 UI 轮子的话，那么自己的CSS至少要有一定的水平才行啊！
+
+## ★资源
+
+**➹：**[德国Max的CSS 3终极前端开发指南 - 网易云课堂](https://study.163.com/course/introduction.htm?courseId=1208941848#/courseDetail?tab=1)
+
+**➹：**[Get Started With CSS (Plus Flexbox, Grid, and Sass) | Udemy](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/)
+
+![1569172942302](img/00/1569172942302.png)
+
+> 10.99$，不到78块钱（当前汇率7.090800）
+
+## ★概述
+
+德国大神MAX的经典之作。CSS入门不容错过的好课。
+
+CSS是什么？—— **C**ascading **S**tyle **S**heets 的简写，它是一门 「编程语言」，用于把 「raw HTML pages」转变成真正漂亮的网站
+
+课程讲解逻辑：从 简单的「What is CSS? How does it work? How do you use it？」入手，然后再逐渐深入对CSS的学习！最后以一个项目为终（该项目没有后台，是个存粹的前端项目）
+
+## ★能学到什么
+
+- 能搞个漂亮的网站出来，即网站内容6，样式也要6。总之，可以在自己的项目里边自信的应用CSS，而不是每写一个样式都得小心翼翼、如履薄冰……
+- 能使用基本和高级CSS功能（features，特性）
+- 能**真正**了解 CSS 背后的不同概念 和  理论，以及某些 CSS 功能（features）
+
+## ★会有哪些内容
+
+![img](img/00/dc6f449ed561497eb0827cece56a27f6.webp)
+
+![1569172106630](img/00/1569172106630.png)
+
+## ★目录
+
+- [01-概述](./01-概述)
+
