@@ -14,7 +14,7 @@ typora-copy-images-to: img\00
 
 **➹：**[德国Max的CSS 3终极前端开发指南 - 网易云课堂](https://study.163.com/course/introduction.htm?courseId=1208941848#/courseDetail?tab=1)
 
-**➹：**[Get Started With CSS (Plus Flexbox, Grid, and Sass) | Udemy](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/)
+**➹：**[Get Started With CSS (Plus Flexbox, Grid, and Sass) - Udemy](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/)
 
 ![1569172942302](img/00/1569172942302.png)
 
@@ -22,7 +22,7 @@ typora-copy-images-to: img\00
 
 ## ★概述
 
-德国大神MAX的经典之作。CSS入门不容错过的好课。
+德国大神MAX（样子有点像NBA里边的状元 格里芬）的经典之作。CSS入门不容错过的好课。
 
 CSS是什么？—— **C**ascading **S**tyle **S**heets 的简写，它是一门 「编程语言」，用于把 「raw HTML pages」转变成真正漂亮的网站
 
