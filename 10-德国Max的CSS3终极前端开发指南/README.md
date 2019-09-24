@@ -10,11 +10,19 @@ typora-copy-images-to: img\00
 
 为什么我打算提高呢？——因为我认为 CSS 真得是前端的核心竞争力呀！虽然 现在都有很多 UI 库，我们只需要稍微改一下样式即可弄出一个还算漂亮的网页，但如果自己想造个 UI 轮子的话，那么自己的CSS至少要有一定的水平才行啊！
 
+## ★目录
+
+- [01-概述](./01-概述)
+
 ## ★资源
 
 **➹：**[德国Max的CSS 3终极前端开发指南 - 网易云课堂](https://study.163.com/course/introduction.htm?courseId=1208941848#/courseDetail?tab=1)
 
+**➹：**[CSS完全开发指南（含Sass、Flexbox和Grid） – 译学馆](https://www.yxgapp.com/product/css-the-complete-guide-incl-flexbox-grid-and-sass/)
+
 **➹：**[Get Started With CSS (Plus Flexbox, Grid, and Sass) - Udemy](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/)
+
+**➹：** [demo](https://github.com/ppambler/CSS---The-Complete-Guide-incl.-Flexbox-Grid-and-Sass-)「GitHub搜索关键字：CSS The Complete Guide」
 
 ![1569172942302](img/00/1569172942302.png)
 
@@ -40,7 +48,5 @@ CSS是什么？—— **C**ascading **S**tyle **S**heets 的简写，它是一�
 
 ![1569172106630](img/00/1569172106630.png)
 
-## ★目录
 
-- [01-概述](./01-概述)
 
