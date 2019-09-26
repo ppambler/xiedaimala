@@ -8,6 +8,8 @@
 
 总之，我希望参加完这个训练营之后，能把之前还未写完的天气小程序给写完了。
 
+> 2019年9月26日更新：意识到文档与实践之间的重要性，即你在看文档的过程中，别忘了CRM，只看文档不动手是徒劳行为！突然发觉「从0开始实现天气小程序」这个`0`真得是 虚假宣传！这本小册，讲真，对新手入门小程序并不友好！
+
 ## ★资源
 
 **➹：**[https://tencentcloudbase.github.io/handbook/tcb01.html](https://tencentcloudbase.github.io/handbook/tcb01.html)
