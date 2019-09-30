@@ -49,7 +49,7 @@ typora-copy-images-to: img\03
 
 > 可以利用开发者工具，查看image组件之所以溢出的缘故
 
-重置它的样式为 ` height: auto;`即可！
+重置它的样式为 ` height:auto;`即可！
 
 > css的覆盖原理是按照优先级来的，越是写在css文件后面的样式优先级越高，会把前面的给覆盖掉；在小程序里页面里的wxss的优先级比app.wxss的优先级更高，所以也可以覆盖掉。
 
@@ -126,6 +126,7 @@ typora-copy-images-to: img\03
 
 - `block`组件类似于`template`标签，参考 WeUI的grid组件，渲染出来的东西是咩有`block`这个元素的！
 - 页面起名可以这样`list-if-render` ，之后每看一篇文章就添加个页面！
+- 发觉学习小程序，也会反哺对vue的学习！
 
 ## ★Q&A
 
