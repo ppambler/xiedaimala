@@ -13,6 +13,7 @@ typora-copy-images-to: img\00
 ## ★目录
 
 - [01-概述](./01-概述)
+- [02-CSS基础入门](./02-the-basics)
 
 ## ★资源
 
