@@ -38,5 +38,10 @@ Github Pages的服务是免费的，但是也有一些限制：
 
 **➹：**[github中git bash基础命令行 - 小鹏的编程日志 - 博客园](https://www.cnblogs.com/WangXinPeng/p/8016293.html)
 
+## 4、TPR 是啥东西的简写？
+
+Technic pre-research ： 技术预研！
+
+
 
 
