@@ -91,7 +91,7 @@ function xxx(a,b) {
 如你要写个计算器，那么这个功能就是计算器功能啦！于是可有这样一个class：
 
 ``` js
-Class Calculator {
+class Calculator {
 
 }
 ```
@@ -99,7 +99,7 @@ Class Calculator {
 然后，写了个类，就得写个构造器和初始化方法：
 
 ``` js
-Class Calculator {
+class Calculator {
   constructor() {
 
   }
@@ -112,7 +112,7 @@ Class Calculator {
 思考一下这个功能有没有事件处理函数的绑定，如果有，那么必须得加一个叫 `bindEvent`的函数去管理它：
 
 ``` js
-Class Calculator {
+class Calculator {
   constructor() {
 
   }
@@ -130,7 +130,7 @@ Class Calculator {
 那么如何让上边这个代码生效呢？
 
 ``` js
-Class Calculator {
+class Calculator {
   constructor() {
     this.init();
   }
@@ -177,7 +177,7 @@ new Calculator(); //new 一下就会执行 `init`
 既然是属性，那么我们就得把这些东西写到 class 的 constructor 里边去：
 
 ``` js
-Class Calculator {
+class Calculator {
   constructor() {
     const oCalculator = document.getElementsByClassName('calculator')[0]
     this.oResult = oCalculator.getElementsByClassName('result')[0]
