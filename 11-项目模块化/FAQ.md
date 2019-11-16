@@ -186,9 +186,14 @@ class Calculator {
     this.oBtnGroup = oCalculator.getElementsByClassName('btn-group')[0]
     this.init();
   }
+
+  // init函数决定了程序是否跑起来，即我们new一个实例出来之后，这个class里边的代码是能够跑起来的！
+  // 总之程序能否跑起来全靠它了
   init() {
     this.bindEvent();
   }
+
+  // 如果View涉及到点击事件等交互行为的话，那么我们就需要bindEvent这样的函数用于专门管理事件处理函数的绑定！
   bindEvent() {
 
   }
