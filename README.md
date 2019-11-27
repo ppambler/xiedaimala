@@ -15,6 +15,10 @@
 - [03-小野老师带你玩转「项目模块化」](./11-项目模块化/README.md)
 - [04-JS面向对象之深度解析](./13-JS面向对象之深度解析/README.md)
 
+## ★面试题
+
+- [README](./00-fe-interview/README.md)
+
 ## ★碎片知识
 
 - [README](./12-碎片知识/README.md)
