@@ -10,6 +10,12 @@
 
 **➹：**[webpack4从入门到精通 - 网易云课堂](https://study.163.com/course/courseMain.htm?courseId=1209592947)
 
+## ★推荐一些关于webpack的文章
+
+**➹：**[webpack学习(五) -- postcss的使用 - 掘金](https://juejin.im/post/5cab0f6f6fb9a05e233caa3a)
+
+**➹：**[从零搭建一个 webpack 脚手架工具（一） - 云+社区 - 腾讯云](https://cloud.tencent.com/developer/article/1549555)
+
 ## ★目录
 
 - [01-webpack的使用，处理各类型文件](./01.md)
