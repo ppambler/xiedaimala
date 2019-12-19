@@ -16,6 +16,12 @@
 
 **➹：**[从零搭建一个 webpack 脚手架工具（一） - 云+社区 - 腾讯云](https://cloud.tencent.com/developer/article/1549555)
 
+**➹：**[不容错过的 Babel7 知识 - 掘金](https://juejin.im/post/5ddff3abe51d4502d56bd143)
+
+**➹：**[Webpack 深入浅出之公司级分享总结(内附完整ppt) - 掘金](https://juejin.im/post/5df884ad6fb9a0164e7f979d)
+
+**➹：**[一步步从零开始用 webpack 搭建一个大型项目 - 掘金](https://juejin.im/post/5de06aa851882572d672c1ad#0_1)
+
 ## ★目录
 
 - [01-webpack的使用，处理各类型文件](./01.md)
