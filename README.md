@@ -6,7 +6,7 @@
 
 常见问题：[FAQ](./FAQ.md)
 
-## ★其它的
+## ★Repositories
 
 - [GeekTime](https://ppambler.github.io/time-geekbang)
 - [Books](https://ppambler.github.io/books)
