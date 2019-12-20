@@ -1,12 +1,19 @@
-# [xiedaimala](https://github.com/ppambler/xdmala)
-
-这是我在[写代码啦！](https://xiedaimala.com/)学习的一些笔记
+# [xdmala](https://github.com/ppambler/xdmala)
 
 > 2019-09-19：添加其它在线课的笔记！
 
 关于url：目前发现不能有空格，不能用括号……
 
 常见问题：[FAQ](./FAQ.md)
+
+## ★其它的
+
+- [GeekTime](https://github.com/ppambler/time-geekbang)
+- [Books](https://github.com/ppambler/books)
+- [Old-blog](https://github.com/ppambler/fe-learn-2018)
+- [imooc](https://github.com/ppambler/imooc)
+- [icourse163](https://ppambler.github.io/icourse163/)
+- [前端每日实战](https://github.com/ppambler/fe-daily-challenges-2018)
 
 ## ★基础知识
 
