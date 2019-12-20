@@ -8,12 +8,12 @@
 
 ## ★Repositories
 
-- [GeekTime](https://ppambler.github.io/time-geekbang)
-- [Books](https://ppambler.github.io/books)
-- [Old-blog](https://ppambler.github.io/fe-learn-2018)
+- [time-geekbang](https://ppambler.github.io/time-geekbang)
+- [books](https://ppambler.github.io/books)
+- [fe-learn-2018](https://ppambler.github.io/fe-learn-2018)
 - [imooc](https://ppambler.github.io/imooc)
 - [icourse163](https://ppambler.github.io/icourse163/)
-- [前端每日实战](https://ppambler.github.io/fe-daily-challenges-2018/)
+- [fe-daily-challenges-2018](https://ppambler.github.io/fe-daily-challenges-2018/)
 
 ## ★基础知识
 

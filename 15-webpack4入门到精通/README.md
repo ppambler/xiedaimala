@@ -22,6 +22,8 @@
 
 **➹：**[一步步从零开始用 webpack 搭建一个大型项目 - 掘金](https://juejin.im/post/5de06aa851882572d672c1ad#0_1)
 
+**➹：**[零：前言 - 心谭博客](https://xin-tan.com/passages/2018-07-29-webpack-demos-introduction/)
+
 ## ★目录
 
 - [01-webpack的使用，处理各类型文件](./01.md)
