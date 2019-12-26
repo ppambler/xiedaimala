@@ -74,6 +74,95 @@
 
 既然我们知道了内联样式有种种缺点，那么我们就找一个更好的替代品吧！
 
+<mark>1）第一个替代品：</mark>
+
+在head区域里边添加一个特殊的 `style` 标签，当然，这也是一个常见的HTML标签哈！
+
+在style的开始标签和结束标签之间，我们可以编写所谓的「CSS规则」
+
+一个与元素上写的style属性的相同点：
+
+> 都是 `font-size:16px;`这样的CSS规则
+
+一个不同点：
+
+需要添加一个所谓的「选择器」，毕竟如果你直接这样写：
+
+``` html
+<head>
+  <style>
+    background： yellow;
+  </style>
+</head>
+```
+
+的话，CSS是不知道你会在哪里使用这个背景色的。
+
+可既然如此，那我们该如何把这样式应用到某个元素上呢？
+
+很简单，我们不需要像之前那样直接在元素上操作，如写个style属性之类的
+
+我们只需要给个所谓的「选择器」，就能告诉CSS要搞在那个元素身上！
+
+「选择器」只是一段额外的信息，它指明了DOM中的某一个元素，即在body这个区域的某一个元素（包括body自己哈！）
+
+总之， `background： yellow;`是个声明，用于告诉CSS「我想改变谁的颜色」
+
+``` css
+<style> 
+  section {
+    background: yellow;
+  }
+</style>
+```
+
+- section：是个选择器，我们可以为页面里边的不同元素（如h1、p、div）添加多种选择器（如标签选择器，兄弟选择器等）
+
+- `{}`：`{}`里边的是为选择器编写的声明，或者说是规则（其实整个「选择器+{}」才是一个规则）
+
+标签选择器，如 `section`， 它会查找页面里边所有的section元素，style标签里边 CSS会自动在浏览器里边运行！
+
+上边那个CSS规则的应用是这样子的：
+
+1. 根据选择器找到元素
+2. 应用样式声明
+
+一图胜千言，规则集（通常简称为规则）
+
+![规则集](assets/img/2019-12-27-00-18-09.png)
+
+话说，浏览器是如何解析CSS的？或者说是浏览器拿到一个index.html文件，然后是如何去解析style属性的内容以及style标签里边的样式规则的？
+
+**➹：**[探究 CSS 解析原理 - Jartto's blog](http://jartto.wang/2017/11/13/Exploring-the-principle-of-CSS-parsing/#about)
+
+
+
+
+## ★总结
+
+- CSS布局主要是基于盒子模型的，因此，每个占用页面空间的块都有这样的属性：`padding`、`border`、`margin`。（可以把盒子看做是小木箱子，关于盒子模型，即把盒子抽象成页面的元素，而既然是模型，那么这就意味着有数据，而数据来自于元素的样式属性！）
+
+  **➹：**[CSS basics - Learn web development - MDN](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
