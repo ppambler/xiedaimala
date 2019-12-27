@@ -133,6 +133,8 @@
 
 话说，浏览器是如何解析CSS的？或者说是浏览器拿到一个index.html文件，然后是如何去解析style属性的内容以及style标签里边的样式规则的？
 
+> 一个认识很关键：那就是index.html里边的内容都是流，都是字符串！
+
 **➹：**[探究 CSS 解析原理 - Jartto's blog](http://jartto.wang/2017/11/13/Exploring-the-principle-of-CSS-parsing/#about)
 
 
@@ -140,11 +142,182 @@
 
 ## ★总结
 
-- CSS布局主要是基于盒子模型的，因此，每个占用页面空间的块都有这样的属性：`padding`、`border`、`margin`。（可以把盒子看做是小木箱子，关于盒子模型，即把盒子抽象成页面的元素，而既然是模型，那么这就意味着有数据，而数据来自于元素的样式属性！）
+- CSS布局主要是基于盒子模型的，因此，每个占用页面空间的块都有这样的属性：`padding`、`border`、`margin`。（可以把盒子看做是小木箱子，关于盒子模型，即把盒子抽象成页面的元素，而既然是模型，那么这就意味着有数据，而数据来自于元素的border、width等这样的属性！）
 
   **➹：**[CSS basics - Learn web development - MDN](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
 
+- display: sets the display mode of an element。这给我的赶脚类似于webpack打包时是根据生产模式打包还是开发模式打包！
 
+## ★Q&A
+
+###  1、DOM和CSSOM到底是啥？
+
+浏览器渲染页面前需要先构建DOM树和CSSOM树。
+
+转换步骤： Bytes → characters → tokens → nodes → object model。
+
+HTML标签被转换成文档对象模型（Document Object Model）。
+CSS样式规则被转换成CSS对象模型（CSS Object Model）。
+
+DOM和CSSOM是相互独立的数据结构。
+
+``` html
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+    <title>Critical Path</title>
+  </head>
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <div><img src="awesome-photo.jpg"></div>
+  </body>
+</html>
+```
+
+上面的结构会被转换成如下DOM树:
+
+![DOM](assets/img/2019-12-27-13-05-50.png)
+
+字节 -> 字符（根据文件的指定编码如utf8把字节转化成一个的字符串字符） -> 有标识的token（token化，即从一大串字符串里边挑出符合某种规则「 W3C HTML5 标准指定的规则」的东西出来，如看到`<html>`就搞成「`StartTag:html`」这种形式） -> 节点（词法分析这些token，然后产出定义了某种属性和规则的对象出来） -> DOM树（由于HTML定义了不同HTML标签之间的关系，如父子、兄弟关系，因此就把所创建的对象，即节点，搞到一颗叫「树」的数据结构上了，而该tree数据结构也捕获了在原始标签里边定义的父子关系、兄弟关系并映射出来）
+
+> 每次浏览器处理 HTML 标记时，都会经历以上过程，而这个过程可能会花费一些时间，尤其是当我们需要处理大量的 HTML 时。如上边的HTML代码花了大约5毫秒才将一块 HTML 转换成 DOM 树！ 对于较大的页面，这个过程可能需要更长的时间。 而在创建流畅的动画时，如果浏览器不得不处理大量的 HTML，那么这很容易成为瓶颈（可能是性能方面，如用户很久才看到朴素的内容）。
+
+Dom 树捕获到了文档标记的属性以及标记之间的关系，但是这个过程并没有告诉我们元素渲染（呈现）时的外观。 当然，这是 CSSOM 的责任哈！
+
+CSSOM：
+
+> 获取CSS变成浏览器可以操作的对象的过程，跟HTML差不多
+
+当浏览器在构建我们这个简单页面的 DOM 时，它在文档的头部遇到了一个链接标记，该标记引用了外部 CSS 样式表: style.css。 考虑到它需要这个资源来渲染页面，那么它立即对这个资源发出请求，并返回以下内容:
+
+``` css
+body { font-size: 16px }
+p { font-weight: bold }
+span { color: red }
+p span { display: none }
+img { float: right }
+```
+
+当然，我们也可以直接在 HTML 标记(inline)中声明我们的样式，但是为了保持 「CSS 独立于 HTML」这样的理念，即这允许我们将内容和设计作为独立的关注点: 设计师可以处理 CSS，开发人员可以专注于 HTML，等等。因此，我们一般不会在HTML写上内联样式！
+
+与 HTML 一样，我们需要将接收到的 CSS 规则转换成浏览器能够理解和使用的东西。 因此，我们重复 HTML 的过程，即用 CSS 代替 HTML即可:
+
+![CSSOM解析过程](assets/img/2019-12-27-18-34-15.png)
+
+> CSS字节被转换成了字符，然后根据规则token(标记)一下字符，然后是节点化，最后它们被链接成了一个树结构，而这被称之为“ CSS 对象模型”(CSSOM) :
+
+![CSSOM](assets/img/2019-12-27-18-37-18.png)
+
+为什么 CSSOM 要有一个树结构呢？ 
+
+因为当计算页面里边任何对象的最终样式集时，浏览器会从适用于该节点的最通用规则开始(例如，如果该节点它是 body 元素的子元素，那么则先应用所有从body哪里继承而来的样式) ，然后通过应用更具体的规则来递归地精炼计算得到的样式。说白了，这计算节点最终样式的规则就是「层层叠叠（cascade down）」（效果是你会发现，我们写的样式规则并不是完全一模一样的给到元素身上去的，而是不断地精炼，即咩有的会因为继承而被添加，原有的会被后来者覆盖，还有浏览器自身给了一些默认样式）
+
+> 在Nodes这一步为节点添加样式规则，而HTML的这一步则是添加属性！
+
+为了使上面的最终样式计算规则更具体点，以上面的 CSSOM 树为例。 
+
+放置在 body 元素中里边的 span 标签里边包含的任何文本，字体大小为16像素，并且具有红色文本ーー font-size 指令是从 body 向下级联到 span的。 但是，如果 span 标签是 p 标签的子标签，那么就不显示其任何的内容。
+
+> 级联这个词的特征：一对多。所以假如body有个可继承的样式声明，那么这个「1」就会影响到子孙后代这么多个元素的样式！
+
+另外，请注意，上面的树并不是完整的 CSSOM 树，它只显示了我们决定在样式表里边重写的样式。 每个浏览器都提供了一组默认样式，而这也被称为“用户代理样式”(user agent styles)——我们没有提供任何自己所写的样式时所看到的样式——而我们所写的样式只是覆盖了这些默认样式罢了！
+
+关于以上 CSS 处理了多长时间：
+
+我们微不足道的样式表需要大约0.6 ms 来处理，而且影响了页面上的8个元素。
+
+可这八个元素是从哪里来的呢？
+
+不管怎样，CSSOM 和 DOM 都是特立的数据结构。
+
+不过，事实证明，浏览器隐藏了重要的一步，即连接 DOM 和 CSSOM 的渲染树。（Render tree）
+
+> 我纯属猜测，是因为有个span元素是display为none的缘故！
+
+**➹：**[构建对象模型  -  Web  -  Google Developers](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model)
+
+
+
+题外话，关于数学建模（我不知道编程建模和数学建模是不是可以看做同一个意思）：
+
+> 数学建模是一帮数学家想利用数学知识去解决实际问题而研发出来的一种数学思考方法！
+
+数学建模要解决的问题主要有五大类：
+
+- 评价类：如面试新员工要对他们的综合能力做出一种评价
+- 运筹类：如你要规划今日出行的路线
+- 直接方程类：如你要研究人口增长的模式
+- 预测类：如你要预测下一次下雨是什么日期
+- 分析判别类：如你要用数据判断一个商品是正品还是次品
+
+而要解决这些问题，或者说是模型，方法不只有一种，实现它的方法是多种多样的！而这里用到的方法，我们把它叫做算法！
+
+如面前有两份大餐，小龙虾套餐、牛排套餐，而你身上的钱只能购买一份，那么选择哪一份好呢？
+
+于是我们可以利用某种评价类算法来对这两样食物进行一个评价，然后选择一个得分较高的食物进行购买！如小龙虾评分高，那就选择小龙虾呗！
+
+数学建模比赛主要有三个步骤：
+
+1. 建模（整个比赛的基础，只有模型建得好，曲子变得好，才有发挥的余地）
+2. 编程（相当于作词，是比赛重要的组成，只有编程能实现，填词做到位，才能把整个歌曲完成）
+3. 写作（相当于歌唱，是比赛能否获奖的关键，只有论文表达得当，歌曲唱得圆满，才能吸引评委，得到高分）
+
+如果我们把整个数学建模过程想象成编写一支歌曲，那就是
+
+> 作曲（周杰伦）+词（方文山）+演唱者（周杰伦）
+
+因此，「建模、编程、写作」三者在数学建模比赛中缺一不可，它们都是同样重要的！
+
+个人一些认识：
+
+建模（有各种类型的问题，分析问题，是否可编程解决问题，是否可把问题数据化）+编程 + 效果（是否达到预期情况）
+
+搞了个DOM，是为了解决js操作元素的问题，有了DOM这个概念，需要编程搞一些解析器之类的东西，然后还有渲染之类的
+
+我们输入一个HTML文件，浏览器就会处理这个HTML文件，而且浏览器会暴露一些所谓的DOM接口，然后来让我们JS有动态修改HTML文件的功能（源文件是不能修改的，但是解析文件生成的那颗DOM树是可以修改的）
+
+在编程里边，分析问题解决问题的过程就是建模。如果把搞出来的模型（如加法模型）看做是一个函数的话，那么你输入1和1，得到2，还是3和3得到6，都能有你想要拿到的结果。
+
+总之，建模是为了设计算法，编程是为了实现算法
+
+> 提搞自己编程能力的本质是「学习算法和数据结构」，可不是你学到了多少新出来的框架，然后用到了这些框架做了哪些东西！
+
+**➹：**[视频教学 第一辑 - 什么是数学建模？_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili](https://www.bilibili.com/video/av23152833)
+
+**➹：**[数学建模需要怎样的编程水平？ - 知乎](https://www.zhihu.com/question/61102199)
+
+**➹：**[建模和编程的本质区别是什么](https://www.douban.com/group/topic/20198679/)
+
+**➹：**[TY的日记](https://www.douban.com/people/flyingrobot/notes?start=50&type=note)
+
+**➹：**[编程与建模_编程_四季风-CSDN博客](https://blog.csdn.net/u012987386/article/details/72552168)
+
+
+### 2、what is raw bytes ?
+
+问题缘由：
+
+> The browser reads the **raw bytes** of HTML off the disk or network, and translates them to individual characters based on specified encoding of the file (for example, UTF-8).
+
+解释：
+
+有时添加形容词“raw”是为了强调单个字节，而不是代表整个值，你知道的，一个值，有时用一个字节就能表示出来了，但有时则是2个、3个、4个这样子
+
+总之，有个raw强调的是「某个更大整体的一部分」
+
+就来文件而言，它们总是由raw bytes组成的，而一些API提供把这些字节转化成字符的功能！
+
+![utf8](assets/img/2019-12-27-15-35-14.png)
+
+而中文字符则：
+
+![utf8之中文字符](assets/img/2019-12-27-15-37-02.png)
+
+
+**➹：**[what is raw bytes ? (Beginning Java forum at Coderanch)](https://coderanch.com/t/522388/java/raw-bytes)
+
+**➹：**[Convert UTF8 to Hexadecimal - Online UTF8 Tools](https://onlineutf8tools.com/convert-utf8-to-hexadecimal)
 
 
 
