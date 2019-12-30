@@ -10,5 +10,11 @@
 
 中文版的：[FANDOM](https://www.fandom.com/explore-zh?uselang=zh)
 
+## ★资源获取
+
+### ◇电子书
+
+1）[ePUBw.COM-免费优质电子书下载](https://epubw.com/)
+
 
 
