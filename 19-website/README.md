@@ -2,6 +2,10 @@
 
 > 收纳一些自己觉得非常好的网站
 
+## ★文档&教程
+
+- [JavaScript 完全手册（2018版）-WEB前端开发](https://www.html.cn/archives/9922)
+
 ## ★博客
 
 - [编程随想的博客](https://program-think.blogspot.com/)
@@ -12,6 +16,7 @@
 - [ConardLi的blog](http://www.conardli.top/blog/)
 - [mqyqingfeng/Blog: 冴羽写博客的地方](https://github.com/mqyqingfeng/Blog)
 - [木易杨前端进阶](https://muyiy.cn/)
+- [qq449245884/xiaozhi](https://github.com/qq449245884/xiaozhi)
 
 ## ★工具类
 
