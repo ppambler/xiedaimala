@@ -43,6 +43,7 @@
 - [04-JS面向对象之深度解析](./13-JS面向对象之深度解析/README.md)
 - [05-webpack4入门到精通](./15-webpack4入门到精通/README.md)
 - [06-10天彻底搞定webpack4.0](./18-10day-webpack/README.md)
+- [07-5天学会Node.js打造现代web架构](./22-5day-nodejs-web/README.md)
 
 ## ★面试题
 

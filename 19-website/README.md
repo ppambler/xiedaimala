@@ -34,6 +34,16 @@
 
 中文版的：[FANDOM](https://www.fandom.com/explore-zh?uselang=zh)
 
+## ★图片
+
+1）看风景的
+
+- [360°航拍全景，全球360°虚拟游览，地球上最有趣的地方照片](http://www.airpano.org.cn/)
+- [360° Aerial Panoramas, 360° Virtual Tours Around the World, Photos of the Most Interesting Places on the Earth](https://www.airpano.com/)
+
+
+
+
 ## ★资源获取
 
 ### ◇电子书
