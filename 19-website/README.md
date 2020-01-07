@@ -17,6 +17,7 @@
 - [mqyqingfeng/Blog: 冴羽写博客的地方](https://github.com/mqyqingfeng/Blog)
 - [木易杨前端进阶](https://muyiy.cn/)
 - [qq449245884/xiaozhi](https://github.com/qq449245884/xiaozhi)
+- [biaochenxuying/blog: 大前端技术为主，读书笔记、随笔、理财为辅，做个终身学习者。](https://github.com/biaochenxuying/blog)
 
 ## ★工具类
 
