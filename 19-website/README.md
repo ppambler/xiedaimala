@@ -46,6 +46,14 @@
 
 - [20+ Best Free Programming Pictures on Unsplash](https://unsplash.com/s/photos/programming)
 
+3）制作网站logo
+
+- [Logo Maker - Create Your Own Logo, It's Free! - FreeLogoDesign](https://www.freelogodesign.org/)
+
+4）制作favicon
+
+- [Favicon & App Icon Generator](https://www.favicon-generator.org/)
+
 
 
 
