@@ -54,6 +54,14 @@
 
 - [Favicon & App Icon Generator](https://www.favicon-generator.org/)
 
+5）制作占位图
+
+- [Lorem Picsum](https://picsum.photos/) -> 图片丰富，好看
+- [Dynamic Dummy Image Generator - DummyImage.com](https://dummyimage.com/) -> 简单、纯粹
+- [temp.im - A placeholder images service.](http://temp.im/) -> 国内、访问速度快
+
+
+
 
 
 
