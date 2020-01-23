@@ -71,5 +71,9 @@
 
 1）[ePUBw.COM-免费优质电子书下载](https://epubw.com/)
 
+### ◇英语学习
+
+1）[4000 Essential English Words (all books) [en-en] - AnkiWeb](https://ankiweb.net/shared/info/1104981491)
+
 
 
