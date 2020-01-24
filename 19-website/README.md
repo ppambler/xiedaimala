@@ -6,6 +6,10 @@
 
 - [JavaScript 完全手册（2018版）-WEB前端开发](https://www.html.cn/archives/9922)
 
+## ★视频&教程
+
+- [Academind - Online Learning, Real-Life Success](https://www.academind.com/)
+
 ## ★博客
 
 - [编程随想的博客](https://program-think.blogspot.com/)
