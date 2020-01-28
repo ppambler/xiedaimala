@@ -8,7 +8,14 @@
 
 ## ★视频&教程
 
+### ◇前端
+
 - [Academind - Online Learning, Real-Life Success](https://www.academind.com/)
+
+### ◇科普
+
+- [李永乐老师官方的个人空间 - 哔哩哔哩 ( ゜- ゜)つロ 乾杯~ Bilibili](https://space.bilibili.com/9458053?from=search&seid=4970447064227332590)
+- [李永乐老师 - YouTube](https://www.youtube.com/%E6%9D%8E%E6%B0%B8%E4%B9%90%E8%80%81%E5%B8%88)
 
 ## ★博客
 
