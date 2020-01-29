@@ -20,6 +20,7 @@ typora-copy-images-to: img\00
   - [02-4-练习](./02-4.md)
   - [02-5-总结](./02-5.md)
 - [03-深入了解CSS](./03.md)
+  - [03-1-CSS盒子模型介绍、理解盒子模型&margin collapsing以及移除默认margin](03-1.md)
 
 ## ★资源
 
