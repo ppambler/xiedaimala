@@ -4,7 +4,18 @@
 
 ## ★文档&教程
 
+### ◇电子书
+
 - [JavaScript 完全手册（2018版）-WEB前端开发](https://www.html.cn/archives/9922)
+- [林间有风](http://7yue.pro/)
+- [Structure and Interpretation of Computer Programs, JavaScript Adaptation](https://sicp.comp.nus.edu.sg/)
+
+### ◇系列文章
+- [JavaScript design patterns Archives - Marcin Wanago Blog - JavaScript, both frontend and backend](https://wanago.io/courses/javascript-design-patterns/)
+
+### ◇一篇文章
+
+- [CSS Circles - Cloud Four](https://cloudfour.com/thinks/css-circles/)
 
 ## ★视频&教程
 
@@ -86,5 +97,9 @@
 
 1）[4000 Essential English Words (all books) [en-en] - AnkiWeb](https://ankiweb.net/shared/info/1104981491)
 
+### ◇数据接口
 
+1）[MZCretin/RollToolsApi: 一个提供开发中常用数据的一个稳定聚合Api接口源，运行于独立服务器，免费，且长期维护，会持续添加新的接口！](https://github.com/MZCretin/RollToolsApi)
+
+2）[想写个 App 练手，有什么有趣的 API 接口推荐吗？ - 知乎](https://www.zhihu.com/question/39479153)
 
