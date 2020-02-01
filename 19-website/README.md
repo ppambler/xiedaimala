@@ -91,15 +91,22 @@
 
 ### ◇电子书
 
-1）[ePUBw.COM-免费优质电子书下载](https://epubw.com/)
+- [ePUBw.COM-免费优质电子书下载](https://epubw.com/)
 
 ### ◇英语学习
 
-1）[4000 Essential English Words (all books) [en-en] - AnkiWeb](https://ankiweb.net/shared/info/1104981491)
+- [4000 Essential English Words (all books) [en-en] - AnkiWeb](https://ankiweb.net/shared/info/1104981491)
 
 ### ◇数据接口
 
-1）[MZCretin/RollToolsApi: 一个提供开发中常用数据的一个稳定聚合Api接口源，运行于独立服务器，免费，且长期维护，会持续添加新的接口！](https://github.com/MZCretin/RollToolsApi)
+- [MZCretin/RollToolsApi: 一个提供开发中常用数据的一个稳定聚合Api接口源，运行于独立服务器，免费，且长期维护，会持续添加新的接口！](https://github.com/MZCretin/RollToolsApi)
 
-2）[想写个 App 练手，有什么有趣的 API 接口推荐吗？ - 知乎](https://www.zhihu.com/question/39479153)
+- [想写个 App 练手，有什么有趣的 API 接口推荐吗？ - 知乎](https://www.zhihu.com/question/39479153)
+
+### ◇视频下载
+
+1）Twitter视频下载
+
+- [Twitter视频下载器 - 将Twitter视频下载到MP4和MP3](https://www.savetweetvid.com/zh)
+- [下载Twitter视频至MP4 & MP3! 在线简单 & 免费](https://www.downloadtwittervideo.com/zh-cn/)
 
