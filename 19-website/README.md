@@ -9,6 +9,7 @@
 - [JavaScript 完全手册（2018版）-WEB前端开发](https://www.html.cn/archives/9922)
 - [林间有风](http://7yue.pro/)
 - [Structure and Interpretation of Computer Programs, JavaScript Adaptation](https://sicp.comp.nus.edu.sg/)
+- [JavaScript & DOM Tips, Tricks, and Techniques E-Book - Impressive Webs](https://www.impressivewebs.com/javascript-dom-tips-tricks-techniques-ebook/)
 
 ### ◇系列文章
 - [JavaScript design patterns Archives - Marcin Wanago Blog - JavaScript, both frontend and backend](https://wanago.io/courses/javascript-design-patterns/)
