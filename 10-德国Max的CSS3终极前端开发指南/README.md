@@ -25,6 +25,7 @@ typora-copy-images-to: img\00
   - [03-3-深入学习高度和宽度属性、理解盒子尺寸](./03-3.md)
   - [03-4-为我们的项目添加页眉、理解Display属性](./03-4.md)
   - [03-5-display属性应用、美化导航条、理解inline-block的怪异行为、text-decoration & vertical-align](./03-5.md)
+  - [03-6-美化链接、了解伪类](./03-6.md)
 
 ## ★资源
 
