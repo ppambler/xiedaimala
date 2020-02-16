@@ -2,6 +2,18 @@
 
 > 收纳一些自己觉得非常好的网站
 
+## Cheat Sheet
+
+1）Git
+
+- [GitCheatSheet_issue#2366_102019-V5](https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf)
+- [git-cheat-sheet-education](https://education.github.com/git-cheat-sheet-education.pdf)
+- [flyhigher139/Git-Cheat-Sheet: Git Cheat Sheet中文版, translated by Gevin (flyhigher139)](https://github.com/flyhigher139/Git-Cheat-Sheet)
+
+2）Bash
+
+- [Bash scripting cheatsheet](https://devhints.io/bash)
+
 ## ★文档&教程
 
 ### ◇电子书
@@ -10,6 +22,7 @@
 - [林间有风](http://7yue.pro/)
 - [Structure and Interpretation of Computer Programs, JavaScript Adaptation](https://sicp.comp.nus.edu.sg/)
 - [JavaScript & DOM Tips, Tricks, and Techniques E-Book - Impressive Webs](https://www.impressivewebs.com/javascript-dom-tips-tricks-techniques-ebook/)
+- [Design With FontForge: 引言](http://designwithfontforge.com/zh-CN/Introduction.html)
 
 ### ◇系列文章
 - [JavaScript design patterns Archives - Marcin Wanago Blog - JavaScript, both frontend and backend](https://wanago.io/courses/javascript-design-patterns/)
