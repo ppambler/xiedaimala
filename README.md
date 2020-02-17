@@ -6,6 +6,10 @@
 
 常见问题：[FAQ](./FAQ.md)
 
+## ★TODO
+
+- [Issues · ppambler/plan-todo](https://github.com/ppambler/plan-todo/issues)
+
 ## ★Repositories
 
 - [time-geekbang](https://ppambler.github.io/time-geekbang)
@@ -15,6 +19,7 @@
 - [icourse163](https://ppambler.github.io/icourse163/)
 - [fe-daily-challenges-2018](https://ppambler.github.io/fe-daily-challenges-2018/)
 - [Java-2020](https://ppambler.github.io/Java-2020/)
+- [git-chat](https://ppambler.github.io/git-chat/)
 
 ## ★常去站点
 
@@ -161,5 +166,14 @@
 
 - [01-Java10倍学习法](./07-Java/01-Java10倍学习法.md)
 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5c7de07b7b747f231b56b0a35a6b9d26";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
 
