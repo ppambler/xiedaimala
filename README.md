@@ -166,14 +166,7 @@
 
 - [01-Java10倍学习法](./07-Java/01-Java10倍学习法.md)
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?5c7de07b7b747f231b56b0a35a6b9d26";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+
+
 
 
