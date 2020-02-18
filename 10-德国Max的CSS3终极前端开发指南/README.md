@@ -26,7 +26,7 @@ typora-copy-images-to: img\00
   - [03-4-为我们的项目添加页眉、理解Display属性](./03-4.md)
   - [03-5-display属性应用、美化导航条、理解inline-block的怪异行为、text-decoration & vertical-align](./03-5.md)
   - [03-6-美化链接、了解伪类与伪元素](./03-6.md)
-  - [03-7-class list、cta-button样式设计](./03-7.md)
+  - [03-7-selector list、cta-button样式设计](./03-7.md)
   - [03-8-值得记住的CSS属性、练习、总结](./03-8.md)
 
 ## ★资源
