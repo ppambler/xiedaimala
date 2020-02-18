@@ -51,6 +51,7 @@
 - [06-10天彻底搞定webpack4.0](./18-10day-webpack/README.md)
 - [07-5天学会Node.js打造现代web架构](./22-5day-nodejs-web/README.md)
 - [08-微信小程序入门与实战](./23-wechat-mp-101/README.md)
+- [09-果冻公开课](./24-jelly-open-course/README.md)
 
 ## ★面试题
 
