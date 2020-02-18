@@ -4,13 +4,13 @@
 
 ## Cheat Sheet
 
-1）Git
+**1）Git**
 
 - [GitCheatSheet_issue#2366_102019-V5](https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf)
 - [git-cheat-sheet-education](https://education.github.com/git-cheat-sheet-education.pdf)
 - [flyhigher139/Git-Cheat-Sheet: Git Cheat Sheet中文版, translated by Gevin (flyhigher139)](https://github.com/flyhigher139/Git-Cheat-Sheet)
 
-2）Bash
+**2）Bash**
 
 - [Bash scripting cheatsheet](https://devhints.io/bash)
 
@@ -18,11 +18,20 @@
 
 ### ◇电子书
 
+**1）JavaScript**
+
 - [JavaScript 完全手册（2018版）-WEB前端开发](https://www.html.cn/archives/9922)
 - [林间有风](http://7yue.pro/)
 - [Structure and Interpretation of Computer Programs, JavaScript Adaptation](https://sicp.comp.nus.edu.sg/)
 - [JavaScript & DOM Tips, Tricks, and Techniques E-Book - Impressive Webs](https://www.impressivewebs.com/javascript-dom-tips-tricks-techniques-ebook/)
+
+**2）design**
+
 - [Design With FontForge: 引言](http://designwithfontforge.com/zh-CN/Introduction.html)
+
+**3）Python**
+
+- [《Think Python 2e》最新版中文翻译 — 《Think Python 2e》中译本 1.0 文档](https://codingpy.com/books/thinkpython2/)
 
 ### ◇系列文章
 - [JavaScript design patterns Archives - Marcin Wanago Blog - JavaScript, both frontend and backend](https://wanago.io/courses/javascript-design-patterns/)
