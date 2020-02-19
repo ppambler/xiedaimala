@@ -52,6 +52,7 @@
 - [07-5天学会Node.js打造现代web架构](./22-5day-nodejs-web/README.md)
 - [08-微信小程序入门与实战](./23-wechat-mp-101/README.md)
 - [09-果冻公开课](./24-jelly-open-course/README.md)
+- [10-Vue+Vant+ES6+Node.js+Koa+MongoDB 移动端农机商城全栈开发项目](./25-mobile-agricultural-machinery-mall-full-stack/README.md)
 
 ## ★面试题
 
