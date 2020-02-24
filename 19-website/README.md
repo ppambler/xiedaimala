@@ -40,6 +40,10 @@
 
 - [CSS Circles - Cloud Four](https://cloudfour.com/thinks/css-circles/)
 
+### ◇书籍推荐
+
+- [从问题到程序 (豆瓣)](https://book.douban.com/subject/1431996/)
+
 ### ◇案例
 
 **1）30天，用原生JS挑战30个主题**
@@ -116,8 +120,11 @@
 - [Dynamic Dummy Image Generator - DummyImage.com](https://dummyimage.com/) -> 简单、纯粹
 - [temp.im - A placeholder images service.](http://temp.im/) -> 国内、访问速度快
 
+6）高清好图
 
-
+- [Free Stock Photos & Images • picjumbo](https://picjumbo.com/) -> 找到合适的图片，就右键保存图片 -> 图片大小1080*720
+- [你平时在哪找免费的可商业使用的图片素材？ - 知乎](https://www.zhihu.com/question/21757507)
+- [有哪些高质量的图片网站（社区）推荐？ - 知乎](https://www.zhihu.com/question/19619335)
 
 
 
