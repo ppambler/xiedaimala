@@ -51,6 +51,10 @@
 - [wesbos/JavaScript30: 30 Day Vanilla JS Challenge](https://github.com/wesbos/JavaScript30)
 - [guahsu/JavaScript30: JavaScript30 練習＆心得紀錄](https://github.com/guahsu/JavaScript30)
 
+**2）100天、365天**
+
+[Florin Pop - 100 Days - 100 Projects Challenge](https://www.florin-pop.com/blog/2019/09/100-days-100-projects/)
+
 ### ◇项目
 
 ## ★视频&教程
