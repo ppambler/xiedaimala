@@ -385,7 +385,7 @@ WeUI提供图片的效果：
 
   总之，全局样式<局部页面样式<元素内联样式
 
-  **➹：**[优先级 - CSS（层叠样式表） - MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity)
+  ➹：[优先级 - CSS（层叠样式表） - MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity)
 
 - 引入WeUI的原因：
 
@@ -403,13 +403,13 @@ WeUI提供图片的效果：
 
   说白了，是否熟悉使用UI框架，得看你的CSS水平如何！
 
-  **➹：**[WeUI 的命名规范，各位还习惯吗？ - V2EX](https://www.v2ex.com/t/561399)
+  ➹：[WeUI 的命名规范，各位还习惯吗？ - V2EX](https://www.v2ex.com/t/561399)
 
-  **➹：**[用BEM命名规范组织CSS代码 - 掘金](https://juejin.im/post/5ae13586f265da0b84551dce)
+  ➹：[用BEM命名规范组织CSS代码 - 掘金](https://juejin.im/post/5ae13586f265da0b84551dce)
 
-  **➹：**[BEM命名规范 - 掘金](https://juejin.im/post/5bab8625e51d450e8a661b39)
+  ➹：[BEM命名规范 - 掘金](https://juejin.im/post/5bab8625e51d450e8a661b39)
 
-  **➹：**[BEM命名法-InfoQ](https://www.infoq.cn/article/VfNFwdlE0zmGa9pSVBuG)
+  ➹：[BEM命名法-InfoQ](https://www.infoq.cn/article/VfNFwdlE0zmGa9pSVBuG)
 
 ## ★Q&A
 
@@ -429,11 +429,11 @@ WeUI提供图片的效果：
 
 总之，你最后的输出是个快捷键，而不是一坨富有很多细节的东西！
 
-**➹：**[什么叫做把书读厚，再把书读薄？如何做到？ - 知乎](https://www.zhihu.com/question/22115080)
+➹：[什么叫做把书读厚，再把书读薄？如何做到？ - 知乎](https://www.zhihu.com/question/22115080)
 
-**➹：**[在写作上你有些小技巧和小套路？ - 知乎](https://www.zhihu.com/question/53083560)
+➹：[在写作上你有些小技巧和小套路？ - 知乎](https://www.zhihu.com/question/53083560)
 
-**➹：**[技术性书籍如何做读书笔记和总结？ - 叛逆者的回答 - 知乎](https://www.zhihu.com/question/29451585/answer/44458396)
+➹：[技术性书籍如何做读书笔记和总结？ - 叛逆者的回答 - 知乎](https://www.zhihu.com/question/29451585/answer/44458396)
 
 
 
@@ -453,19 +453,19 @@ WeUI提供图片的效果：
 
 所以我该怎么做？把老师要讲什么，然后自己重新按自己理解的方式讲一篇？如要讲「WeUI框架」，老师是这样讲的，那么你能否按自己理解的方式讲一遍？
 
-**➹：**[技术性书籍如何做读书笔记和总结？ - 汤睿的回答 - 知乎](https://www.zhihu.com/question/29451585/answer/44839847)
+➹：[技术性书籍如何做读书笔记和总结？ - 汤睿的回答 - 知乎](https://www.zhihu.com/question/29451585/answer/44839847)
 
 ### ③技术书籍如何做笔记？
 
 尽量在一周或两周时间内把一本书看完，如果看不完，那么之后想看完，那就是做梦了，因为你会忘记你前边所看的，既然忘记了，那么再续上后边的内容就有点吃力了！当然，你可以为前边的内容做上笔记！
 
-**➹：**[技术性书籍如何做读书笔记和总结？ - 知乎](https://www.zhihu.com/question/29451585)
+➹：[技术性书籍如何做读书笔记和总结？ - 知乎](https://www.zhihu.com/question/29451585)
 
-**➹：**[你读过哪些深入浅出的（技术）书籍？ - 知乎](https://www.zhihu.com/question/29093609)
+➹：[你读过哪些深入浅出的（技术）书籍？ - 知乎](https://www.zhihu.com/question/29093609)
 
-**➹：**[读完一本技术书籍需要多久？ - 知乎](https://www.zhihu.com/question/25655847)
+➹：[读完一本技术书籍需要多久？ - 知乎](https://www.zhihu.com/question/25655847)
 
-**➹：**[康奈尔笔记法的作用是否言过其实？ - 知乎](https://www.zhihu.com/question/23549869)
+➹：[康奈尔笔记法的作用是否言过其实？ - 知乎](https://www.zhihu.com/question/23549869)
 
-**➹：**[技术类的书籍怎么阅读才能达到最好的效果呢？ - 知乎](https://www.zhihu.com/question/20230133)
+➹：[技术类的书籍怎么阅读才能达到最好的效果呢？ - 知乎](https://www.zhihu.com/question/20230133)
 

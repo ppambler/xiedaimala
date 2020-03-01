@@ -171,7 +171,7 @@ typora-copy-images-to: img\01
 
 三个点连成一线即赢，而且这有必胜的策略——先占角，那么赢得几率就是大于对方的
 
-**➹：**[井字棋的最优策略竟是先占角！ - 科学人 - 果壳 科技有意思](https://www.guokr.com/article/4754/)
+➹：[井字棋的最优策略竟是先占角！ - 科学人 - 果壳 科技有意思](https://www.guokr.com/article/4754/)
 
 ### ◇需求与描述
 
@@ -233,7 +233,7 @@ typora-copy-images-to: img\01
 2. 如果没有装`yarn`，可以改成是`npm`。但我还是非常推荐你装一下 `yarn`，当然，也有可能过几年 `yarn`也不流行了。毕竟，目前的前端变化时真得快呀！总之以后哪个流行还是得用哪个！（铁打的前端，流水的工具）
 3. 接下来就开始写代码了！
 
-**➹：**[介绍 - Vue CLI](https://cli.vuejs.org/zh/guide/#cli-%E6%9C%8D%E5%8A%A1)
+➹：[介绍 - Vue CLI](https://cli.vuejs.org/zh/guide/#cli-%E6%9C%8D%E5%8A%A1)
 
 ## ★ Vue 组件
 
@@ -571,7 +571,7 @@ padding-bottom: 20px;
 >
 > 我还记得第一次坐车到县城里读高中时，我居然不知道有需要买票这种操作……然后人生的第一次逃票就这样发生了……
 >
-> **➹：**[为什么有些人学不好物理？ - 知乎](https://www.zhihu.com/question/30488725)
+> ➹：[为什么有些人学不好物理？ - 知乎](https://www.zhihu.com/question/30488725)
 
 3. 接下来text的值得是根据传过来的n属性确定的，所以需要用到计算属性，然而GG了（点一次9个都得随着变化），于是这种方案直接×掉。（芳芳写代码是非常简单的，随便想一个方法去用，用之后发现不能用，那就删掉呗，然后再想）
 
@@ -745,7 +745,7 @@ padding-bottom: 20px;
 
   3. 整个项目上传上去后是无法使用的，毕竟我们之前需要 `yarn serve`才能访问，为了能够预览，我们需要在本地 `yarn build`一下，即打包一下，一般都是把dist作为部署目录的
 
-     **➹：**[部署 - Vue CLI](https://cli.vuejs.org/zh/guide/deployment.html#github-pages)
+     ➹：[部署 - Vue CLI](https://cli.vuejs.org/zh/guide/deployment.html#github-pages)
 
   4. 根据部署操作，需要创建一个 `vue.config.js`文件，不然部署上去是无法访问的：
 
@@ -962,7 +962,7 @@ padding-bottom: 20px;
 
 可见，在Github pages上浏览，只有 `<mark></mark>`是起作用的。
 
-**➹：**[CSDN-markdown 文字样式设置（字体, 大小, 颜色, 高亮底色） - 走过的都是未来 - CSDN博客](https://blog.csdn.net/thither_shore/article/details/52181464)
+➹：[CSDN-markdown 文字样式设置（字体, 大小, 颜色, 高亮底色） - 走过的都是未来 - CSDN博客](https://blog.csdn.net/thither_shore/article/details/52181464)
 
 ### ②判断本地有没有安装yarn？
 
@@ -984,7 +984,7 @@ padding-bottom: 20px;
 
 就这样，我开始了搜索之旅：
 
-**➹：**[am unable to uninstall vue cli · Issue #1241 · vuejs/vue-cli](https://github.com/vuejs/vue-cli/issues/1241)
+➹：[am unable to uninstall vue cli · Issue #1241 · vuejs/vue-cli](https://github.com/vuejs/vue-cli/issues/1241)
 
 这删除姿势是这样的：`npm uninstall -g @vue/cli`
 
@@ -1092,7 +1092,7 @@ export default {
 
 可见，我们需要求出两条直线的交叉点。
 
-**➹：**[理解矩阵乘法 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2015/09/matrix-multiplication.html)
+➹：[理解矩阵乘法 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2015/09/matrix-multiplication.html)
 
 ### ⑤如何让二维数组可以响应式变化？
 
@@ -1117,7 +1117,7 @@ _this.$set(map,map[Math.floor(i/3)],map[Math.floor(i/3)][i%3])
 
 而且数据的响应式也有卡顿现象
 
-**➹：**[vue.js - Vue如何动态改变二维数组的值 - SegmentFault 思否](https://segmentfault.com/q/1010000012929421)
+➹：[vue.js - Vue如何动态改变二维数组的值 - SegmentFault 思否](https://segmentfault.com/q/1010000012929421)
 
 ### ⑥关于概念和定义？
 
@@ -1129,7 +1129,7 @@ _this.$set(map,map[Math.floor(i/3)],map[Math.floor(i/3)][i%3])
 
 > 我认为每一个概念或定义，是需要时间与实践证明，以及当下环境所衍生出来的。而实践证明所得为内涵，其概念所具有的含糊性与歧义，甚至矛盾，却恰好使其外延，具有着一切可剖析的不可能的可能性。当你把不可能证明了可能，那你将创造一个新的概念！就好比爱因斯坦说没有什么速度比光速快，如今这一伟大的真理被推翻，人们心中就会生成一种新的概念！总之，内涵就是拥有的，外延就是未知的，将外延成为其内涵，就是一个新的概念！每一个定义都是对未知的一种探索与证明，做了，也许你会再看到新的东西
 
-**➹：**[如何理解概念，内涵与外延？ - 简书](https://www.jianshu.com/p/0df57190299e)
+➹：[如何理解概念，内涵与外延？ - 简书](https://www.jianshu.com/p/0df57190299e)
 
-**➹：**[ 逻辑学中「外延」与「内涵」是什么意思？ - 知乎](https://www.zhihu.com/question/22267682)
+➹：[ 逻辑学中「外延」与「内涵」是什么意思？ - 知乎](https://www.zhihu.com/question/22267682)
 

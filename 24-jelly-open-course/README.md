@@ -8,9 +8,9 @@
 
 ## ★资源
 
-**➹：**[果冻公开课的个人空间 - 哔哩哔哩 ( ゜- ゜)つロ 乾杯~ Bilibili](https://space.bilibili.com/361440504/video?tid=0&keyword=&order=pubdate)
+➹：[果冻公开课的个人空间 - 哔哩哔哩 ( ゜- ゜)つロ 乾杯~ Bilibili](https://space.bilibili.com/361440504/video?tid=0&keyword=&order=pubdate)
 
-**➹：**[果冻公开课 - 知乎](https://www.zhihu.com/org/guo-dong-gong-kai-ke-79)
+➹：[果冻公开课 - 知乎](https://www.zhihu.com/org/guo-dong-gong-kai-ke-79)
 
 ## ★目录
 

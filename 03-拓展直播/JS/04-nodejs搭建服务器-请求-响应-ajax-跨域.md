@@ -318,7 +318,7 @@ ajax({
 
 或许你会说这是因为你的这台电脑没有在公网上，所以才无法访问的，所谓的公网就是一个提供一个能够公共访问IP的这么一个东西，总之就是通过公网ip，浏览器就能找到你这台电脑就对了……
 
-**➹：**[外网公网是什么意思_百度知道](https://zhidao.baidu.com/question/692210293638867364.html)
+➹：[外网公网是什么意思_百度知道](https://zhidao.baidu.com/question/692210293638867364.html)
 
 既然你这样说，那我就在阿里云上购买一个服务器好了，而这个服务器就相当于是我这台电脑，而且还有一个公网的ip，这样一来别人就可以通过ip地址找到我所购买的（应该说是租赁的）服务器了……就像这样：
 
@@ -420,15 +420,15 @@ ajax({
 
 - 为了让用户在浏览器地址栏里输入的url是有结果的，那么你的服务器得开启http服务才行！
 
-**➹：**[什么是网络服务器？ - MDN](https://developer.mozilla.org/zh-CN/docs/Learn/Common_questions/What_is_a_web_server)
+➹：[什么是网络服务器？ - MDN](https://developer.mozilla.org/zh-CN/docs/Learn/Common_questions/What_is_a_web_server)
 
-**➹：**[服务器 - Wikiwand](https://www.wikiwand.com/zh-hans/%E6%9C%8D%E5%8A%A1%E5%99%A8)
+➹：[服务器 - Wikiwand](https://www.wikiwand.com/zh-hans/%E6%9C%8D%E5%8A%A1%E5%99%A8)
 
-**➹：**[文件服务器 - Wikiwand](https://www.wikiwand.com/zh-hans/%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8)
+➹：[文件服务器 - Wikiwand](https://www.wikiwand.com/zh-hans/%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8)
 
-**➹：**[Nginx - Wikiwand](https://www.wikiwand.com/zh-hans/Nginx)
+➹：[Nginx - Wikiwand](https://www.wikiwand.com/zh-hans/Nginx)
 
-**➹：**[Apache和Apache Tomcat的区别是什么？ - 知乎](https://www.zhihu.com/question/37155807)
+➹：[Apache和Apache Tomcat的区别是什么？ - 知乎](https://www.zhihu.com/question/37155807)
 
 ## ★使用 Node.js 写一个静态服务器
 
@@ -596,7 +596,7 @@ meta标签里设置的charset属性没有响应头设置的优先级高！
 
 ![1548323661207](img/04/1548323661207.png)
 
-**➹：**[Network Analysis Reference  -  Tools for Web Developers  -  Google Developers](https://developers.google.com/web/tools/chrome-devtools/network-performance/reference?hl=zh-cn)
+➹：[Network Analysis Reference  -  Tools for Web Developers  -  Google Developers](https://developers.google.com/web/tools/chrome-devtools/network-performance/reference?hl=zh-cn)
 
 我在看preview的时候：
 
@@ -636,7 +636,7 @@ meta标签里设置的charset属性没有响应头设置的优先级高！
 
 总之千万不要直接去看API，而是用到什么就去看什么，不理解什么，就去理解什么，而不是毫无目的为了学习API而去学习API……毕竟这API真TM多！
 
-**➹：**[http  - Node.js API 文档](http://nodejs.cn/api/http.html#http_response_write_chunk_encoding_callback)
+➹：[http  - Node.js API 文档](http://nodejs.cn/api/http.html#http_response_write_chunk_encoding_callback)
 
 ### ◇写一个静态服务器
 
@@ -701,7 +701,7 @@ console.log('visit http://localhost:8080' )
 
 你会发现这样做了，页面也能看到内容了，所以你可以搞一个漂亮的404.html，不然就是上上面那张图所展示的那样了！
 
-**➹：**[404页面下载：一组漂亮的404错误页面模板下载 - 人人都是产品经理](http://www.woshipm.com/xiazai/12285.html)
+➹：[404页面下载：一组漂亮的404错误页面模板下载 - 人人都是产品经理](http://www.woshipm.com/xiazai/12285.html)
 
 捋一下整个过程：
 
@@ -745,7 +745,7 @@ console.log('visit http://localhost:8080' )
 
 而我们这个静态服务器只不过是一个比较简单的演示而已！
 
-**➹：**[常见的web服务器软件分类 - 锋齐叶落 - 博客园](http://www.cnblogs.com/qianzf/p/6803863.html)
+➹：[常见的web服务器软件分类 - 锋齐叶落 - 博客园](http://www.cnblogs.com/qianzf/p/6803863.html)
 
 > 似乎可以搞一个静态的json数据出来……
 >
@@ -1044,9 +1044,9 @@ http.createServer(function(req, res){
 
 > 资料：
 >
-> **➹：**[跨域 · 饥人谷课件](http://book.jirengu.com/fe/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/Javascript/%E8%B7%A8%E5%9F%9F.html)
+> ➹：[跨域 · 饥人谷课件](http://book.jirengu.com/fe/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/Javascript/%E8%B7%A8%E5%9F%9F.html)
 >
-> **➹：**[JSONP - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/JSONP)
+> ➹：[JSONP - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/JSONP)
 
 HTML 中 script 标签可以加载其他域下的js，比如我们经常引入一个其他域下线上cdn的jQuery。那如何利用这个特性实现从其他域下获取数据呢？
 
@@ -1310,9 +1310,9 @@ index.html
 1. 以上就是JSONP和CORS的原理了，当然还有个服务器中转的做法！
 2. 还有其它方式——降域和postMessage
 
-**➹：**[javascript跨域的几种情况 - 知乎](https://zhuanlan.zhihu.com/p/25657704)
+➹：[javascript跨域的几种情况 - 知乎](https://zhuanlan.zhihu.com/p/25657704)
 
-**➹：**[【跨域】JSONP/CORS/降域/postMessage - 简书](https://www.jianshu.com/p/6d35c01f8a22)
+➹：[【跨域】JSONP/CORS/降域/postMessage - 简书](https://www.jianshu.com/p/6d35c01f8a22)
 
 ---
 
@@ -1362,7 +1362,7 @@ index.html
 
 [Charset - Chrome 网上应用店](https://chrome.google.com/webstore/detail/charset/oenllhgkiiljibhfagbfogdbchhdchml/related)
 
-**➹：**[javascript - 新版chrome如何设置编码格式 - SegmentFault 思否](https://segmentfault.com/q/1010000008940788)
+➹：[javascript - 新版chrome如何设置编码格式 - SegmentFault 思否](https://segmentfault.com/q/1010000008940788)
 
 ###  <a id="er">②编码的优先级？</a>
 
@@ -1370,9 +1370,9 @@ meta里设置的编码和响应头所设置的编码，其中哪个优先级更�
 
 Content-Type 的优先级更高，浏览器先采纳了它，忽略了文档内的声明，毕竟浏览器省略了嗅探的步骤，提高了效率。
 
-**➹：**[网页中的编码与乱码（3） – 肖国栋的i自留地](https://xiaogd.net/%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E7%BC%96%E7%A0%81%E4%B8%8E%E4%B9%B1%E7%A0%81%EF%BC%883%EF%BC%89/)
+➹：[网页中的编码与乱码（3） – 肖国栋的i自留地](https://xiaogd.net/%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E7%BC%96%E7%A0%81%E4%B8%8E%E4%B9%B1%E7%A0%81%EF%BC%883%EF%BC%89/)
 
-**➹：**[html5 -` <meta charset="utf-8">` vs `<meta http-equiv="Content-Type">` - Stack Overflow](https://stackoverflow.com/questions/4696499/meta-charset-utf-8-vs-meta-http-equiv-content-type)
+➹：[html5 -` <meta charset="utf-8">` vs `<meta http-equiv="Content-Type">` - Stack Overflow](https://stackoverflow.com/questions/4696499/meta-charset-utf-8-vs-meta-http-equiv-content-type)
 
 ### <a id="san">③windows下的路径问题</a>
 
@@ -1413,7 +1413,7 @@ console.log('visit http://localhost:8080' )
 
 ![1548336574735](img/04/1548336574735.png)
 
-**➹：**[Nodejs基础：路径处理模块path总结 - 程序猿小卡 - 博客园](https://www.cnblogs.com/chyingp/p/node-learning-guide-path.html)
+➹：[Nodejs基础：路径处理模块path总结 - 程序猿小卡 - 博客园](https://www.cnblogs.com/chyingp/p/node-learning-guide-path.html)
 
 ### ④发现一个简单好用的web server？
 
@@ -1423,7 +1423,7 @@ caddy用起来特简单，而且它的特性中有一点很关键：
 
 这个点跟通过github pages展示md文件为html文件一样牛逼！而且还有一点就是`Every Site on HTTPS`。总之可以入门一下这个……
 
-**➹：**[新兴的web服务器caddy - 知乎](https://zhuanlan.zhihu.com/p/25815245)
+➹：[新兴的web服务器caddy - 知乎](https://zhuanlan.zhihu.com/p/25815245)
 
 ### <a id="wu">⑤URL的常见组成？</a>
 
@@ -1443,5 +1443,5 @@ JS可以读取/修改网页的值。
 
 浏览器的同源策略，限制了来自不同源的"document"或脚本，对当前"document"读取或设置某些属性。 在浏览器中，`<script>`、`<img>`、`<iframe>`、`<link>`等标签都可以加载跨域资源，同源策略只对网页的HTML文档做了限制，对加载的其他静态资源如javascript、css、图片等仍然认为属于同源。
 
-**➹：**[javascript 同源策略及web安全 - 世有因果知因求果 - 博客园](https://www.cnblogs.com/kidsitcn/p/5036682.html)
+➹：[javascript 同源策略及web安全 - 世有因果知因求果 - 博客园](https://www.cnblogs.com/kidsitcn/p/5036682.html)
 

@@ -12,9 +12,9 @@
 
 ## ★资源
 
-**➹：**[https://tencentcloudbase.github.io/handbook/tcb01.html](https://tencentcloudbase.github.io/handbook/tcb01.html)
+➹：[https://tencentcloudbase.github.io/handbook/tcb01.html](https://tencentcloudbase.github.io/handbook/tcb01.html)
 
-**➹：**[【Day 1】云开发0基础训练营 - 小程序云开发技术专栏 - SegmentFault 思否](https://segmentfault.com/a/1190000020430363)
+➹：[【Day 1】云开发0基础训练营 - 小程序云开发技术专栏 - SegmentFault 思否](https://segmentfault.com/a/1190000020430363)
 
 ## ★目录
 

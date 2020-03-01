@@ -11,7 +11,7 @@
 
 ## ★课程概述
 
-**➹：**[JS++小野老师带你玩转『前端JavaScript模块化』](https://ke.qq.com/course/455556)
+➹：[JS++小野老师带你玩转『前端JavaScript模块化』](https://ke.qq.com/course/455556)
 
 ### ◇简介
 

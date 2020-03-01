@@ -164,11 +164,11 @@ body {
 
 总之，这是是可以嵌套的！
 
-**➹：**[HTML5的元素嵌套规则 - HTML - 酷站代码](http://www.5icool.org/a/201308/a2081.html)
+➹：[HTML5的元素嵌套规则 - HTML - 酷站代码](http://www.5icool.org/a/201308/a2081.html)
 
-**➹：**[HTML的元素嵌套规则？ - 知乎](https://www.zhihu.com/question/37797740)
+➹：[HTML的元素嵌套规则？ - 知乎](https://www.zhihu.com/question/37797740)
 
-**➹：**[a 标签为什么能够包含块级元素？ - 知乎](https://www.zhihu.com/question/34952563)
+➹：[a 标签为什么能够包含块级元素？ - 知乎](https://www.zhihu.com/question/34952563)
 
 ### ②关于 `i` 标签？
 
@@ -177,6 +177,6 @@ body {
 
 但一个元素不需要写内容的时候，相较于用span，还不如用i，因为i显然要更短！
 
-**➹：** [HTML `<i>` 标签 - 菜鸟教程](https://www.runoob.com/tags/tag-i.html)
+➹： [HTML `<i>` 标签 - 菜鸟教程](https://www.runoob.com/tags/tag-i.html)
 
-**➹：** [为什么大家都用`i`标签`<i></i>`用作小图标? - 知乎](https://www.zhihu.com/question/26880548)
+➹： [为什么大家都用`i`标签`<i></i>`用作小图标? - 知乎](https://www.zhihu.com/question/26880548)

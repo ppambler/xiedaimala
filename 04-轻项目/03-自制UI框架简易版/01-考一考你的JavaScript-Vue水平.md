@@ -236,7 +236,7 @@ var component = new Component()
 >
 > 我查阅了官方文档：
 >
-> **➹：**[API — Vue.js](https://cn.vuejs.org/v2/api/index.html#Vue-extend)
+> ➹：[API — Vue.js](https://cn.vuejs.org/v2/api/index.html#Vue-extend)
 >
 > 它是一个全局API，使用这个基本的Vue构造函数，我们就可以创建出一个所谓的「子类」了！
 >
@@ -249,7 +249,7 @@ var component = new Component()
 >
 > 既然答案没错，那么问题的管家就是mixins这个属性了：
 >
-> **➹：**[混入 — Vue.js](https://cn.vuejs.org/v2/guide/mixins.html)
+> ➹：[混入 — Vue.js](https://cn.vuejs.org/v2/guide/mixins.html)
 >
 > 按照官方的说法：
 >
@@ -261,7 +261,7 @@ var component = new Component()
 >
 > 根据这里的介绍：
 >
-> **➹：**[Vue 实例 — Vue.js](https://cn.vuejs.org/v2/guide/instance.html)
+> ➹：[Vue 实例 — Vue.js](https://cn.vuejs.org/v2/guide/instance.html)
 >
 > **所有的 Vue 组件都是 Vue 实例，并且接受相同的选项对象 (一些根实例特有的选项除外)**
 

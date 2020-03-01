@@ -8,9 +8,9 @@
 
 ## ★资料
 
-**➹：**[实战课程_慕课网](https://coding.imooc.com/class/424.html?mc_marking=4655172e1a62839eea65105dbf244230&mc_channel=sjkctjpc)
+➹：[实战课程_慕课网](https://coding.imooc.com/class/424.html?mc_marking=4655172e1a62839eea65105dbf244230&mc_channel=sjkctjpc)
 
-**➹：**[小楼昨夜又秋风 - 知乎](https://zhuanlan.zhihu.com/oldtimes)
+➹：[小楼昨夜又秋风 - 知乎](https://zhuanlan.zhihu.com/oldtimes)
 
 ## ★目录
 

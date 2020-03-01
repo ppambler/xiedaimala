@@ -30,9 +30,9 @@ JavaScript是目前世界上最流行的编程语言之一，它也是**小程�
 
 反斜杠是有特殊含义，如果你想要log一个反斜杠，那么就需要通过 `\`把反斜杠的能力给取消掉，同理，你想要一个字符有特殊能力，就用 `\`转义一下，如 `n`是普通的字符，你这样写 `\n`就被称为转义字符了，即 `n`的意义不是一个字符 `n`，而是一个换行 `n`。总之我们要输入一个换行字符，那就是 `\n`，输入一个回车，那就 `\r`
 
-**➹：**[从 console.log 说起（上）- AlloyTeam](http://www.alloyteam.com/2013/11/console-log/)
+➹：[从 console.log 说起（上）- AlloyTeam](http://www.alloyteam.com/2013/11/console-log/)
 
-**➹：**[从 console.log 说起（下）- AlloyTeam](http://www.alloyteam.com/2013/11/console-log-2/)
+➹：[从 console.log 说起（下）- AlloyTeam](http://www.alloyteam.com/2013/11/console-log-2/)
 
 ### ◇**console.log打印数组Array**
 
@@ -62,11 +62,11 @@ console.log({name: "霸王别姬",img: "https://img3.doubanio.com/view/photo/s_r
 >
 > 突然觉得，老师要讲一个变量知识，通过log来引出真得很新颖，即很直白的就告诉你了为啥需要用变量！一般讲解为啥需要变量，都会从保存程序的运行状态等很抽象的方面讲起，而log就很直接，即我不希望写那么多字符。
 
-**➹：**[为什么要有指针？ - 知乎](https://www.zhihu.com/question/26623283)
+➹：[为什么要有指针？ - 知乎](https://www.zhihu.com/question/26623283)
 
-**➹：**[★为什么要有指针？ - Ivony的回答 - 知乎](https://www.zhihu.com/question/26623283/answer/33449500)
+➹：[★为什么要有指针？ - Ivony的回答 - 知乎](https://www.zhihu.com/question/26623283/answer/33449500)
 
-**➹：**[【另眼看编程】（一）什么是变量？为什么要使用变量？ - 兄弟连_战地日记 - CSDN博客](https://blog.csdn.net/lampzdrj/article/details/10600079)
+➹：[【另眼看编程】（一）什么是变量？为什么要使用变量？ - 兄弟连_战地日记 - CSDN博客](https://blog.csdn.net/lampzdrj/article/details/10600079)
 
 > 地址、指针、引用，指针可以用来改变地址，赋值可以改变引用！
 >
@@ -257,7 +257,7 @@ console.log(moonLanding.getMilliseconds()); //123
 
 所以上边的554是，那个日期时刻的毫秒数！
 
-**➹：**[关于JavaScript中的Date你需要知道的一切 - 知乎](https://zhuanlan.zhihu.com/p/76055541)
+➹：[关于JavaScript中的Date你需要知道的一切 - 知乎](https://zhuanlan.zhihu.com/p/76055541)
 
 ## ★全局对象wx
 
@@ -412,7 +412,7 @@ wx.chooseImage({
 
 > 有时候暴露变量太多就不知道是被谁修改的了，还是暴露变量少点好
 
-**➹：**[编程中为什么要把一些变量私有？ - Tmacchen的回答 - 知乎](https://www.zhihu.com/question/21142338/answer/27126480)
+➹：[编程中为什么要把一些变量私有？ - Tmacchen的回答 - 知乎](https://www.zhihu.com/question/21142338/answer/27126480)
 
-**➹：**[编程中为什么要把一些变量私有？ - 知乎](https://www.zhihu.com/question/21142338)
+➹：[编程中为什么要把一些变量私有？ - 知乎](https://www.zhihu.com/question/21142338)
 

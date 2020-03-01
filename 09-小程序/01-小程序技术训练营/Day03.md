@@ -172,7 +172,7 @@ typora-copy-images-to: img\03
 
 ![1569810936655](img/03/1569810936655.png)
 
-**➹：**[最难点For的wx:key，您肯定不知道的！（框架细节十一）-微信小程序俱乐部 www.wxappclub.com](http://www.wxappclub.com/topic/536)
+➹：[最难点For的wx:key，您肯定不知道的！（框架细节十一）-微信小程序俱乐部 www.wxappclub.com](http://www.wxappclub.com/topic/536)
 
 ### ②真得需要添加 `wx:key`吗？
 

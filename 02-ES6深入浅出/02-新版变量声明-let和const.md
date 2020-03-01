@@ -37,7 +37,7 @@ ES 6 新特性一览：<https://frankfang.github.io/es-6-tutorials/>
 
 ### ◇扩展链接
 
-**➹：** [ECMAScript - Wikiwand](https://www.wikiwand.com/en/ECMAScript#/Versions)
+➹： [ECMAScript - Wikiwand](https://www.wikiwand.com/en/ECMAScript#/Versions)
 
 ## ★概述
 
@@ -49,7 +49,7 @@ ES 6 新特性一览：<https://frankfang.github.io/es-6-tutorials/>
 
 为什么会有这一次系列课？——因为ES6已经是前端的事实标准了！什么叫事实标准呢？即除了IE，所有浏览器都支持了ES6！但是大部分前端只会ES5，那ES6是2015年出的一个语法，而今年是2018年，那么距离现在已经过去3年了！或许你会觉得这语法依旧很新，但其实这已经是旧语法了！为什么这么说呢？因为在今年的6月份ES9已经出来了！
 
-学完ES6后学什么？——学ES7，然后学ES8……总之学习顺序是ES5→☞ES6→☞ES7→☞……那么为什么要这样学呢？**➹：**
+学完ES6后学什么？——学ES7，然后学ES8……总之学习顺序是ES5→☞ES6→☞ES7→☞……那么为什么要这样学呢？➹：
 
 ![1545555391662](img/02/1545555391662.png)
 
@@ -105,7 +105,7 @@ ES 6 新特性一览：<https://frankfang.github.io/es-6-tutorials/>
 
 ### ◇预习
 
-**➹：**[let 和 const 命令 - ECMAScript 6入门](http://es6.ruanyifeng.com/#docs/let#let-%E5%91%BD%E4%BB%A4)
+➹：[let 和 const 命令 - ECMAScript 6入门](http://es6.ruanyifeng.com/#docs/let#let-%E5%91%BD%E4%BB%A4)
 
 #### ES6简介
 
@@ -278,9 +278,9 @@ ES6 规定暂时性死区和`let`、`const`语句不出现变量提升，主要�
      >
      > 也就是说一个是「substance」，一个是非substance的！
      >
-     > **➹：**[淺談 Entity 的概念 - Twin Earth Conservancy Bureau](http://www.drupaltky.org/article/43)
+     > ➹：[淺談 Entity 的概念 - Twin Earth Conservancy Bureau](http://www.drupaltky.org/article/43)
      >
-     > **➹：**[哲学中的实体与实在到底是什么意思？ - 知乎](https://www.zhihu.com/question/23941781)
+     > ➹：[哲学中的实体与实在到底是什么意思？ - 知乎](https://www.zhihu.com/question/23941781)
 
   所以ES6的出现就意味着接受大家的打脸……
 
@@ -325,7 +325,7 @@ var getGlobal = function () {
 
 ![1545827147466](img/02/1545827147466.png)
 
-**➹：**[let 和 const 命令 - ECMAScript 6入门](http://es6.ruanyifeng.com/#docs/let#global-%E5%AF%B9%E8%B1%A1)
+➹：[let 和 const 命令 - ECMAScript 6入门](http://es6.ruanyifeng.com/#docs/let#global-%E5%AF%B9%E8%B1%A1)
 
 ---
 
@@ -401,14 +401,14 @@ var getGlobal = function () {
 
 变量是一个用来表示值的符号！
 
-**➹：**[变量 - Wikiwand](https://www.wikiwand.com/zh-cn/%E8%AE%8A%E6%95%B8)
+➹：[变量 - Wikiwand](https://www.wikiwand.com/zh-cn/%E8%AE%8A%E6%95%B8)
 
 其它的一些答案：
 
 - 在编程里，变量其实是存放值的存储器地址的别名
 - 上帝叫你完成一件任务的时候,你必须存在(声明变量)
 
-**➹：**[编程里定义变量的作用是什么。为什么要给它定义个数据类型，怎么熟练学好这个知识_百度知道](https://zhidao.baidu.com/question/7710070.html)
+➹：[编程里定义变量的作用是什么。为什么要给它定义个数据类型，怎么熟练学好这个知识_百度知道](https://zhidao.baidu.com/question/7710070.html)
 
 变量？存储地址？什么鬼？变量与存储地址是等价的吗？
 
@@ -424,19 +424,19 @@ var getGlobal = function () {
 
 一般来说，变量名不需要存储，但对于带 eval 的动态语言来说，变量名是储存的，比如 JS 的每个 Environment Record 就存了所有的局部变量，以及访问链。
 
-**➹：**[变量名储存在那里，变量的储存机制是什么？ - 知乎](https://www.zhihu.com/question/34266997)
+➹：[变量名储存在那里，变量的储存机制是什么？ - 知乎](https://www.zhihu.com/question/34266997)
 
-**➹：**[C 里面 ---变量名-- 和 --地址-- 的关系探讨 - 那些年....的专栏 - CSDN博客](https://blog.csdn.net/jiary5201314/article/details/44684243)
+➹：[C 里面 ---变量名-- 和 --地址-- 的关系探讨 - 那些年....的专栏 - CSDN博客](https://blog.csdn.net/jiary5201314/article/details/44684243)
 
-**➹：**[变量名和变量地址 - 天天向上... - 博客园](https://www.cnblogs.com/xuhj001/p/3436177.html)
+➹：[变量名和变量地址 - 天天向上... - 博客园](https://www.cnblogs.com/xuhj001/p/3436177.html)
 
-**➹：**[程序如何根据变量名在内存中找到存放这个变量的地址？ - 知乎](https://www.zhihu.com/question/20086414)
+➹：[程序如何根据变量名在内存中找到存放这个变量的地址？ - 知乎](https://www.zhihu.com/question/20086414)
 
 ### ④为什么要对变量私有化？
 
 > “‘老王忘记把他的猫封装，后来他的猫就被辗平了⋯⋯’（在捷运站听到的鬼故事）”摘自《Head First Java》
 
-**➹：**[编程中为什么要把一些变量私有？ - 知乎](https://www.zhihu.com/question/21142338)
+➹：[编程中为什么要把一些变量私有？ - 知乎](https://www.zhihu.com/question/21142338)
 
 ### ⑤JS 环境记录 访问链？
 
@@ -462,9 +462,9 @@ var getGlobal = function () {
 
 言归正传：
 
-**➹：**[谈谈JavaScript的词法环境和闭包（一） - 聪豆儿的前端专栏 - SegmentFault 思否](https://segmentfault.com/a/1190000006719728)
+➹：[谈谈JavaScript的词法环境和闭包（一） - 聪豆儿的前端专栏 - SegmentFault 思否](https://segmentfault.com/a/1190000006719728)
 
-**➹：**[理解 JavaScript（二） - 太极客（Very Geek） - SegmentFault 思否](https://segmentfault.com/a/1190000000348228)
+➹：[理解 JavaScript（二） - 太极客（Very Geek） - SegmentFault 思否](https://segmentfault.com/a/1190000000348228)
 
 - 声明变量：
 
@@ -553,13 +553,13 @@ x + y + z + q = 10 + 20 + 30 + 40 = 100
 
 > 我之所以摘录下来是因为这给了我新的认识！
 
-**➹：**[图解JS词法环境(Lexical environment) - public class Me的博客 - CSDN博客](https://blog.csdn.net/dhassa/article/details/70945016)
+➹：[图解JS词法环境(Lexical environment) - public class Me的博客 - CSDN博客](https://blog.csdn.net/dhassa/article/details/70945016)
 
 ### ⑥let声明的变量，无法用window读取它？
 
-**➹：**[javascript’let’全局变量不是’window’的属性,不像全局’var’ - 代码日志](https://codeday.me/bug/20180831/238070.html)
+➹：[javascript’let’全局变量不是’window’的属性,不像全局’var’ - 代码日志](https://codeday.me/bug/20180831/238070.html)
 
-**➹：**[let 和 const 命令 - ECMAScript 6入门](http://es6.ruanyifeng.com/#docs/let#%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7)
+➹：[let 和 const 命令 - ECMAScript 6入门](http://es6.ruanyifeng.com/#docs/let#%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7)
 
 ### ⑦for循环的括号？
 
@@ -660,7 +660,7 @@ a[6](); // 10
 
 ### ⑧Web Worker？
 
-**➹：**[Web Worker 使用教程 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2018/07/web-worker.html)
+➹：[Web Worker 使用教程 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2018/07/web-worker.html)
 
 
 

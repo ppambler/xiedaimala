@@ -8,7 +8,7 @@
 
 ## ★资料
 
-**➹：**[5天学会Node.js打造现代web架构 - 网易云课堂](https://study.163.com/course/courseMain.htm?courseId=1209649806)
+➹：[5天学会Node.js打造现代web架构 - 网易云课堂](https://study.163.com/course/courseMain.htm?courseId=1209649806)
 
 ## ★会学到什么？
 

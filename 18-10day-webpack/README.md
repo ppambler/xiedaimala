@@ -12,7 +12,7 @@
 
 ## ★资源
 
-**➹：**[10天彻底搞定-webpack4.0-学习视频教程-培训课程-腾讯课堂](https://ke.qq.com/course/368629)
+➹：[10天彻底搞定-webpack4.0-学习视频教程-培训课程-腾讯课堂](https://ke.qq.com/course/368629)
 
 ## ★看这个视频的策略
 
@@ -26,7 +26,7 @@
 
 ## ★与这个教程相匹配的文章
 
-**➹：**[浅谈webpack，实现从零到一 - 掘金](https://juejin.im/post/5da7d46b51882555704c913f)
+➹：[浅谈webpack，实现从零到一 - 掘金](https://juejin.im/post/5da7d46b51882555704c913f)
 
 ## ★目录
 

@@ -6,7 +6,7 @@
 
 ## ★资料
 
-**➹：**[Vue+Vant+ES6+Node.js+Koa+MongoDB 移动端农机商城全栈开发项目-学习视频教程-培训课程-腾讯课堂](https://ke.qq.com/course/453495)
+➹：[Vue+Vant+ES6+Node.js+Koa+MongoDB 移动端农机商城全栈开发项目-学习视频教程-培训课程-腾讯课堂](https://ke.qq.com/course/453495)
 
 ## ★老师介绍
 
@@ -18,9 +18,9 @@
 
 ## ★代码
 
-**➹：**[青盟科技](http://www.qingmengtech.com/classdetail?id=31)
+➹：[青盟科技](http://www.qingmengtech.com/classdetail?id=31)
 
-**➹：**[xiecheng328/shop: 移动端农机商城](https://github.com/xiecheng328/shop)
+➹：[xiecheng328/shop: 移动端农机商城](https://github.com/xiecheng328/shop)
 
 ## ★目录
 

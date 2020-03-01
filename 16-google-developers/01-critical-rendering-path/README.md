@@ -6,7 +6,7 @@
 
 ## ★资源
 
-**➹：**[关键渲染路径  -  Web  -  Google Developers](https://developers.google.com/web/fundamentals/performance/critical-rendering-path)
+➹：[关键渲染路径  -  Web  -  Google Developers](https://developers.google.com/web/fundamentals/performance/critical-rendering-path)
 
 ## ★目录
 

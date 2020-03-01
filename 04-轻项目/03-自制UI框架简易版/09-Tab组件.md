@@ -217,7 +217,7 @@ UI不是你做的，你也要核对一下
 
     因此，就必须要有一个事件了。
 
-    **➹：** [②](#er)
+    ➹： [②](#er)
 
   - 方向（决定tabs是竖着还是横着）：tabs
 
@@ -346,7 +346,7 @@ UI不是你做的，你也要核对一下
 
 3. 只要我们在爷爷这个组件上写上`provide:{eventBus}`的话，那么它所有的子孙后代就都能访问到这`eventBus`，说明`provide`这个属性是唯一一个可以跨组件都可以调用的属性，而其它的属性都是只提供给儿子，不提供孙子（如props属性），总之，**只有provide是任何后代都可以访问的**
 
-   **➹：**[vue 父子组件间通信 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000014381699)
+   ➹：[vue 父子组件间通信 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000014381699)
 
 ### ◇让后代访问eventBus
 
@@ -475,7 +475,7 @@ component-parent:
 this.$root.$on('foobar')
 ```
 
-**➹：**[javascript - How to bubble events on a component subcomponent chain with Vue js 2? - Stack Overflow](https://stackoverflow.com/questions/42029150/how-to-bubble-events-on-a-component-subcomponent-chain-with-vue-js-2)
+➹：[javascript - How to bubble events on a component subcomponent chain with Vue js 2? - Stack Overflow](https://stackoverflow.com/questions/42029150/how-to-bubble-events-on-a-component-subcomponent-chain-with-vue-js-2)
 
 但是芳芳认为这不太好，因为有需求的时候再说比较好，而现在说，并不知道这到底好不好，而现在没有需求，那就先不这样用咯！
 
@@ -499,7 +499,7 @@ this.$root.$on('foobar')
 >
 > 测试得知，不会阻止：
 >
-> **➹：** [demo](./demo/09/vue事件冒泡.html)
+> ➹： [demo](./demo/09/vue事件冒泡.html)
 
 ###  ◇小结
 
@@ -554,7 +554,7 @@ eventBus.$off()
 >
 > 当你看到一个对象，可以触发事件，监听事件，取消事件监听，那么就可以把它看做是一个事件中心了
 >
-> **➹：**[鸭子类型 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B)
+> ➹：[鸭子类型 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E9%B8%AD%E5%AD%90%E7%B1%BB%E5%9E%8B)
 
 ps：事件系统和事件中心是不是一回事呢？似乎满足监听事件，和触发事件就可以构成一个事件系统了。
 
@@ -647,7 +647,7 @@ function xxx(prop1,prop2) {
 >
 > 在Vue组件里边，主要维护的全局数据的似乎就只是props和data，而像是computed等这一类的都是基于它们二者搞事情的。
 >
-> **➹：**[怎样反驳「程序 = 算法 + 数据结构」的言论？ - 知乎](https://www.zhihu.com/question/28026777)
+> ➹：[怎样反驳「程序 = 算法 + 数据结构」的言论？ - 知乎](https://www.zhihu.com/question/28026777)
 >
 > 题外话：
 >
@@ -740,7 +740,7 @@ function xxx(prop1,prop2) {
 
 - 通过active的true or false ，来控制 元素显示与否。做法是`v-if`的使用
 
-**➹：** [⑨](#jiu)
+➹： [⑨](#jiu)
 
 之后，会通过transition来加动画，目前就做个简单的切换即可！
 
@@ -802,7 +802,7 @@ function xx(obj) {
 
 说一个题外话：「框架为啥会有这么多规矩？」
 
-**➹：** [⑩](#shi)
+➹： [⑩](#shi)
 
 ----
 
@@ -880,7 +880,7 @@ selected值，目前是不需要的，如果不爽，那就给个默认值。
 >
 > 总之，修改tabs的selected属性值，是tabs组件自己完成的，而tabs-item只是发个通知，并附带个参数给你。
 
-**➹：**[自定义事件 — Vue.js](https://cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6)
+➹：[自定义事件 — Vue.js](https://cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6)
 
 ### <a id="san">③如何在一个组件里边添加多个插槽？</a>
 
@@ -914,7 +914,7 @@ selected值，目前是不需要的，如果不爽，那就给个默认值。
 
 
 
-**➹：**[API — Vue.js](https://cn.vuejs.org/v2/api/#provide-inject)
+➹：[API — Vue.js](https://cn.vuejs.org/v2/api/#provide-inject)
 
 ### ⑦除了class和Sstyle属性以外，name属性也是可以直接写在组件标签上的？
 
@@ -1026,7 +1026,7 @@ mounted执行完了，意味着整个Vue实例已经初始化完毕了，接着�
 >
 > 而`#app`的mounted，也就是能访问到所有的子孙元素了。
 
-**➹：**[1667867-20190608154311855-1964957884.png (2498×2798)](https://ppambler.github.io/xdmala/04-%E8%BD%BB%E9%A1%B9%E7%9B%AE/03-%E8%87%AA%E5%88%B6UI%E6%A1%86%E6%9E%B6%E7%AE%80%E6%98%93%E7%89%88/img/08/1667867-20190608154311855-1964957884.png)
+➹：[1667867-20190608154311855-1964957884.png (2498×2798)](https://ppambler.github.io/xdmala/04-%E8%BD%BB%E9%A1%B9%E7%9B%AE/03-%E8%87%AA%E5%88%B6UI%E6%A1%86%E6%9E%B6%E7%AE%80%E6%98%93%E7%89%88/img/08/1667867-20190608154311855-1964957884.png)
 
 ### <a id="jiu">⑨ `v-if`和 `v-show`的区别？</a>
 
@@ -1037,7 +1037,7 @@ mounted执行完了，意味着整个Vue实例已经初始化完毕了，接着�
 
 不知道tab的切换算不算频繁地切换嘞！
 
-**➹：**[Vue中v-if和v-show的使用场景 - 知乎](https://zhuanlan.zhihu.com/p/38179618)
+➹：[Vue中v-if和v-show的使用场景 - 知乎](https://zhuanlan.zhihu.com/p/38179618)
 
 ### <a id="shi">⑩框架为啥会有这么多规矩？</a>
 
@@ -1094,7 +1094,7 @@ function xx(obj,n) {
 
 1. 你应该写单元测试，而Vue则没有告诉你写，而是说「想写就写，不写就拉倒呗！」，但是在Angular里边就用了非常大的笔墨来给你介绍说「单元测试的每行代码该怎么写，如如何测试组件的绑定，如何测试xxx……」，而Vue是没有的
 
-**➹：**[Angular - 测试](https://angular.cn/guide/testing#component-binding)
+➹：[Angular - 测试](https://angular.cn/guide/testing#component-binding)
 
 所以，Vue现在离框架就差一步，需要一个人（可能不是Vue的作者，可能是一个公司里边非常厉害的团队），告诉所有的Vue使用者「如何是最好的写代码方式」，而这也叫做最佳实践哈！
 
@@ -1114,5 +1114,5 @@ function xx(obj,n) {
 
 如果有个傻逼程序员说，我不会写测试，那么你就不要写了
 
-**➹：**[框架，在框住你的思维吗？ - 简书](https://www.jianshu.com/p/37ae462396c8)
+➹：[框架，在框住你的思维吗？ - 简书](https://www.jianshu.com/p/37ae462396c8)
 

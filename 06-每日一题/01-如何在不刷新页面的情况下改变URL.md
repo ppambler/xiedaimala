@@ -6,7 +6,7 @@ typora-copy-images-to: img\01
 
 ## ★资料
 
-**➹：**[如何在不刷新页面的情况下改变URL - 知乎](https://zhuanlan.zhihu.com/p/22412047)
+➹：[如何在不刷新页面的情况下改变URL - 知乎](https://zhuanlan.zhihu.com/p/22412047)
 
 ## ★思路
 
@@ -21,7 +21,7 @@ typora-copy-images-to: img\01
 
 使用一个线上编辑器：
 
-**➹：**[jsbin.com](https://jsbin.com/) 
+➹：[jsbin.com](https://jsbin.com/) 
 
 需要注意的是，在你调试代码是否运行成功的时候，请使用`console.log()`，而不是`alert()`，因为后者在 [http://js.jirengu.com](http://js.jirengu.com/) 在这个线上编辑器里边是GG的！
 

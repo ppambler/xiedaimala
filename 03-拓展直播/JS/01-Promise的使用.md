@@ -8,7 +8,7 @@ typora-copy-images-to: img\01
 
 > 若愚老师主讲《Promise的使用和日常学习情况答疑》
 
-**➹：**[Promise · 饥人谷课件](http://book.jirengu.com/fe/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/%E5%BC%82%E6%AD%A5/Promise.html)
+➹：[Promise · 饥人谷课件](http://book.jirengu.com/fe/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/%E5%BC%82%E6%AD%A5/Promise.html)
 
 ## ★Promise的用法
 
@@ -157,9 +157,9 @@ fn1(function(){
 
 总之，这似乎与任务队列相关……
 
-**➹：**[你真的会使用XMLHttpRequest吗？ - WEB前端路上踩过的坑儿 - SegmentFault 思否](https://segmentfault.com/a/1190000004322487)
+➹：[你真的会使用XMLHttpRequest吗？ - WEB前端路上踩过的坑儿 - SegmentFault 思否](https://segmentfault.com/a/1190000004322487)
 
-**➹：**[Easy Mock](https://easy-mock.com/docs)
+➹：[Easy Mock](https://easy-mock.com/docs)
 
 话说今天的主题是什么？——弄清楚Promise是什么？其内部原理？以及它的用法？
 
@@ -199,7 +199,7 @@ promise这个对象一开始是pending状态，之后就变为resolved状态！
 
 这个 有两个中括号的家伙`[[PromiseStatus]]`表示你不能随便用，总之你只能看，不能通过 `promise.[[PromiseStatus]]`这种方式去读取
 
-**➹：**[Promise的内部变量 - SegmentFault 思否](https://segmentfault.com/q/1010000010670739)
+➹：[Promise的内部变量 - SegmentFault 思否](https://segmentfault.com/q/1010000010670739)
 
 #### 假设有多个then
 
@@ -423,7 +423,7 @@ Promise.all([p1, p2, p3])
 
 ![1547953442050](img/01/1547953442050.png)
 
-**➹：**[测量资源加载时间  -  Tools for Web Developers  -  Google Developers](https://developers.google.com/web/tools/chrome-devtools/network-performance/resource-loading?hl=zh-cn)
+➹：[测量资源加载时间  -  Tools for Web Developers  -  Google Developers](https://developers.google.com/web/tools/chrome-devtools/network-performance/resource-loading?hl=zh-cn)
 
 小结：
 
@@ -636,7 +636,7 @@ fn1().then(fn2).then(fn3).catch(onerror)
 - [`Promise.reject(reason)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject)
 - [`Promise.resolve(value)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
 
-**➹：**[Promise - MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+➹：[Promise - MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 ---
 
@@ -678,7 +678,7 @@ Promise一般是用于处理异步的！让异步换一种写法，然后解决�
 
 **④各种异步的写法？**
 
-**➹：** [callback/Promise/Generator/async/await · 饥人谷课件](http://book.jirengu.com/fe/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/%E5%BC%82%E6%AD%A5/%E5%90%84%E7%A7%8D%E5%BC%82%E6%AD%A5.html)
+➹： [callback/Promise/Generator/async/await · 饥人谷课件](http://book.jirengu.com/fe/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/%E5%BC%82%E6%AD%A5/%E5%90%84%E7%A7%8D%E5%BC%82%E6%AD%A5.html)
 
 **⑤异步和回调的区别是什么？**
 
@@ -756,7 +756,7 @@ useTime(3,2).then((value)=>{
 
 ### ①使用在线的mock，经常会出现500错误？
 
-**➹：**[通过设置chrome浏览器解决跨域问题，在本地进行开发工作 - 哭个六 - 博客园](https://www.cnblogs.com/kugeliu/p/6566462.html)
+➹：[通过设置chrome浏览器解决跨域问题，在本地进行开发工作 - 哭个六 - 博客园](https://www.cnblogs.com/kugeliu/p/6566462.html)
 
 ### <a id="er">②测试结果</a>
 

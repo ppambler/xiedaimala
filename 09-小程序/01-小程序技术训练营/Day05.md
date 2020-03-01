@@ -6,9 +6,9 @@ typora-copy-images-to: img\05
 
 > 资源：[生命周期](https://tencentcloudbase.github.io/handbook/tcb14.html)
 >
-> **➹：**[App(Object object) - 微信开放文档](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html)
+> ➹：[App(Object object) - 微信开放文档](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html)
 >
-> **➹：**[生命周期 - 微信开放文档](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page-life-cycle.html)
+> ➹：[生命周期 - 微信开放文档](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page-life-cycle.html)
 
 ## ★小程序和页面的生命周期
 

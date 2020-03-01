@@ -22,7 +22,7 @@ Github Pages的服务是免费的，但是也有一些限制：
 
 ![1568909841304](00-img/faq/1568909841304.png)
 
-**➹：**[Jekyll + Github Pages 博客搭建入门 - 简书](https://www.jianshu.com/p/9f198d5779e6)
+➹：[Jekyll + Github Pages 博客搭建入门 - 简书](https://www.jianshu.com/p/9f198d5779e6)
 
 ## 2、查看一篇笔记的大纲？
 
@@ -30,13 +30,13 @@ Github Pages的服务是免费的，但是也有一些限制：
 
 ## 3、常用的 bash 命令？
 
-**➹：**[★awesome-cheatsheets/bash.sh at master · skywind3000/awesome-cheatsheets](https://github.com/skywind3000/awesome-cheatsheets/blob/master/languages/bash.sh)
+➹：[★awesome-cheatsheets/bash.sh at master · skywind3000/awesome-cheatsheets](https://github.com/skywind3000/awesome-cheatsheets/blob/master/languages/bash.sh)
 
-**➹：**[git Bash 命令行大全（持续更新） - webFrontEndDev的博客 - CSDN博客](https://blog.csdn.net/webfrontenddev/article/details/83182436)
+➹：[git Bash 命令行大全（持续更新） - webFrontEndDev的博客 - CSDN博客](https://blog.csdn.net/webfrontenddev/article/details/83182436)
 
-**➹：**[Linux基本bash命令（持续更新） - 毛球饲养员 - CSDN博客](https://blog.csdn.net/u012442157/article/details/73692168)
+➹：[Linux基本bash命令（持续更新） - 毛球饲养员 - CSDN博客](https://blog.csdn.net/u012442157/article/details/73692168)
 
-**➹：**[github中git bash基础命令行 - 小鹏的编程日志 - 博客园](https://www.cnblogs.com/WangXinPeng/p/8016293.html)
+➹：[github中git bash基础命令行 - 小鹏的编程日志 - 博客园](https://www.cnblogs.com/WangXinPeng/p/8016293.html)
 
 ## 4、TPR 是啥东西的简写？
 

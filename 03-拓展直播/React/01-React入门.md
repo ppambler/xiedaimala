@@ -38,7 +38,7 @@ typora-copy-images-to: img\01
 
 2. 初始化 react 项目，之前我们初始化一个 vue 项目用的是 `vue-cli`，那么 react 有什么类似的工具吗？——那就是 `create-react-app`
 
-   **➹：**[Create a New React App – React](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app)
+   ➹：[Create a New React App – React](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app)
 
    一般芳芳看文档，都是直接看能运行的代码，而不是直接看一大段英文
 
@@ -68,7 +68,7 @@ npm start
 >
 > 总之，就是文件数量太多了，导致有31MB的空间被浪费了！所以说硬盘空间下，是不足矣运行该项目的！
 
-**➹：**[“文件大小”和“占用空间”的区别 - 向死而生 - CSDN博客](https://blog.csdn.net/duyusean/article/details/78643475)
+➹：[“文件大小”和“占用空间”的区别 - 向死而生 - CSDN博客](https://blog.csdn.net/duyusean/article/details/78643475)
 
 3. 启动项目：`yarn start`，也可以用 `npm start`，反正都是用于启动 `react-scripts start`这个脚本。 虽然它们俩功能一样，但是yarn的bug相较于小一点！（一般第一次启动 react 项目都很慢，这跟你机器的性能有关！）
 4. 拿到一个react项目，那么首先就是看src下的 `index.js`文件，这是约定俗成的！然后对于新手入门来说，你得把一些无关紧要的文件给删掉。
@@ -679,7 +679,7 @@ const Chessboard = function () {
 >
 > 父组件通过 `prop` 给子组件下发数据，子组件通过`$emit`触发事件给父组件发送消息，即 `prop` 向下传递，事件向上传递。
 >
-> **➹：**[ vue 父子组件间通信 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000014381699)
+> ➹：[ vue 父子组件间通信 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000014381699)
 
 此时 `Chessboard`组件是父组件，而`Cell`则是子组件，在父组件这个范围内，传了两个参数给 `Cell`这个子组件，分别是 `text`的值和 `onClick`的值
 
@@ -792,9 +792,9 @@ const copy = JSON.parse(JSON.stringify(cells))
 
 ![1566569837952](img/01/1566569837952.png)
 
-**➹：**[深拷贝的终极探索](https://yanhaijing.com/javascript/2018/10/10/clone-deep/)
+➹：[深拷贝的终极探索](https://yanhaijing.com/javascript/2018/10/10/clone-deep/)
 
-**➹：**[JS深拷贝总结 - 掘金](https://juejin.im/post/5b20c9f65188257d7d719c1c)
+➹：[JS深拷贝总结 - 掘金](https://juejin.im/post/5b20c9f65188257d7d719c1c)
 
 话说，创建那么多对象不会影响性能吗？ 
 
@@ -865,7 +865,7 @@ const copy = JSON.parse(JSON.stringify(cells))
 
 总之，先把东西做完，再讲优化，况且日后你还会学到更多的 JS 优化技巧，而这时，你才明白如何去优化！
 
-**➹：**[JavaScript 性能优化技巧分享 - 前端 - 掘金](https://juejin.im/entry/5a2e04006fb9a04528466ead)
+➹：[JavaScript 性能优化技巧分享 - 前端 - 掘金](https://juejin.im/entry/5a2e04006fb9a04528466ead)
 
 芳芳目前想到的优化：
 
@@ -909,7 +909,7 @@ const copy = JSON.parse(JSON.stringify(cells))
 
 - 信息传递：往下传值，还是往上传值，都是用的是props，这个数据可以从子组件里边或者父组件里边带出来！关于子父通信就是那个click事件触发
 
-  **➹：**[react中子组件向父组件传值 - 简书](https://www.jianshu.com/p/2f632cbdf6ad)
+  ➹：[react中子组件向父组件传值 - 简书](https://www.jianshu.com/p/2f632cbdf6ad)
 
 -  React 的API，自己找资料学呗！目前就学了两个 `React.useState()`和 `ReactDOM.render()`，后者还不算是 React 的API，说白了就学 了一个API，然后其余的是原生 JS 就能做出一个简单的井字棋项目！
 
@@ -975,7 +975,7 @@ let make = (~name) =>
 
   ![1566730385588](img/01/1566730385588.png)
 
-  **➹：**[单向数据流和双向数据流 - 简书](https://www.jianshu.com/p/810464f1a576)
+  ➹：[单向数据流和双向数据流 - 简书](https://www.jianshu.com/p/810464f1a576)
 
 ## ★Q&A
 
@@ -997,9 +997,9 @@ let make = (~name) =>
  yarn config set registry 'https://registry.yarnpkg.com'
 ```
 
-**➹：**[yarn 国内加速，修改镜像源 - Laravel China 社区](https://learnku.com/articles/15976/yarn-accelerate-and-modify-mirror-source-in-china)
+➹：[yarn 国内加速，修改镜像源 - Laravel China 社区](https://learnku.com/articles/15976/yarn-accelerate-and-modify-mirror-source-in-china)
 
-**➹：**[npm，yarn如何查看源和换源 - 知乎](https://zhuanlan.zhihu.com/p/35856841)
+➹：[npm，yarn如何查看源和换源 - 知乎](https://zhuanlan.zhihu.com/p/35856841)
 
 ### ②为啥写在HTML上的onClick能触发callback执行？
 
@@ -1026,7 +1026,7 @@ let make = (~name) =>
 
  你要把`onclick`改成`onClick`，那就是一个`onClick`的新方法，和 `onclick`事件无关。
 
-**➹：**[onClick还是onclick，第一个c是否要大写，发现虽然mdn和msdn上都说的是onclick，但是浏览器也能触发onClick事件，这是为什么？ - 知乎](https://www.zhihu.com/question/19942453)
+➹：[onClick还是onclick，第一个c是否要大写，发现虽然mdn和msdn上都说的是onclick，但是浏览器也能触发onClick事件，这是为什么？ - 知乎](https://www.zhihu.com/question/19942453)
 
 ### ③为啥要加 `()`？
 
@@ -1034,9 +1034,9 @@ let make = (~name) =>
 
 反正不加括号就会报错，而加了括号就会被 `babel-jsx` 翻译成原生 JS 
 
-**➹：**[你对return后面的括号了解多少？ - 简书](https://www.jianshu.com/p/e9230dc06044)
+➹：[你对return后面的括号了解多少？ - 简书](https://www.jianshu.com/p/e9230dc06044)
 
-**➹：**[render方法括号的作用 - on the way - SegmentFault 思否](https://segmentfault.com/a/1190000012360432)
+➹：[render方法括号的作用 - on the way - SegmentFault 思否](https://segmentfault.com/a/1190000012360432)
 
 ### ④关于 `useState(0)`？
 
@@ -1053,7 +1053,7 @@ let make = (~name) =>
 
 ### ⑤asyn 和 defer？
 
-**➹：**[浅谈script标签的defer和async - 前端 - 掘金](https://juejin.im/entry/5a7ad55ef265da4e81238da9)
+➹：[浅谈script标签的defer和async - 前端 - 掘金](https://juejin.im/entry/5a7ad55ef265da4e81238da9)
 
 ### ⑥iconfont外链引入？
 
@@ -1061,10 +1061,10 @@ let make = (~name) =>
 
 在 jsx 里边使用图标的时候，请把`xlink:href` 改为`xlinkHref`
 
-**➹：**[react 中使用iconfont - 掘金](https://juejin.im/post/5bee5278e51d450b291c0a4d)
+➹：[react 中使用iconfont - 掘金](https://juejin.im/post/5bee5278e51d450b291c0a4d)
 
 ### ⑦函数式？
 
-**➹：**[函数式编程扫盲篇 - 飞林沙 - 博客园](https://www.cnblogs.com/kym/archive/2011/03/07/1976519.html)
+➹：[函数式编程扫盲篇 - 飞林沙 - 博客园](https://www.cnblogs.com/kym/archive/2011/03/07/1976519.html)
 
-**➹：**[函数式编程所倡导使用的「不可变数据结构」如何保证性能？ - 知乎](https://www.zhihu.com/question/53804334)
+➹：[函数式编程所倡导使用的「不可变数据结构」如何保证性能？ - 知乎](https://www.zhihu.com/question/53804334)

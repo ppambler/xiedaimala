@@ -66,7 +66,7 @@
 3. 如果你有多个样式声明，如有10个，那么style属性的内容就会非常长了，而且这样的代码显然也很难阅读！
 
 > CSS规则=选择器+声明块。
-> **➹：**[How CSS is structured - 学习 Web 开发 - MDN](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/First_steps/How_CSS_is_structured)
+> ➹：[How CSS is structured - 学习 Web 开发 - MDN](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/First_steps/How_CSS_is_structured)
 
 因此，CSS还有一种更好的写法，而这种写法需要用到所谓的「选择器」，接下来，会探讨剩余的两种引入CSS的姿势！
 
@@ -135,7 +135,7 @@
 
 > 一个认识很关键：那就是index.html里边的内容都是流，都是字符串！
 
-**➹：**[探究 CSS 解析原理 - Jartto's blog](http://jartto.wang/2017/11/13/Exploring-the-principle-of-CSS-parsing/#about)
+➹：[探究 CSS 解析原理 - Jartto's blog](http://jartto.wang/2017/11/13/Exploring-the-principle-of-CSS-parsing/#about)
 
 内联样式不好的原因之一：
 
@@ -295,7 +295,7 @@ id vs class -> 有机会重复使用，class是一个不错的选择，否则id�
 
 - CSS布局主要是基于盒子模型的，因此，每个占用页面空间的块都有这样的属性：`padding`、`border`、`margin`。（可以把盒子看做是小木箱子，关于盒子模型，即把盒子抽象成页面的元素，而既然是模型，那么这就意味着有数据，而数据来自于元素的border、width等这样的属性！）
 
-  **➹：**[CSS basics - Learn web development - MDN](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
+  ➹：[CSS basics - Learn web development - MDN](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
 
 - display: sets the display mode of an element。这给我的赶脚类似于webpack打包时是根据生产模式打包还是开发模式打包！
 
@@ -386,7 +386,7 @@ img { float: right }
 
 > 我纯属猜测，是因为有个span元素是display为none的缘故！
 
-**➹：**[构建对象模型  -  Web  -  Google Developers](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model)
+➹：[构建对象模型  -  Web  -  Google Developers](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model)
 
 
 
@@ -434,15 +434,15 @@ img { float: right }
 
 > 提搞自己编程能力的本质是「学习算法和数据结构」，可不是你学到了多少新出来的框架，然后用到了这些框架做了哪些东西！
 
-**➹：**[视频教学 第一辑 - 什么是数学建模？_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili](https://www.bilibili.com/video/av23152833)
+➹：[视频教学 第一辑 - 什么是数学建模？_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili](https://www.bilibili.com/video/av23152833)
 
-**➹：**[数学建模需要怎样的编程水平？ - 知乎](https://www.zhihu.com/question/61102199)
+➹：[数学建模需要怎样的编程水平？ - 知乎](https://www.zhihu.com/question/61102199)
 
-**➹：**[建模和编程的本质区别是什么](https://www.douban.com/group/topic/20198679/)
+➹：[建模和编程的本质区别是什么](https://www.douban.com/group/topic/20198679/)
 
-**➹：**[TY的日记](https://www.douban.com/people/flyingrobot/notes?start=50&type=note)
+➹：[TY的日记](https://www.douban.com/people/flyingrobot/notes?start=50&type=note)
 
-**➹：**[编程与建模_编程_四季风-CSDN博客](https://blog.csdn.net/u012987386/article/details/72552168)
+➹：[编程与建模_编程_四季风-CSDN博客](https://blog.csdn.net/u012987386/article/details/72552168)
 
 
 ### 2、what is raw bytes ?
@@ -466,9 +466,9 @@ img { float: right }
 ![utf8之中文字符](assets/img/2019-12-27-15-37-02.png)
 
 
-**➹：**[what is raw bytes ? (Beginning Java forum at Coderanch)](https://coderanch.com/t/522388/java/raw-bytes)
+➹：[what is raw bytes ? (Beginning Java forum at Coderanch)](https://coderanch.com/t/522388/java/raw-bytes)
 
-**➹：**[Convert UTF8 to Hexadecimal - Online UTF8 Tools](https://onlineutf8tools.com/convert-utf8-to-hexadecimal)
+➹：[Convert UTF8 to Hexadecimal - Online UTF8 Tools](https://onlineutf8tools.com/convert-utf8-to-hexadecimal)
 
 
 

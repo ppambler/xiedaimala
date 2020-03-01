@@ -12,9 +12,9 @@ typora-copy-images-to: img\10\01
 
 - 看看人家做的Popover有哪些需求？（并稍微分析一下，如发生交互时，打开控制台看看页面的DOM结构发生了什么变化）
 
-  **➹：**[组件 - Element](https://element.eleme.cn/#/zh-CN/component/popover)
+  ➹：[组件 - Element](https://element.eleme.cn/#/zh-CN/component/popover)
 
-  **➹：**[气泡卡片 Popover - Ant Design](https://ant.design/components/popover-cn/#header)
+  ➹：[气泡卡片 Popover - Ant Design](https://ant.design/components/popover-cn/#header)
 
 - 芳芳的设计稿：[Popover · 轱辘 · 语雀](https://www.yuque.com/u29422/gulu/289546?artboard_type=)
 
@@ -121,7 +121,7 @@ typora-copy-images-to: img\10\01
   >
   > 所以，我觉得符合钩子思想的东西就是钩子，程序如此，生活中的东西也如此
   >
-  > **➹：**[javascript - 麻烦帮解释一下，什么叫“钩子”？ - SegmentFault 思否](https://segmentfault.com/q/1010000004335505)
+  > ➹：[javascript - 麻烦帮解释一下，什么叫“钩子”？ - SegmentFault 思否](https://segmentfault.com/q/1010000004335505)
 
   ![1566037984556](img/10/01/1566037984556.png)
 
@@ -235,7 +235,7 @@ typora-copy-images-to: img\10\01
 
   很多小公司里边的代码，都是很复杂的！但是，我们不敢去优化，不敢去改啊！只敢添加新的代码！至此代码越来越烂，当然，只要你写了测试用例，那么改代码，优化代码，就是随便的事了！反正只要测试用例通过了，那么我们的代码质量就是有保证的！
 
-  **➹：**[重构 tabs.vue （一函数就5行代码） · ppambler/warm-ui@f1918f3](https://github.com/ppambler/warm-ui/commit/f1918f3ada36818a1d3506f806b28435a400c8fd)
+  ➹：[重构 tabs.vue （一函数就5行代码） · ppambler/warm-ui@f1918f3](https://github.com/ppambler/warm-ui/commit/f1918f3ada36818a1d3506f806b28435a400c8fd)
 
   一个函数5行，是芳芳自己在遵守的一个准则，虽然很多人都不喜欢去准守，但是它可以给你一个指导！
 
@@ -292,7 +292,7 @@ typora-copy-images-to: img\10\01
 > 表驱动法是一种编程模式，从表里面查找信息而不是使用逻辑语句（if…else…switch），当需求很简单的情况时，用逻辑语句很简单，但如果需求很复杂，再使用逻辑语句就很麻烦了。
 >
 
-**➹：**[表驱动法 -《代码大全》读书笔记 - AngelDevil - 博客园](https://www.cnblogs.com/angeldevil/p/3759486.html)
+➹：[表驱动法 -《代码大全》读书笔记 - AngelDevil - 博客园](https://www.cnblogs.com/angeldevil/p/3759486.html)
 
 要优化的代码：
 
@@ -396,19 +396,19 @@ let x = {
 
 我们可以通过**改变前景色的透明度来生成更深或更浅的颜色**。如上边的背景色是绿色，前景色 分别是浅绿色和深绿色！
 
-**➹：**[【转载】CSS技巧-rgba函数的妙用_CSS 教程_w3cplus](https://www.w3cplus.com/css/the-power-of-rgba.html)
+➹：[【转载】CSS技巧-rgba函数的妙用_CSS 教程_w3cplus](https://www.w3cplus.com/css/the-power-of-rgba.html)
 
 ### ②关于ref？
 
 **ref**：被用来给元素或子组件注册引用信息，引用信息将会注册在父组件的$refs对象上。如果在普通的DOM元素上使用，那么指向的就是普通的DOM元素。
 
-**➹：**[详解vue中的ref和$refs的使用 - 掘金](https://juejin.im/post/5c068829e51d451db767b8c0)
+➹：[详解vue中的ref和$refs的使用 - 掘金](https://juejin.im/post/5c068829e51d451db767b8c0)
 
 ### ③把页面里边已经渲染好的DOM移到其它位置里边去？
 
 本来是xx的儿子，现在通过 `appendChild`这个API却可以成为xx的兄弟！
 
-**➹：** [demo](./demo/10/如何移动已经在页面渲染好的dom.html)
+➹： [demo](./demo/10/如何移动已经在页面渲染好的dom.html)
 
 ### ④js get element offset relative to document？
 
@@ -460,16 +460,16 @@ element.getBoundingClientRect().top + document.documentElement.scrollTop
 
 芳芳就是用了最简洁姿势，只不过是用了 `window.scrollY`，不过，这个兼容性可没有那么好呀！
 
-**➹：**[javascript - Finding element's position relative to the document - Stack Overflow](https://stackoverflow.com/questions/5598743/finding-elements-position-relative-to-the-document)
+➹：[javascript - Finding element's position relative to the document - Stack Overflow](https://stackoverflow.com/questions/5598743/finding-elements-position-relative-to-the-document)
 
 ### ⑤父元素是absolute，子元素也是absolute，那么子元素是相对于父元素绝对定位吗？
 
 > 只要父级元素设了position并且不是static（默认既是static），那么设定了absolute的子元素即以此为包含块（最近的）。
 > 绝对定位（Absolute positioning）元素定位的参照物是其包含块，既相对于其包含块进行定位，不一定是其父元素。
 
-**➹：**[父元素position:absolute/relative的区别 - zcy_csdn123的博客 - CSDN博客](https://blog.csdn.net/zcy_csdn123/article/details/77186227)
+➹：[父元素position:absolute/relative的区别 - zcy_csdn123的博客 - CSDN博客](https://blog.csdn.net/zcy_csdn123/article/details/77186227)
 
-**➹：**[CSS 中，为什么绝对定位（absolute）的父级元素必须是相对定位（relative）？ - 知乎](https://www.zhihu.com/question/19926700)
+➹：[CSS 中，为什么绝对定位（absolute）的父级元素必须是相对定位（relative）？ - 知乎](https://www.zhihu.com/question/19926700)
 
 ### ⑥话说，这样的浮层样式该怎么实现？
 
@@ -500,5 +500,5 @@ element.getBoundingClientRect().top + document.documentElement.scrollTop
 
 ![1566184962335](img/10/01/1566184962335.png)
 
-**➹：** [demo](./demo/10/03-popover浮层样式.html)
+➹： [demo](./demo/10/03-popover浮层样式.html)
 

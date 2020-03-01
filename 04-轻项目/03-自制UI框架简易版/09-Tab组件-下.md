@@ -315,7 +315,7 @@ typora-copy-images-to: img\09\01
 
 此时，元素水平方向相对特性丢失，具有了绝对定位特性，而垂直方向的定位依然保持了相对特性。
 
-**➹：**[【前端Talkking】CSS系列——CSS深入理解之absolute定位 - 前端Talkking - SegmentFault 思否](https://segmentfault.com/a/1190000014736711#articleHeader8)
+➹：[【前端Talkking】CSS系列——CSS深入理解之absolute定位 - 前端Talkking - SegmentFault 思否](https://segmentfault.com/a/1190000014736711#articleHeader8)
 
 ### ②如何叫编写可测试的代码？
 
@@ -373,9 +373,9 @@ typora-copy-images-to: img\09\01
 
 用于解决元素是disabled状态，但还可以响应鼠标事件（如click事件）的问题！
 
-**➹：**[用纯CSS禁止鼠标点击事件 – WEB骇客](http://www.webhek.com/post/css-pointer-events-preventdefault.html)
+➹：[用纯CSS禁止鼠标点击事件 – WEB骇客](http://www.webhek.com/post/css-pointer-events-preventdefault.html)
 
-**➹：**[disabled - Mozilla 产品与私有技术 - MDN](https://developer.mozilla.org/zh-CN/docs/Mozilla/Tech/XUL/Attribute/disabled)
+➹：[disabled - Mozilla 产品与私有技术 - MDN](https://developer.mozilla.org/zh-CN/docs/Mozilla/Tech/XUL/Attribute/disabled)
 
 
 

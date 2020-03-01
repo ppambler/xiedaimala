@@ -432,7 +432,7 @@ setInterval(function(){
    >
    > 关于input元素等这样的单标签元素……显然它们是没有子节点的。所以这一点是需要考量的，所以上面的代码还是有点不严谨的
    >
-   > **➹：**[Node.nodeType - Web API 接口参考 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType#%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B%E5%B8%B8%E9%87%8F)
+   > ➹：[Node.nodeType - Web API 接口参考 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType#%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B%E5%B8%B8%E9%87%8F)
 
    不管怎样，当当前节点的nodeType为3的话，那就停止遍历了，然后就可以去渲染我们的东西了，即我们需要把这个模板替换成真实的数据
 
@@ -457,7 +457,7 @@ setInterval(function(){
 
    >  `**Node.nodeValue** `属性返回或设置当前节点的值。
    >
-   > **➹：**[Node.nodeValue - Web API 接口参考 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeValue)
+   > ➹：[Node.nodeValue - Web API 接口参考 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeValue)
 
    接着我们通过`node.nodeValue`拿到我们那个文本内容，
 
@@ -487,13 +487,13 @@ setInterval(function(){
 
   我自己结合所学的知识弄了一个简陋多bug版的单向绑定！
 
-  **➹：**[传送门](https://ppambler.github.io/fe-blog-demo/01-JS/02-traverseNode.html)
+  ➹：[传送门](https://ppambler.github.io/fe-blog-demo/01-JS/02-traverseNode.html)
 
   直接在控制里边输入`data.xxx`什么的就能更改视图里边的数据，但其实潜在很多bug！
 
 - 扩展阅读：
 
-  **➹：**[被误解的MVC和被神化的MVVM](https://infoq.cn/article/rethinking-mvc-mvvm)
+  ➹：[被误解的MVC和被神化的MVVM](https://infoq.cn/article/rethinking-mvc-mvvm)
 
 ## ★Q&A
 
@@ -513,9 +513,9 @@ MVVM：
 
 总之我们可以见着View和Model是完全解耦的，它们俩的通信都是交由ViewModel来处理的！还有就是View很薄，ViewModel很厚，薄在是个模板，厚在所有的业务逻辑都部署在这儿
 
-**➹：**[MVC，MVP 和 MVVM 的图示 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)
+➹：[MVC，MVP 和 MVVM 的图示 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)
 
-**➹：**[Scaling Isomorphic Javascript Code - Nodejitsu Inc.](https://blog.nodejitsu.com/scaling-isomorphic-javascript-code/)
+➹：[Scaling Isomorphic Javascript Code - Nodejitsu Inc.](https://blog.nodejitsu.com/scaling-isomorphic-javascript-code/)
 
 ### ②我卡在正则了呀？
 
@@ -547,7 +547,7 @@ MVVM：
 
 整个View就是模板，而 \{\{xxx}}是动态块！
 
-**➹：**[fe-learn-2018/05-只有20行的JS模板引擎.md at master · ppambler/fe-learn-2018](https://github.com/ppambler/fe-learn-2018/blob/master/JavaScript/05-%E5%8F%AA%E6%9C%8920%E8%A1%8C%E7%9A%84JS%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E.md)
+➹：[fe-learn-2018/05-只有20行的JS模板引擎.md at master · ppambler/fe-learn-2018](https://github.com/ppambler/fe-learn-2018/blob/master/JavaScript/05-%E5%8F%AA%E6%9C%8920%E8%A1%8C%E7%9A%84JS%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E.md)
 
 ### ⑥我们传的data选项到底是不是model？
 

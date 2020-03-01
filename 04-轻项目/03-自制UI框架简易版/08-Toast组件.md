@@ -249,13 +249,13 @@ typora-copy-images-to: img\08
 >
 > 所以你是无法读取到元素的height值的，我们一般通过这个属性来向DOM上加上内联的css属性，而不是修改自己原来写好的css属性
 >
-> **➹：**[demo](./demo/08/02-style属性能访问啥.html)
+> ➹：[demo](./demo/08/02-style属性能访问啥.html)
 >
 > 似乎是没有动态创建组件，并咩有出现异步情况！反正如果出现时间差的问题，那就异步执行一下呗！
 
-**➹：**[HTMLElement.style - Web API 接口参考 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style)
+➹：[HTMLElement.style - Web API 接口参考 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style)
 
-**➹：**[javascript - js中动态修改style属性的问题 - SegmentFault 思否](https://segmentfault.com/q/1010000005862366)
+➹：[javascript - js中动态修改style属性的问题 - SegmentFault 思否](https://segmentfault.com/q/1010000005862366)
 
 总之，`min-height`并不是说它是有高度的！所以儿子为百分比单位高度是不知道爸爸有多高的！
 
@@ -530,11 +530,11 @@ typora-copy-images-to: img\08
 
 ![img](img/08/1667867-20190608154311855-1964957884.png)
 
-**➹：** [demo](./demo/08/01-再看Vue生命周期.html)
+➹： [demo](./demo/08/01-再看Vue生命周期.html)
 
-**➹：**[vue 生命周期函数 - weixin_43208813的博客 - CSDN博客](https://blog.csdn.net/weixin_43208813/article/details/91077805)
+➹：[vue 生命周期函数 - weixin_43208813的博客 - CSDN博客](https://blog.csdn.net/weixin_43208813/article/details/91077805)
 
-**➹：**[2019.7.15 - 7.21 中你学到什么？ · Issue #1 · KieSun/today-i-learned](https://github.com/KieSun/today-i-learned/issues/1)
+➹：[2019.7.15 - 7.21 中你学到什么？ · Issue #1 · KieSun/today-i-learned](https://github.com/KieSun/today-i-learned/issues/1)
 
 ### ⑤关于Vue的插件？
 
@@ -630,13 +630,13 @@ Vue.use(plugin) //plugin.install(Vue) or plugin.install(Vue,options)
 > Vue.use(plugin)
 > ```
 
-**➹：**[插件 — Vue.js](https://cn.vuejs.org/v2/guide/plugins.html)
+➹：[插件 — Vue.js](https://cn.vuejs.org/v2/guide/plugins.html)
 
 ### ⑥ `toast.$slots.default = [message]`？动态为组件的插槽赋值？
 
-**➹：** [demo](./demo/08/03-测试slot.html)
+➹： [demo](./demo/08/03-测试slot.html)
 
-**➹：**[细谈 vue - slot 篇 - 掘金](https://juejin.im/post/5cced0096fb9a032426510ad#heading-1)
+➹：[细谈 vue - slot 篇 - 掘金](https://juejin.im/post/5cced0096fb9a032426510ad#heading-1)
 
 ps：
 
@@ -694,7 +694,7 @@ ps：
 
 表示找不到解决方案。
 
-**➹：**[Vue单元测试探索 - 掘金](https://juejin.im/post/5b308f5e6fb9a00e5d798c3c)
+➹：[Vue单元测试探索 - 掘金](https://juejin.im/post/5b308f5e6fb9a00e5d798c3c)
 
 
 
@@ -702,7 +702,7 @@ ps：
 
 ![1563848435021](img/08/1563848435021.png)
 
-**➹：**[fix(toast): 添加toast的测试用例 · zyqq/wheel@cf74c2b](https://github.com/zyqq/wheel/commit/cf74c2b981d509a386e10b3bbb759425945b54b3)
+➹：[fix(toast): 添加toast的测试用例 · zyqq/wheel@cf74c2b](https://github.com/zyqq/wheel/commit/cf74c2b981d509a386e10b3bbb759425945b54b3)
 
 > 是在测试代码里边使用了Vue.nextTick才配置好吧！
 
