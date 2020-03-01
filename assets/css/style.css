@@ -12,15 +12,15 @@ p img {
 }
 
 p strong {
+  color: #ec4863;
   text-decoration: none;
-  background-image: linear-gradient(yellow, yellow);
+  background-image: linear-gradient(#ffda66, #ffda66);
   background-repeat: no-repeat;
   background-position: bottom left;
   background-size: 0 3px;
   transition: background-size 500ms ease-in-out;
   font-weight: 500;
   padding-bottom: 4px;
-  font-size: calc(1em + 0.1em);
 }
 
 p strong:hover {
