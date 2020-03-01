@@ -42,6 +42,59 @@ Github Pages的服务是免费的，但是也有一些限制：
 
 Technic pre-research ： 技术预研！
 
+## 5、写的每个链接都要加上 `➹：` 前缀
+
+因为，这样一来，在本地用 VS Code 浏览md文件时，使用全局搜索，输入`➹：`就可找到所有你引入的链接了……
+
+## 6、图片有阴影的样式？
+
+修改根目录下的 `assets/css/style.css`：
+
+``` css
+p img {
+    display: block;
+    box-shadow: 0 0 5px #555;
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 0 10px #555;
+}
+```
+
+## 7、移动端，字体加粗样式不明显？
+
+同样，修改根目录下的 `assets/css/style.css`：
+
+``` css
+p strong {
+  color: #ec4863;
+  /* text-decoration: none; */
+  background-image: linear-gradient(#ffda66, #ffda66);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 0 3px;
+  transition: background-size 500ms ease-in-out;
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+
+p strong:hover {
+    background-size: 100% 3px;
+}
+```
+
+> 颜色选择：[調色盤、藝術家的色彩配置 - Adobe Color](https://color.adobe.com/zh/explore)
+
+## 8、推荐浏览器外观自定义字体设置？
+
+![字体推荐](assets/img/2020-03-01-13-13-55.png)
+
+
+
+
+
 
 
 
