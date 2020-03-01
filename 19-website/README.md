@@ -24,6 +24,7 @@
 - [林间有风](http://7yue.pro/)
 - [Structure and Interpretation of Computer Programs, JavaScript Adaptation](https://sicp.comp.nus.edu.sg/)
 - [JavaScript & DOM Tips, Tricks, and Techniques E-Book - Impressive Webs](https://www.impressivewebs.com/javascript-dom-tips-tricks-techniques-ebook/)
+- [BeginnersBook.com - Tutorials For Beginners](https://beginnersbook.com/) -> ★★★★★
 
 **2）design**
 
@@ -95,6 +96,11 @@
 
 - [JSON Editor Online - view, edit and format JSON online](https://jsoneditoronline.org/#)
 - [JavaScript Object to JSON Converter - Tool Slick](https://toolslick.com/conversion/data/javascript-object-to-json)
+
+4）找源码
+
+- [lib4dev](http://www.lib4dev.in/topics/javascript)
+
 
 ## ★娱乐文化
 
