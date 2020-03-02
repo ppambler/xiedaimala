@@ -86,6 +86,8 @@ p strong:hover {
 ```
 
 > 颜色选择：[調色盤、藝術家的色彩配置 - Adobe Color](https://color.adobe.com/zh/explore)
+> 
+> CSS样式copy： [送给大家的每日 CSS 技巧 - 掘金](https://juejin.im/post/5e34d266f265da3e177f2000)
 
 ## 8、推荐浏览器外观自定义字体设置？
 
