@@ -6,6 +6,8 @@
 
 常见问题：[FAQ](./FAQ.md)
 
+一些思考：[Think](./think.md)
+
 ## ★TODO
 
 - [Issues · ppambler/plan-todo](https://github.com/ppambler/plan-todo/issues)
