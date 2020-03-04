@@ -4,13 +4,13 @@
 
 ## Cheat Sheet
 
-**1）Git**
+### <mark>1）Git</mark>
 
 - [GitCheatSheet_issue#2366_102019-V5](https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf)
 - [git-cheat-sheet-education](https://education.github.com/git-cheat-sheet-education.pdf)
 - [flyhigher139/Git-Cheat-Sheet: Git Cheat Sheet中文版, translated by Gevin (flyhigher139)](https://github.com/flyhigher139/Git-Cheat-Sheet)
 
-**2）Bash**
+### <mark>2）Bash</mark>
 
 - [Bash scripting cheatsheet](https://devhints.io/bash)
 
@@ -18,7 +18,7 @@
 
 ### ◇电子书
 
-**1）JavaScript**
+#### 1、JavaScript
 
 - [JavaScript 完全手册（2018版）-WEB前端开发](https://www.html.cn/archives/9922)
 - [林间有风](http://7yue.pro/)
@@ -26,16 +26,22 @@
 - [JavaScript & DOM Tips, Tricks, and Techniques E-Book - Impressive Webs](https://www.impressivewebs.com/javascript-dom-tips-tricks-techniques-ebook/)
 - [BeginnersBook.com - Tutorials For Beginners](https://beginnersbook.com/) -> ★★★★★
 
-**2）design**
+#### 2、design
 
 - [Design With FontForge: 引言](http://designwithfontforge.com/zh-CN/Introduction.html)
 
-**3）Python**
+#### 3、Python
 
 - [《Think Python 2e》最新版中文翻译 — 《Think Python 2e》中译本 1.0 文档](https://codingpy.com/books/thinkpython2/)
 
+#### 4、CSS
+
+- [xianghongai/Google-HTML-CSS-Style-Guide: 根据 https://google.github.io/styleguide/htmlcssguide.html 翻译。](https://github.com/xianghongai/Google-HTML-CSS-Style-Guide)
+
 ### ◇系列文章
+
 - [JavaScript design patterns Archives - Marcin Wanago Blog - JavaScript, both frontend and backend](https://wanago.io/courses/javascript-design-patterns/)
+- [Web重构笔记(1): 为什么要写这个系列 - 心&麓 - Xiang HongAi's Personal Website](https://xinlu.ink/tech/pro-web-reconstruction-1-preface.html)
 
 ### ◇一篇文章
 
@@ -47,12 +53,12 @@
 
 ### ◇案例
 
-**1）30天，用原生JS挑战30个主题**
+#### <mark>1、30天，用原生JS挑战30个主题</mark>
 
 - [wesbos/JavaScript30: 30 Day Vanilla JS Challenge](https://github.com/wesbos/JavaScript30)
 - [guahsu/JavaScript30: JavaScript30 練習＆心得紀錄](https://github.com/guahsu/JavaScript30)
 
-**2）100天、365天**
+#### <mark>2、100天、365天</mark>
 
 [Florin Pop - 100 Days - 100 Projects Challenge](https://www.florin-pop.com/blog/2019/09/100-days-100-projects/)
 
@@ -88,54 +94,57 @@
 
 > ➹：[提高开发效率的9个工具](https://time.geekbang.org/column/article/183482)
 
-1）[The Ultimate Website Code Generator](https://webcode.tools/)：是一个非常好的代码生成器。只要输入你的需求，它就可以生成代码，**满足各种基本的和高级的需求**。对于不是很熟悉 HTML 和 CSS 的 Web 开发人员来说，这个工具非常有用。
+### <mark>1）代码生成</mark>
 
-2）[Repl.it - The world's leading online coding platform](https://repl.it/)：在线IDE，在几秒钟之内就能为你喜欢的编程语言或技术栈**启动一个编程环境**，它支持所有现代编程语言，比如 Python、 Kotlin 、 Ruby 和 JavaScript。**你可以安装语言库和包，然后直接使用它们，免去下载和管理工作**。你也可以直接通过 Repl.it 链接分享代码，还能通过嵌入 Repl.it 链接让用户与代码交互。
+- [The Ultimate Website Code Generator](https://webcode.tools/)：是一个非常好的代码生成器。只要输入你的需求，它就可以生成代码，**满足各种基本的和高级的需求**。对于不是很熟悉 HTML 和 CSS 的 Web 开发人员来说，这个工具非常有用。
 
-3）JSON
+### <mark>2）代码线上编辑</mark>
+
+- [Repl.it - The world's leading online coding platform](https://repl.it/)：在线IDE，在几秒钟之内就能为你喜欢的编程语言或技术栈**启动一个编程环境**，它支持所有现代编程语言，比如 Python、 Kotlin 、 Ruby 和 JavaScript。**你可以安装语言库和包，然后直接使用它们，免去下载和管理工作**。你也可以直接通过 Repl.it 链接分享代码，还能通过嵌入 Repl.it 链接让用户与代码交互。
+
+### <mark>3）JSON</mark>
 
 - [JSON Editor Online - view, edit and format JSON online](https://jsoneditoronline.org/#)
 - [JavaScript Object to JSON Converter - Tool Slick](https://toolslick.com/conversion/data/javascript-object-to-json)
 
-4）找源码
+### <mark>4）找源码</mark>
 
 - [lib4dev](http://www.lib4dev.in/topics/javascript)
 
 
 ## ★娱乐文化
 
-1）[Fandom](https://www.fandom.com/)
+### <mark>1）流行文化</mark>
 
-> FANDOM代表着娱乐文化粉丝的声音。在这里，粉丝可以自由讨论、查寻和分享各种流行文化主题。
-
-中文版的：[FANDOM](https://www.fandom.com/explore-zh?uselang=zh)
+- [Fandom](https://www.fandom.com/)，FANDOM代表着娱乐文化粉丝的声音。在这里，粉丝可以自由讨论、查寻和分享各种流行文化主题。
+- 中文版的：[FANDOM](https://www.fandom.com/explore-zh?uselang=zh)
 
 ## ★图片
 
-1）看风景的
+### <mark>1）看风景的</mark>
 
 - [360°航拍全景，全球360°虚拟游览，地球上最有趣的地方照片](http://www.airpano.org.cn/)
 - [360° Aerial Panoramas, 360° Virtual Tours Around the World, Photos of the Most Interesting Places on the Earth](https://www.airpano.com/)
 
-2）编程相关的图
+### <mark>2）编程相关的图</mark>
 
 - [20+ Best Free Programming Pictures on Unsplash](https://unsplash.com/s/photos/programming)
 
-3）制作网站logo
+### <mark>3）制作网站logo</mark>
 
 - [Logo Maker - Create Your Own Logo, It's Free! - FreeLogoDesign](https://www.freelogodesign.org/)
 
-4）制作favicon
+### <mark>4）制作favicon</mark>
 
 - [Favicon & App Icon Generator](https://www.favicon-generator.org/)
 
-5）制作占位图
+### <mark>5）制作占位图</mark>
 
 - [Lorem Picsum](https://picsum.photos/) -> 图片丰富，好看
 - [Dynamic Dummy Image Generator - DummyImage.com](https://dummyimage.com/) -> 简单、纯粹
 - [temp.im - A placeholder images service.](http://temp.im/) -> 国内、访问速度快
 
-6）高清好图
+### <mark>6）高清好图</mark>
 
 - [Free Stock Photos & Images • picjumbo](https://picjumbo.com/) -> 找到合适的图片，就右键保存图片 -> 图片大小1080*720
 - [你平时在哪找免费的可商业使用的图片素材？ - 知乎](https://www.zhihu.com/question/21757507)
@@ -161,7 +170,7 @@
 
 ### ◇视频下载
 
-1）Twitter视频下载
+#### <mark>1、Twitter视频下载</mark>
 
 - [Twitter视频下载器 - 将Twitter视频下载到MP4和MP3](https://www.savetweetvid.com/zh)
 - [下载Twitter视频至MP4 & MP3! 在线简单 & 免费](https://www.downloadtwittervideo.com/zh-cn/)
