@@ -22,6 +22,7 @@
 - [fe-daily-challenges-2018](https://ppambler.github.io/fe-daily-challenges-2018/)
 - [Java-2020](https://ppambler.github.io/Java-2020/)
 - [git-chat](https://ppambler.github.io/git-chat/)
+- [zhihu](https://ppambler.github.io/zhihu/)
 
 ## ★常去站点
 
