@@ -29,6 +29,7 @@
 #### 2、design
 
 - [Design With FontForge: 引言](http://designwithfontforge.com/zh-CN/Introduction.html)
+- The Design Of Everyday Things（设计心理学）：设计师入门级的超经典读物，有4部，这四部在微信读书上有，大概100多块钱！
 
 #### 3、Python
 
@@ -161,6 +162,7 @@
 ### ◇电子书
 
 - [ePUBw.COM-免费优质电子书下载](https://epubw.com/)
+- [Write A Book And Publish - PDF Free Download - EPDF.PUB](https://epdf.pub/)
 
 ### ◇英语学习
 
