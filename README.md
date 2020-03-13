@@ -8,6 +8,8 @@
 
 一些思考：[Think](./think.md)
 
+看到的电影：[Movie](./movie)
+
 ## ★TODO
 
 - [Issues · ppambler/plan-todo](https://github.com/ppambler/plan-todo/issues)
