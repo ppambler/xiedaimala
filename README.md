@@ -8,7 +8,7 @@
 
 一些思考：[Think](./think.md)
 
-看到的电影：[Movie](./movie)
+看过的电影：[Movie](./movie)
 
 ## ★TODO
 
