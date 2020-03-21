@@ -10,3 +10,4 @@
 - [02-可复用的代码](./02.md)
 - [03-VS Code](./03.md)
 - [04-voicemeeter](./04.md)
+- [05-Library Genesis](./05.md)
