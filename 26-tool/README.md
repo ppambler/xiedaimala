@@ -12,3 +12,4 @@
 - [04-voicemeeter](./04.md)
 - [05-Library Genesis](./05.md)
 - [06-Quicker](./06.md)
+- [07-小鹤双拼](./07.md)
