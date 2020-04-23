@@ -170,6 +170,7 @@
 ### ◇英语学习
 
 - [4000 Essential English Words (all books) [en-en] - AnkiWeb](https://ankiweb.net/shared/info/1104981491)
+- [Listening exercise -youzack](https://www.youzack.com/)：练习听力的网站 -> 为了能听懂英文技术视频
 
 ### ◇数据接口
 
