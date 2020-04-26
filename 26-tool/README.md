@@ -13,6 +13,7 @@
 - [05-Library Genesis](./05.md)
 - [06-Quicker](./06.md)
 - [07-小鹤双拼](./07.md)
+- [08-视频剪辑软件-HitFilm Express](./08.md)
 
 ## ★小巧软件
 
