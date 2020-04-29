@@ -155,6 +155,7 @@
 - [Free Stock Photos & Images • picjumbo](https://picjumbo.com/) -> 找到合适的图片，就右键保存图片 -> 图片大小1080*720
 - [你平时在哪找免费的可商业使用的图片素材？ - 知乎](https://www.zhihu.com/question/21757507)
 - [有哪些高质量的图片网站（社区）推荐？ - 知乎](https://www.zhihu.com/question/19619335)
+- [Awesome Wallpapers - wallhaven.cc](https://wallhaven.cc/)
 
 
 
