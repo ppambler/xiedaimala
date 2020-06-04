@@ -91,6 +91,8 @@
 - [小剧客栈_剧中人的个人博客 网页设计师博客 前端工程师博客 互动设计学习者](http://bh-lay.com/blog)
 - [前端记录](https://lulua87.github.io/)
 - [啷哩咯啷 - 打工是不可能打工的， 这辈子都不可能打工的！](https://libin1991.github.io/)
+- [晚晴幽草轩](https://www.jeffjade.com/)
+- [D 的个人博客](https://88250.b3log.org/)
 
 ## ★工具类
 
